@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FirstLab</string>
+    <string name="app_greetings">Добро пожаловать</string>
+    <string name="use_google_account">Войти через Google</string>
 </resources>

@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstLab"
         tools:targetApi="31" >
-        <activity android:name=".FeelingsScreen"
+        <activity android:name=".presentation.FeelingsScreen"
             android:exported="false"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

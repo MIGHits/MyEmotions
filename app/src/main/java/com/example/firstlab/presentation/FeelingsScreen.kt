@@ -1,11 +1,11 @@
-package com.example.firstlab
+package com.example.firstlab.presentation
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.firstlab.R
 
 class FeelingsScreen:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

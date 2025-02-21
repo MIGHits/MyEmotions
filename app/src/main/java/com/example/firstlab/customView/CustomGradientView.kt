@@ -1,4 +1,4 @@
-package com.example.firstlab
+package com.example.firstlab.customView
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -11,6 +11,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.core.content.ContextCompat
+import com.example.firstlab.R
 import kotlin.math.cos
 import kotlin.math.sin
 

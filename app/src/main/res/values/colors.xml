@@ -8,4 +8,8 @@
     <color name="gradientSkyBlue">#33BBFF</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="labelPrimaryColor">#2C2C2E</color>
+    <color name="circlePrimaryColor">#1A1A1A</color>
+    <color name="circleSecondaryColor">#666666</color>
+    <color name="blueGradient">#00AAFF</color>
+    <color name="blue_Gradient_Secondary">#00AAFF00</color>
 </resources>

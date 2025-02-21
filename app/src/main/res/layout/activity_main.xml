@@ -7,9 +7,9 @@
     android:background="@color/transparent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".presentation.MainActivity">
 
-    <com.example.firstlab.CustomGradientView
+    <com.example.firstlab.customView.CustomGradientView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent" />

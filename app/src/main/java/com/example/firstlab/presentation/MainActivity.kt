@@ -1,4 +1,4 @@
-package com.example.firstlab
+package com.example.firstlab.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.firstlab.R
 import com.example.firstlab.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

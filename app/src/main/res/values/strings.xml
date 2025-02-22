@@ -2,4 +2,8 @@
     <string name="app_name">FirstLab</string>
     <string name="app_greetings">Добро пожаловать</string>
     <string name="use_google_account">Войти через Google</string>
+    <string name="goal">в день:</string>
+    <string name="feelings_screen_header">Что вы сейчас чувствуете?</string>
+    <string name="add_note">Добавить запись</string>
+    <string name="my_feeling">Я чувствую</string>
 </resources>

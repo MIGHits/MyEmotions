@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/feelingsScreen3"
+        android:icon="@drawable/journal_icon"
+        android:title="@string/journal" />
+    <item android:id="@+id/statisticScreen"
+        android:icon="@drawable/statistic_icon"
+        android:title="@string/statistic" />
+    <item android:id="@+id/settingsScreen"
+        android:icon="@drawable/settings_icon"
+        android:title="@string/settings" />
+</menu>

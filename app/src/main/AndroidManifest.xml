@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstLab"
         tools:targetApi="31" >
-        <activity android:name=".presentation.FeelingsScreen"
+        <activity android:name=".presentation.NavigationActivity"
             android:exported="false"/>
         <activity
             android:name=".presentation.MainActivity"

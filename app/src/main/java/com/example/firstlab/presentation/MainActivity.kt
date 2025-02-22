@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding?.entranceButton?.setOnClickListener {
-            val intent = Intent(this, FeelingsScreen::class.java)
+            val intent = Intent(this, NavigationActivity::class.java)
             startActivity(intent)
         }
     }

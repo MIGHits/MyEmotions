@@ -6,4 +6,7 @@
     <string name="feelings_screen_header">Что вы сейчас чувствуете?</string>
     <string name="add_note">Добавить запись</string>
     <string name="my_feeling">Я чувствую</string>
+    <string name="journal">Журнал</string>
+    <string name="statistic">Статистика</string>
+    <string name="settings">Настройки</string>
 </resources>

@@ -9,4 +9,6 @@
     <string name="journal">Журнал</string>
     <string name="statistic">Статистика</string>
     <string name="settings">Настройки</string>
+    <string name="choose_emotion">Выберите эмоцию, лучше всего описывающую, что вы сейчас чувствуете</string>
+    <string name="emotion_description">Описание</string>
 </resources>

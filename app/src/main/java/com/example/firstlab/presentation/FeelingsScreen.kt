@@ -1,5 +1,6 @@
 package com.example.firstlab.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.components.FeelingsRecyclerAdapter
@@ -31,6 +33,12 @@ class FeelingsScreen : Fragment(R.layout.feelings_screen) {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
+
+        binding?.addButton?.setOnClickListener{
+            val intent = Intent(requireContext(),ChooseEmotionScreen::class.java)
+            startActivity(intent)
+        }
+
         val layoutManager = LinearLayoutManager(requireContext())
         adapter = FeelingsRecyclerAdapter()
         adapter.feelingsList = listOf(

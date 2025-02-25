@@ -1,11 +1,9 @@
 package com.example.firstlab.components
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.firstlab.R
 import com.example.firstlab.databinding.FeelingsRecyclerItemBinding
 import com.example.firstlab.models.FeelingItem
 
@@ -32,6 +30,7 @@ class FeelingsRecyclerAdapter:RecyclerView.Adapter<FeelingsRecyclerAdapter.Feeli
     override fun onBindViewHolder(holder: FeelingsViewHolder, position: Int) {
         val feelingItem = feelingsList[position]
         val context = holder.itemView.context
+
         holder.binding.apply {
             time.text = feelingItem.time
             feelingCard.setBackgroundResource(feelingItem.background)

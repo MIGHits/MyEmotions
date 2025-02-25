@@ -13,20 +13,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_graph"/>
+        app:navGraph="@navigation/nav_graph" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         style="@style/navbarStyle"
-        android:background="@color/navbarBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@color/navbarBackground"
+        app:itemTextAppearanceActive="@style/navigationBarTextActive"
+        app:itemTextAppearanceInactive="@style/navigationBarText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:itemTextAppearanceActive="@style/navigationBarTextActive"
-        app:itemTextAppearanceInactive="@style/navigationBarText"
         app:menu="@menu/navigation_bar_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

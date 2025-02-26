@@ -1,0 +1,16 @@
+<resources>
+
+    <style name="navbarStyle" parent="Widget.Material3.BottomNavigationView">>
+        <item name="compatShadowEnabled">true</item>
+        <item name="elevation">8dp</item>
+        <item name="enforceTextAppearance">true</item>
+        <item name="itemIconTint">@color/icon_selector</item>
+        <item name="itemTextColor">@null</item>
+        <item name="itemTextAppearanceActive">@style/navigationBarTextActive</item>
+        <item name="itemTextAppearanceInactive">@style/navigationBarText</item>
+        <item name="itemHorizontalTranslationEnabled">true</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemActiveIndicatorStyle">@style/activeIndicator</item>
+        <item name="itemRippleColor">@color/cardview_shadow_start_color</item>
+    </style>
+</resources>

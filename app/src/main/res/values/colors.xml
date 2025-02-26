@@ -11,5 +11,8 @@
     <color name="circlePrimaryColor">#1A1A1A</color>
     <color name="circleSecondaryColor">#666666</color>
     <color name="blueGradient">#00AAFF</color>
-    <color name="blue_Gradient_Secondary">#00AAFF00</color>
+    <color name="greenGradient">#00FF55</color>
+    <color name="yellowGradient">#FFAA00</color>
+    <color name="redGradient">#FF0000</color>
+    <color name="navbarBackground">#333333</color>
 </resources>

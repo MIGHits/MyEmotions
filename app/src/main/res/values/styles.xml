@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="cardEmotion">
         <item name="android:textSize">28sp</item>
         <item name="lineHeight">32sp</item>
         <item name="fontFamily">@font/gwen_trial_extra_bold</item>
     </style>
+
     <style name="entranceText">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/vela_sans_medium</item>
@@ -29,6 +31,14 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="emotionName">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight">18sp</item>
+        <item name="android:fontFamily">@font/vela_sans_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
     <style name="labelThin">
         <item name="android:textSize">12sp</item>
         <item name="android:lineHeight">16sp</item>
@@ -36,6 +46,15 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textAlignment">center</item>
     </style>
+
+    <style name="chooseEmotion">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight">18sp</item>
+        <item name="android:fontFamily">@font/vela_sans_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
     <style name="recyclerItemTime">
         <item name="android:textSize">14sp</item>
         <item name="android:lineHeight">18sp</item>
@@ -43,6 +62,15 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textAlignment">center</item>
     </style>
+
+    <style name="emotionsRecyclerItem">
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineHeight">16sp</item>
+        <item name="android:fontFamily">@font/gwen_text_trial_black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
     <style name="recyclerItemMyFeelings">
         <item name="android:textSize">20sp</item>
         <item name="android:lineHeight">28sp</item>
@@ -50,8 +78,28 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textAlignment">center</item>
     </style>
+
     <style name="addButton" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">80dp</item>
     </style>
+
+    <style name="navigationBarText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/vela_sans_medium</item>
+        <item name="android:lineHeight">16sp</item>
+    </style>
+
+    <style name="navigationBarTextActive">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/vela_sans_medium</item>
+        <item name="android:lineHeight">16sp</item>
+    </style>
+
+    <style name="activeIndicator" parent="Widget.Material3.NavigationRailView.ActiveIndicator">
+        <item name="android:color">@color/white</item>
+    </style>
+
 </resources>

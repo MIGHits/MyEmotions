@@ -5,6 +5,7 @@
     android:id="@+id/feelingCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
     android:background="@drawable/blue_type_gradient">
 
     <TextView
@@ -15,7 +16,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:textAppearance="@style/recyclerItemTime"
-        android:text="вчера, 23:40"
+        android:text="воскресенье, 23:40"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,16 +48,16 @@
                 android:id="@+id/emotion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="выгорание"
+                android:text="продуктивность"
                 android:textAppearance="@style/cardEmotion"
-                android:textColor="@color/blueGradient" />
+                />
         </LinearLayout>
         <ImageView
             android:id="@+id/feelingIcon"
             android:layout_weight="0.21"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/sadness_icon"/>
+            android:src="@drawable/lightning_icon"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

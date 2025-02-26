@@ -41,7 +41,10 @@ android {
 }
 
 dependencies {
-
+    implementation ("com.google.android.flexbox:flexbox:3.0.0")
+    implementation ("com.otaliastudios:zoomlayout:1.9.0")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

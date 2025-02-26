@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/chooseEmotionsScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <ImageButton
+        android:id="@+id/back_to_feelings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/circle_shape"
+        android:backgroundTint="@color/labelPrimaryColor"
+        android:padding="8dp"
+        android:src="@drawable/back_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.otaliastudios.zoom.ZoomLayout
+        android:id="@+id/zoomLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginBottom="88dp"
+        android:clipChildren="false"
+        android:visibility="visible"
+        app:hasClickableChildren="true"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back_to_feelings">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ballsRecycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:foregroundGravity="center"
+            android:nestedScrollingEnabled="false"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />`
+    </com.otaliastudios.zoom.ZoomLayout>
+
+    <GridLayout
+        android:id="@+id/flexBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignMargins"
+        android:animateLayoutChanges="true"
+        android:columnCount="4"
+        android:rowCount="4"
+        android:visibility="gone"
+        app:flexDirection="row"
+        app:flexWrap="wrap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/add_button_shape"
+        android:backgroundTint="@color/labelPrimaryColor"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/emotionInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="0.7"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/emotionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Усталость"
+                android:textAppearance="@style/emotionName"
+                android:textColor="@color/blueGradient" />
+
+            <TextView
+                android:id="@+id/emotionDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ощущение, что необходимо отдохнуть"
+                android:textAppearance="@style/chooseEmotion" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/emotionStub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="0.7"
+            android:text="@string/choose_emotion"
+            android:textAppearance="@style/chooseEmotion"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/continue_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_shape"
+            android:backgroundTint="@color/continue_button_selector"
+            android:padding="16dp"
+            android:src="@drawable/icon_selector"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

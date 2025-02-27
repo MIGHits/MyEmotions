@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/note_navigation_graph"
+    app:startDestination="@id/chooseEmotionScreen2">
+    <fragment
+        android:id="@+id/chooseEmotionScreen2"
+        android:name="com.example.firstlab.presentation.ChooseEmotionScreen"
+        android:label="ChooseEmotionScreen" >
+        <action
+            android:id="@+id/action_chooseEmotionScreen2_to_addNoteScreen"
+            app:destination="@id/addNoteScreen" />
+        <action
+            android:id="@+id/chooseEmotionScreenToNavigationActivity"
+            app:destination="@id/navigationActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNoteScreen"
+        android:name="com.example.firstlab.presentation.AddNoteScreen"
+        android:label="AddNoteScreen" >
+        <action
+            android:id="@+id/addNoteScreenToChooseEmotionScreen"
+            app:destination="@id/chooseEmotionScreen2" />
+        <action
+            android:id="@+id/addNoteScreenToNavigationActivity"
+            app:destination="@id/navigationActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/navigationActivity"
+        android:name="com.example.firstlab.presentation.NavigationActivity"
+        android:label="NavigationActivity" />
+</navigation>

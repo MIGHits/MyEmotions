@@ -16,8 +16,9 @@
             android:name=".presentation.NavigationActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.ChooseEmotionScreen"
-            android:exported="false" />
+            android:name=".presentation.NoteNavigation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true">

@@ -21,12 +21,9 @@
 
     <com.otaliastudios.zoom.ZoomLayout
         android:id="@+id/zoomLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginBottom="88dp"
         android:clipChildren="false"
-        android:visibility="visible"
         app:hasClickableChildren="true"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,30 +36,13 @@
             android:layout_height="wrap_content"
             android:clipChildren="false"
             android:clipToPadding="false"
-            android:foregroundGravity="center"
             android:nestedScrollingEnabled="false"
-            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />`
     </com.otaliastudios.zoom.ZoomLayout>
 
-    <GridLayout
-        android:id="@+id/flexBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:alignmentMode="alignMargins"
-        android:animateLayoutChanges="true"
-        android:columnCount="4"
-        android:rowCount="4"
-        android:visibility="gone"
-        app:flexDirection="row"
-        app:flexWrap="wrap"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
@@ -34,9 +35,8 @@ class FeelingsScreen : Fragment(R.layout.feelings_screen) {
             insets
         }
 
-        binding?.addButton?.setOnClickListener{
-            val intent = Intent(requireContext(),ChooseEmotionScreen::class.java)
-            startActivity(intent)
+        binding?.addButton?.setOnClickListener {
+            view.findNavController().navigate(R.id.feelingsScreenToNoteNavigation)
         }
 
         val layoutManager = LinearLayoutManager(requireContext())

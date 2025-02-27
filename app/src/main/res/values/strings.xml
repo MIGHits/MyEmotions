@@ -11,4 +11,8 @@
     <string name="settings">Настройки</string>
     <string name="choose_emotion">Выберите эмоцию, лучше всего описывающую, что вы сейчас чувствуете</string>
     <string name="emotion_description">Описание</string>
+    <string name="Note">Запись</string>
+    <string name="your_activities">Чем вы занимались?</string>
+    <string name="yourCompany">С кем вы были?</string>
+    <string name="save">Сохранить</string>
 </resources>

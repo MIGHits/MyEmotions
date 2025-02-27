@@ -1,109 +1,109 @@
 package com.example.firstlab.presentation
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.util.TypedValueCompat.dpToPx
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.get
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.transition.Visibility
 import com.example.firstlab.R
 import com.example.firstlab.components.BallsRecyclerAdapter
-import com.example.firstlab.customView.BubbleView
 import com.example.firstlab.databinding.EmotionsChooseBinding
 import com.example.firstlab.models.BallsItem
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexWrap
-import com.google.android.flexbox.FlexboxLayout
-import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.flexbox.JustifyContent
 
-class ChooseEmotionScreen : AppCompatActivity() {
+class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
     private var binding: EmotionsChooseBinding? = null
     private lateinit var ballsAdapter: BallsRecyclerAdapter
-    private var flexLayout: GridLayout? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = EmotionsChooseBinding.inflate(layoutInflater)
-        ballsAdapter =
-            BallsRecyclerAdapter({ color, name -> showEmotionInfo(color, name) },
-                { hideEmotionInfo() })
-        setContentView(binding?.root)
 
-        flexLayout = binding?.flexBox
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val bubbles = listOf(
-            BallsItem(ContextCompat.getColor(this, R.color.redGradient), "Ярость"),
-            BallsItem(ContextCompat.getColor(this, R.color.redGradient), "Напряжение"),
-            BallsItem(ContextCompat.getColor(this, R.color.yellowGradient), "Возбуждение"),
-            BallsItem((ContextCompat.getColor(this, R.color.yellowGradient)), "Восторг"),
-            BallsItem(ContextCompat.getColor(this, R.color.redGradient), "Зависть"),
-            BallsItem(ContextCompat.getColor(this, R.color.redGradient), "Беспокойство"),
-            BallsItem((ContextCompat.getColor(this, R.color.yellowGradient)), "Уверенность"),
-            BallsItem((ContextCompat.getColor(this, R.color.yellowGradient)), "Счастье"),
-            BallsItem((ContextCompat.getColor(this, R.color.blueGradient)), "Выгопание"),
-            BallsItem((ContextCompat.getColor(this, R.color.blueGradient)), "Усталость"),
-            BallsItem((ContextCompat.getColor(this, R.color.greenGradient)), "Спокойствие"),
-            BallsItem((ContextCompat.getColor(this, R.color.greenGradient)), "Удовлетворенность"),
-            BallsItem((ContextCompat.getColor(this, R.color.blueGradient)), "Депрессия"),
-            BallsItem((ContextCompat.getColor(this, R.color.blueGradient)), "Апатия"),
-            BallsItem((ContextCompat.getColor(this, R.color.greenGradient)), "Благодарность"),
-            BallsItem((ContextCompat.getColor(this, R.color.greenGradient)), "Защищенность"),
-        )
-        ballsAdapter.ballsList = bubbles
-        binding?.ballsRecycler?.adapter = ballsAdapter
-
-        val manager = GridLayoutManager(this, 4)
-
-        binding?.ballsRecycler?.layoutManager = manager
-
-
-        /*var selectedIndex = -1
-
-        for ((index, bubble) in bubbles.withIndex()) {
-            val bubbleView = BubbleView(this, bubble.color, bubble.name)
-
-            bubbleView.setOnClickListener {
-                if (selectedIndex != -1) {
-                    val previousSelectedView = flexLayout?.getChildAt(selectedIndex) as? BubbleView
-                    previousSelectedView?.revertSize(previousSelectedView)
-                    previousSelectedView?.isSelected = false
-                    hideEmotionInfo()
-                }
-
-                if (selectedIndex == index) {
-                    selectedIndex = -1
-                } else {
-                    bubbleView.animateSizeChange(bubbleView)
-                    bubbleView.isSelected = true
-                    selectedIndex = index
-                    showEmotionInfo(bubble.color, bubble.name)
-                }
-            }
-            flexLayout?.addView(bubbleView)
-        }*/
-
-
-
-        enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.chooseEmotionsScreen)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
+        binding = EmotionsChooseBinding.bind(view)
 
+        ballsAdapter =
+            BallsRecyclerAdapter({ color, name -> showEmotionInfo(color, name) },
+                { hideEmotionInfo() })
+
+        val bubbles = listOf(
+            BallsItem(ContextCompat.getColor(requireContext(), R.color.redGradient), "Ярость"),
+            BallsItem(ContextCompat.getColor(requireContext(), R.color.redGradient), "Напряжение"),
+            BallsItem(
+                ContextCompat.getColor(requireContext(), R.color.yellowGradient),
+                "Возбуждение"
+            ),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.yellowGradient)),
+                "Восторг"
+            ),
+            BallsItem(ContextCompat.getColor(requireContext(), R.color.redGradient), "Зависть"),
+            BallsItem(
+                ContextCompat.getColor(requireContext(), R.color.redGradient),
+                "Беспокойство"
+            ),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.yellowGradient)),
+                "Уверенность"
+            ),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.yellowGradient)),
+                "Счастье"
+            ),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.blueGradient)),
+                "Выгопание"
+            ),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.blueGradient)),
+                "Усталость"
+            ),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
+                "Спокойствие"
+            ),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
+                "Удовлетворенность"
+            ),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.blueGradient)),
+                "Депрессия"
+            ),
+            BallsItem((ContextCompat.getColor(requireContext(), R.color.blueGradient)), "Апатия"),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
+                "Благодарность"
+            ),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
+                "Защищенность"
+            ),
+        )
+
+        ballsAdapter.ballsList = bubbles
+        binding?.ballsRecycler?.adapter = ballsAdapter
+
+        val manager = GridLayoutManager(requireContext(), 4)
+
+        binding?.ballsRecycler?.layoutManager = manager
 
         binding?.continueButton?.isEnabled = false
 
         binding?.backToFeelings?.setOnClickListener {
-            finish()
+            view.findNavController()
+                .navigate(R.id.chooseEmotionScreenToNavigationActivity)
+        }
+        binding?.continueButton?.setOnClickListener {
+            view.findNavController().navigate(R.id.action_chooseEmotionScreen2_to_addNoteScreen)
         }
     }
 

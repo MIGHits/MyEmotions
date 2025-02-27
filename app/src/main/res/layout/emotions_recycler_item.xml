@@ -1,12 +1,10 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/itemContainer"
     android:layout_width="112dp"
     android:layout_height="112dp"
     android:layout_margin="4dp"
-    app:cardCornerRadius="56dp"
-    app:cardElevation="4dp">
+    app:cardCornerRadius="56dp">
 
     <TextView
         android:id="@+id/emotionBall"
@@ -14,5 +12,5 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="Удовлетворенность"
-        android:textAppearance="@style/emotionsRecyclerItem"/>
+        android:textAppearance="@style/emotionsRecyclerItem" />
 </androidx.cardview.widget.CardView>

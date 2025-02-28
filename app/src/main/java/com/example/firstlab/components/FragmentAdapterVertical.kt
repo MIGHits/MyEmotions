@@ -6,11 +6,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class FragmentAdapterVertical(
+    fragment: Fragment,
     private val fragments: List<Fragment>,
-    manager: FragmentManager,
-    lifecycle: Lifecycle
 ) :
-    FragmentStateAdapter(manager, lifecycle) {
+    FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
         return fragments.size
     }

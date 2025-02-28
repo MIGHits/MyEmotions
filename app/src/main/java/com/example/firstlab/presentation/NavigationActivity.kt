@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -30,6 +31,29 @@ class NavigationActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.setupWithNavController(navController)
+
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.statisticScreen -> {
+                    navController.navigate(R.id.statisticScreen, null)
+                    true
+                }
+
+                R.id.settingsScreen -> {
+                    navController.navigate(R.id.settingsScreen, null)
+                    true
+                }
+
+                R.id.feelingsScreen -> {
+                    navController.navigate(R.id.feelingsScreen3, null)
+                    true
+                }
+
+                else -> {
+                    true
+                }
+            }
+        }
     }
 
     override fun onDestroy() {

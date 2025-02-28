@@ -15,6 +15,7 @@
     <color name="yellowGradient">#FFAA00</color>
     <color name="redGradient">#FF0000</color>
     <color name="navbarBackground">#333333</color>
+    <color name="weeklyEmotion">#999999</color>
 
     <color name="greenEmoteFirst">#33FFBB</color>
     <color name="greenEmoteSecond">#00FF55</color>

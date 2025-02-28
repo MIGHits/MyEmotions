@@ -6,7 +6,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.firstlab.R
-import com.example.firstlab.components.FragmentAdapterHorizontal
+import com.example.firstlab.adapter.FragmentAdapterHorizontal
 import com.example.firstlab.databinding.StatisticScreenBinding
 import com.google.android.material.tabs.TabLayoutMediator
 

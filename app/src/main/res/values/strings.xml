@@ -16,4 +16,5 @@
     <string name="yourCompany">С кем вы были?</string>
     <string name="save">Сохранить</string>
     <string name="emotions_category">Эмоции по категориям</string>
+    <string name="weekly_emotions_header">Эмоции\nпо дням недели</string>
 </resources>

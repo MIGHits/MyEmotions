@@ -1,11 +1,9 @@
-package com.example.firstlab.components
+package com.example.firstlab.adapter
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class FragmentAdapterHorizontal(
+class FragmentAdapterVertical(
     fragment: Fragment,
     private val fragments: List<Fragment>,
 ) :

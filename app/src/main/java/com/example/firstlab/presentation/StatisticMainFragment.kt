@@ -16,12 +16,16 @@ class StatisticMainFragment : Fragment(R.layout.statistic_main_fragment) {
 
         val fragments =
             listOf(
-                ChooseEmotionScreen(),
-                ChooseEmotionScreen(),
-                ChooseEmotionScreen(),
-                ChooseEmotionScreen()
+                EmotionsCategoryFragment(),
+                EmotionsCategoryFragment(),
+                EmotionsCategoryFragment(),
+                EmotionsCategoryFragment()
             )
         val verticalAdapter = FragmentAdapterVertical(fragments, parentFragmentManager, lifecycle)
         binding.viewPagerVertical.adapter = verticalAdapter
+        val indicator = binding.circleIndicator
+
+        indicator.setViewPager(binding.viewPagerVertical)
+        verticalAdapter.registerAdapterDataObserver(indicator.adapterDataObserver);
     }
 }

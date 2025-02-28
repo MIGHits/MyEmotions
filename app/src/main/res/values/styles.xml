@@ -7,6 +7,13 @@
         <item name="fontFamily">@font/gwen_trial_extra_bold</item>
     </style>
 
+    <style name="statisticHeaderStyle">
+        <item name="android:textSize">36sp</item>
+        <item name="android:lineHeight">44sp</item>
+        <item name="android:fontFamily">@font/gwen_trial_regular</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="entranceText">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/vela_sans_medium</item>
@@ -30,6 +37,14 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="percent">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:fontFamily">@font/vela_sans_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
     <style name="emotionName">
         <item name="android:textSize">12sp</item>
         <item name="android:lineHeight">18sp</item>
@@ -41,6 +56,14 @@
     <style name="labelThin">
         <item name="android:textSize">12sp</item>
         <item name="android:lineHeight">16sp</item>
+        <item name="android:fontFamily">@font/vela_sans_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="statisticLabel">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineHeight">28sp</item>
         <item name="android:fontFamily">@font/vela_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textAlignment">center</item>

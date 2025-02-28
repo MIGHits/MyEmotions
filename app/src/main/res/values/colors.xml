@@ -15,4 +15,16 @@
     <color name="yellowGradient">#FFAA00</color>
     <color name="redGradient">#FF0000</color>
     <color name="navbarBackground">#333333</color>
+
+    <color name="greenEmoteFirst">#33FFBB</color>
+    <color name="greenEmoteSecond">#00FF55</color>
+
+    <color name="redEmoteFirst">#FF5533</color>
+    <color name="redEmoteSecond">#FF0000</color>
+
+    <color name="yellowEmoteFirst">#FFFF33</color>
+    <color name="yellowEmoteSecond">#FFAA00</color>
+
+    <color name="blueEmoteFirst">#33DDFF</color>
+    <color name="blueEmoteSecond">#00AAFF</color>
 </resources>

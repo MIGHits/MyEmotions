@@ -10,7 +10,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.firstlab.R
-import com.example.firstlab.databinding.ActivityMainBinding
 import com.example.firstlab.databinding.NavigationActivityBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

@@ -33,6 +33,7 @@ class StatisticScreen : Fragment(R.layout.statistic_screen) {
         val horizontalAdapter =
             FragmentAdapterHorizontal(fragments, parentFragmentManager, lifecycle)
         binding.viewPagerHorizontal.adapter = horizontalAdapter
+
         TabLayoutMediator(binding.daysTab, binding.viewPagerHorizontal) { tab, position ->
             tab.text = daysList[position]
         }.attach()

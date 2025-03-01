@@ -23,9 +23,11 @@ class WeeklyEmotesFragment : Fragment(R.layout.weekly_emotions) {
         val manager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         val recycler = binding.weeklyEmotesRecycler
+
         recycler.adapter = emoteAdapter
         recycler.layoutManager = manager
         recycler.suppressLayout(true)
+
         emoteAdapter.emotesList = listOf(
             WeeklyEmoteItem(
                 "17 фев",

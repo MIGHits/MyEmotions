@@ -18,7 +18,7 @@ class StatisticMainFragment : Fragment(R.layout.statistic_main_fragment) {
             listOf(
                 EmotionsCategoryFragment(),
                 WeeklyEmotesFragment(),
-                EmotionsCategoryFragment(),
+                MostFrequentEmotesFragment(),
                 EmotionsCategoryFragment()
             )
         val verticalAdapter = FragmentAdapterVertical(this, fragments)

@@ -23,4 +23,8 @@
     <string name="notification_permission">Присылать напоминания</string>
     <string name="add_notification">Добавить напоминание</string>
     <string name="fingerprint_entrance">Вход по отпечатку пальца</string>
+    <string name="notification_bottom_sheet">Напоминание</string>
+    <string name="hours_label">Часы</string>
+    <string name="minutes_label">Минуты</string>
+    <string name="profile_name">Иван Иванов</string>
 </resources>

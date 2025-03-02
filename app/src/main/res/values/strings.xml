@@ -18,4 +18,9 @@
     <string name="emotions_category">Эмоции по категориям</string>
     <string name="weekly_emotions_header">Эмоции\nпо дням недели</string>
     <string name="most_frequent_emotes">Самые частые эмоции</string>
+    <string name="mood_header"><![CDATA[Ваше настроение в течение дня]]></string>
+    <string name="settings_header">Настройки</string>
+    <string name="notification_permission">Присылать напоминания</string>
+    <string name="add_notification">Добавить напоминание</string>
+    <string name="fingerprint_entrance">Вход по отпечатку пальца</string>
 </resources>

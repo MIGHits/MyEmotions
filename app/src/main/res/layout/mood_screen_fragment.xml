@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/moodHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/mood_header"
+        android:textAppearance="@style/statisticHeaderStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Раннее утро -->
+    <com.example.firstlab.customView.MoodColumnView
+        android:id="@+id/early_morning"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/early_morning_header"
+        app:layout_constraintEnd_toStartOf="@+id/morning"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/moodHeader" />
+
+    <TextView
+        android:id="@+id/early_morning_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="Раннее утро"
+        android:textAppearance="@style/recyclerItemTime"
+        app:layout_constraintEnd_toEndOf="@id/early_morning"
+        app:layout_constraintStart_toStartOf="@id/early_morning"
+        app:layout_constraintTop_toBottomOf="@id/early_morning" />
+
+    <TextView
+        android:id="@+id/early_morning_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_horizontal"
+        android:text="1"
+        android:textAppearance="@style/recyclerItemTime"
+
+        app:layout_constraintEnd_toEndOf="@id/early_morning"
+        app:layout_constraintStart_toStartOf="@id/early_morning"
+        app:layout_constraintTop_toBottomOf="@id/early_morning_header" />
+
+    <!-- Утро -->
+    <com.example.firstlab.customView.MoodColumnView
+        android:id="@+id/morning"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/morning_header"
+        app:layout_constraintEnd_toStartOf="@+id/day"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="0.2"
+        app:layout_constraintStart_toEndOf="@+id/early_morning"
+        app:layout_constraintTop_toBottomOf="@id/moodHeader" />
+
+    <TextView
+        android:id="@+id/morning_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="Утро"
+        android:textAppearance="@style/recyclerItemTime"
+        app:layout_constraintEnd_toEndOf="@id/morning"
+        app:layout_constraintStart_toStartOf="@id/morning"
+        app:layout_constraintTop_toBottomOf="@id/morning" />
+
+    <TextView
+        android:id="@+id/morning_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_horizontal"
+        android:text="1"
+        android:textAppearance="@style/recyclerItemTime"
+        app:layout_constraintEnd_toEndOf="@id/morning"
+        app:layout_constraintStart_toStartOf="@id/morning"
+        app:layout_constraintTop_toBottomOf="@id/morning_header" />
+
+    <!-- День -->
+    <com.example.firstlab.customView.MoodColumnView
+        android:id="@+id/day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/day_header"
+        app:layout_constraintEnd_toStartOf="@+id/evening"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="0.2"
+        app:layout_constraintStart_toEndOf="@+id/morning"
+        app:layout_constraintTop_toBottomOf="@id/moodHeader" />
+
+    <TextView
+        android:id="@+id/day_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="День"
+        android:textAppearance="@style/recyclerItemTime"
+
+        app:layout_constraintEnd_toEndOf="@id/day"
+        app:layout_constraintStart_toStartOf="@id/day"
+        app:layout_constraintTop_toBottomOf="@id/day" />
+
+    <TextView
+        android:id="@+id/day_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_horizontal"
+        android:text="1"
+        android:textAppearance="@style/recyclerItemTime"
+        app:layout_constraintEnd_toEndOf="@id/day"
+        app:layout_constraintStart_toStartOf="@id/day"
+        app:layout_constraintTop_toBottomOf="@id/day_header" />
+
+    <!-- Вечер -->
+    <com.example.firstlab.customView.MoodColumnView
+        android:id="@+id/evening"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/evening_header"
+        app:layout_constraintEnd_toStartOf="@+id/late_evening"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="0.2"
+        app:layout_constraintStart_toEndOf="@+id/day"
+        app:layout_constraintTop_toBottomOf="@id/moodHeader" />
+
+    <TextView
+        android:id="@+id/evening_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="Вечер"
+        android:textAppearance="@style/recyclerItemTime"
+        app:layout_constraintEnd_toEndOf="@id/evening"
+        app:layout_constraintStart_toStartOf="@id/evening"
+        app:layout_constraintTop_toBottomOf="@id/evening" />
+
+    <TextView
+        android:id="@+id/evening_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_horizontal"
+        android:text="1"
+        android:textAppearance="@style/recyclerItemTime"
+        app:layout_constraintEnd_toEndOf="@id/evening"
+        app:layout_constraintStart_toStartOf="@id/evening"
+        app:layout_constraintTop_toBottomOf="@id/evening_header" />
+
+    <!-- Поздний вечер -->
+    <com.example.firstlab.customView.MoodColumnView
+        android:id="@+id/late_evening"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/late_evening_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="0.2"
+        app:layout_constraintStart_toEndOf="@+id/evening"
+        app:layout_constraintTop_toBottomOf="@id/moodHeader" />
+
+    <TextView
+        android:id="@+id/late_evening_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="Поздний вечер"
+        android:textAppearance="@style/recyclerItemTime"
+        app:layout_constraintEnd_toEndOf="@id/late_evening"
+        app:layout_constraintStart_toStartOf="@id/late_evening"
+        app:layout_constraintTop_toBottomOf="@id/late_evening" />
+
+    <TextView
+        android:id="@+id/late_evening_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_horizontal"
+        android:text="1"
+        android:textAppearance="@style/recyclerItemTime"
+        app:layout_constraintEnd_toEndOf="@id/late_evening"
+        app:layout_constraintStart_toStartOf="@id/late_evening"
+        app:layout_constraintTop_toBottomOf="@id/late_evening_header" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

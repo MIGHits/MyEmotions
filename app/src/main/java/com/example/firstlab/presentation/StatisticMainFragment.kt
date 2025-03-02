@@ -19,7 +19,7 @@ class StatisticMainFragment : Fragment(R.layout.statistic_main_fragment) {
                 EmotionsCategoryFragment(),
                 WeeklyEmotesFragment(),
                 MostFrequentEmotesFragment(),
-                EmotionsCategoryFragment()
+                MoodStatisticFragment()
             )
         val verticalAdapter = FragmentAdapterVertical(this, fragments)
         binding.viewPagerVertical.adapter = verticalAdapter

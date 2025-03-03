@@ -28,15 +28,11 @@ class NoteNavigation : AppCompatActivity() {
     fun hideNavigationBar(window: Window) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.let { controller ->
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    controller.hide(
-                        WindowInsets.Type.navigationBars()
-                    )
-                }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    controller.systemBarsBehavior =
-                        WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-                }
+                controller.hide(
+                    WindowInsets.Type.navigationBars()
+                )
+                controller.systemBarsBehavior =
+                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             }
         }
     }

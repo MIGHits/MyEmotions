@@ -12,7 +12,7 @@
         android:layout_marginTop="12dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/weekEmotes"
-        app:layout_constraintHorizontal_weight="0.26"
+        app:layout_constraintHorizontal_weight="0.29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

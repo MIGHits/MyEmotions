@@ -1,14 +1,12 @@
 package com.example.firstlab.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.adapter.WeeklyEmotesAdapter
 import com.example.firstlab.databinding.WeeklyEmotionsBinding
-import com.example.firstlab.databinding.WeeklyEmotionsItemBinding
 import com.example.firstlab.models.Emotion
 import com.example.firstlab.models.WeeklyEmoteItem
 

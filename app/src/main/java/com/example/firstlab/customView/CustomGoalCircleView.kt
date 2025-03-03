@@ -34,10 +34,8 @@ class CustomGoalCircleView(
         listOf(
             EmotionType.RED,
             EmotionType.RED,
-            EmotionType.RED,
             EmotionType.GREEN,
             EmotionType.BLUE,
-            EmotionType.GREEN
         )
         set(value) {
             field = value

@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
-
+    android:background="@color/black"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
     <TextView
         android:id="@+id/moodHeader"
@@ -13,6 +14,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:autoSizeMaxTextSize="36sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         android:text="@string/mood_header"
         android:textAppearance="@style/statisticHeaderStyle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +48,10 @@
         android:gravity="center_horizontal"
         android:text="Раннее утро"
         android:textAppearance="@style/recyclerItemTime"
+        android:autoSizeMaxTextSize="36sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="@id/early_morning"
         app:layout_constraintStart_toStartOf="@id/early_morning"
         app:layout_constraintTop_toBottomOf="@id/early_morning" />
@@ -55,10 +64,15 @@
         android:gravity="center_horizontal"
         android:text="1"
         android:textAppearance="@style/recyclerItemTime"
-
+        android:autoSizeMaxTextSize="36sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="@id/early_morning"
         app:layout_constraintStart_toStartOf="@id/early_morning"
         app:layout_constraintTop_toBottomOf="@id/early_morning_header" />
+
+    <!-- Повторение для других секций (morning, day, evening, late_evening) -->
 
     <com.example.firstlab.customView.MoodColumnView
         android:id="@+id/morning"
@@ -83,6 +97,10 @@
         android:gravity="center_horizontal"
         android:text="Утро"
         android:textAppearance="@style/recyclerItemTime"
+        android:autoSizeMaxTextSize="36sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="@id/morning"
         app:layout_constraintStart_toStartOf="@id/morning"
         app:layout_constraintTop_toBottomOf="@id/morning" />
@@ -95,10 +113,13 @@
         android:gravity="center_horizontal"
         android:text="1"
         android:textAppearance="@style/recyclerItemTime"
+        android:autoSizeMaxTextSize="36sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="@id/morning"
         app:layout_constraintStart_toStartOf="@id/morning"
         app:layout_constraintTop_toBottomOf="@id/morning_header" />
-
 
     <com.example.firstlab.customView.MoodColumnView
         android:id="@+id/day"
@@ -123,7 +144,10 @@
         android:gravity="center_horizontal"
         android:text="День"
         android:textAppearance="@style/recyclerItemTime"
-
+        android:autoSizeMaxTextSize="36sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="@id/day"
         app:layout_constraintStart_toStartOf="@id/day"
         app:layout_constraintTop_toBottomOf="@id/day" />
@@ -136,10 +160,13 @@
         android:gravity="center_horizontal"
         android:text="1"
         android:textAppearance="@style/recyclerItemTime"
+        android:autoSizeMaxTextSize="36sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="@id/day"
         app:layout_constraintStart_toStartOf="@id/day"
         app:layout_constraintTop_toBottomOf="@id/day_header" />
-
 
     <com.example.firstlab.customView.MoodColumnView
         android:id="@+id/evening"
@@ -164,6 +191,10 @@
         android:gravity="center_horizontal"
         android:text="Вечер"
         android:textAppearance="@style/recyclerItemTime"
+        android:autoSizeMaxTextSize="36sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="@id/evening"
         app:layout_constraintStart_toStartOf="@id/evening"
         app:layout_constraintTop_toBottomOf="@id/evening" />
@@ -176,6 +207,10 @@
         android:gravity="center_horizontal"
         android:text="1"
         android:textAppearance="@style/recyclerItemTime"
+        android:autoSizeMaxTextSize="36sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="@id/evening"
         app:layout_constraintStart_toStartOf="@id/evening"
         app:layout_constraintTop_toBottomOf="@id/evening_header" />
@@ -203,6 +238,10 @@
         android:gravity="center_horizontal"
         android:text="Поздний вечер"
         android:textAppearance="@style/recyclerItemTime"
+        android:autoSizeMaxTextSize="36sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="@id/late_evening"
         app:layout_constraintStart_toStartOf="@id/late_evening"
         app:layout_constraintTop_toBottomOf="@id/late_evening" />
@@ -215,6 +254,10 @@
         android:gravity="center_horizontal"
         android:text="1"
         android:textAppearance="@style/recyclerItemTime"
+        android:autoSizeMaxTextSize="36sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="@id/late_evening"
         app:layout_constraintStart_toStartOf="@id/late_evening"
         app:layout_constraintTop_toBottomOf="@id/late_evening_header" />

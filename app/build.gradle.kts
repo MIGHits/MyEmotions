@@ -41,6 +41,9 @@ android {
 }
 
 dependencies {
+    androidTestImplementation(libs.kaspresso)
+    androidTestImplementation(libs.androidx.rules)
+    androidTestImplementation(libs.androidx.runner)
     implementation(libs.relex.circleindicator)
     implementation(libs.flexbox)
     implementation(libs.zoomlayout)

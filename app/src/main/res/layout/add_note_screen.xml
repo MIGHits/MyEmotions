@@ -60,12 +60,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/blue_type_gradient"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/time"
@@ -251,6 +250,8 @@
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/add_button_shape"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
                 android:text="@string/save"
                 android:textAppearance="@style/entranceText"
                 app:layout_constraintBottom_toBottomOf="parent"

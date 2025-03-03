@@ -1,79 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!--first of all you have to change
-    the layout as CoordinatorLayout.
-    This is the first thing we need to do.-->
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/settingsScreen"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
-    <!--AppBarLayout helps the toolbar and other components to react on
-        scroll changes. I am using Dark theme for AppBarLayout.
-        Inside this AppBarLayout i
-        have used CollapsingToolbarLayout. -->
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/black"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <!-- In CollapsingToolbarLayout some important attributes are:
-         i)  app:layout_scrollFlags which is used to specify how collapsing
-             layout behaves when content is scrolled.I have used
-             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-             so it will scroll until it's is completely collapsed.
-         ii) app:contentScrim="@color/green" that specifies the color
-              of the collapsed toolbar -->
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentScrim="@color/greenGradient"
-            app:layout_scrollFlags="scroll|snap|enterAlwaysCollapsed"
-            app:title="@string/app_name">
+            app:contentScrim="@color/black"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:statusBarScrim="@color/transparent">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="24dp"
+                android:paddingBottom="24dp"
+                app:layout_collapseMode="parallax">
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_marginTop="?actionBarSize"
+                    android:src="@drawable/user_avatar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/profile_name"
+                    android:textAppearance="@style/userName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/avatar" />
+
+                <ImageView
+                    android:id="@+id/notifyIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/notification_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/userName" />
+
+                <TextView
+                    android:id="@+id/notification_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/notification_permission"
+                    android:textAppearance="@style/addButtonText"
+                    app:layout_constraintEnd_toStartOf="@id/notification_switcher"
+                    app:layout_constraintStart_toEndOf="@id/notifyIcon"
+                    app:layout_constraintTop_toTopOf="@id/notifyIcon" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/notification_switcher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/notification_message"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/notifyIcon"
+                    app:thumbTint="@color/thumb_shape"
+                    app:trackTint="@color/track_selector" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="parallax"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+                android:background="@android:color/transparent"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+                <TextView
+                    android:id="@+id/emotionsCategoryHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="@string/settings_header"
+                    android:textAppearance="@style/statisticHeaderStyle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!--Now add the NestedScollView-->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:paddingBottom="120dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!--In textview we will be adding the text that i have
-            added earlier in strings.xml file.This is simply the
-            the content to be scrolled -->
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lineSpacingExtra="8sp"
-            android:padding="16dp"
-            android:text="With the idea of imparting programming
-      knowledge, Mr. Sandeep Jain, an IIT Roorkee alumnus started a
-      dream, GeeksforGeeks. Whether programming excites you or you feel
-      stifled, wondering how to prepare for interview questions or how to
-      ace data structures and algorithms, GeeksforGeeks is a one-stop solution.
-      With every tick of time, we are adding arrows in our quiver. From articles
-      on various computer science subjects to programming problems for practice,
-      from basic to premium courses, from technologies to entrance examinations,
-      we have been building ample content with superior quality. In a short span,
-      we have built a community of 1 Million+ Geeks around the world, 20,000+
-      Contributors and 500+ Campus Ambassadors in various colleges across the nation.
-      Our success stories include a lot of students who benefitted in their placements
-      and landed jobs at tech giants. Our vision is to build a gigantic network of
-      geeks and we are only a fraction of it yet."
-            android:textSize="20sp" />
+            android:padding="24dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/notificationRecycler"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <!-- Закреплённый блок снизу -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/black"
+        android:elevation="8dp"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_notification"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/add_button_shape"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="@string/add_notification"
+            android:textAppearance="@style/entranceText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/fingerprintIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/fingerprint_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_notification" />
+
+        <TextView
+            android:id="@+id/fingerPrintEntrance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/fingerprint_entrance"
+            android:textAppearance="@style/addButtonText"
+            app:layout_constraintStart_toEndOf="@id/fingerprintIcon"
+            app:layout_constraintTop_toTopOf="@id/fingerprintIcon" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/fingerprint_switcher"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/fingerprintIcon"
+            app:thumbTint="@color/thumb_shape"
+            app:trackTint="@color/track_selector" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

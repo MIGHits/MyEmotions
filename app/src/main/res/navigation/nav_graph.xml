@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_feelingsScreen3_to_settingsScreen"
             app:destination="@id/settingsScreen" />
+        <action
+            android:id="@+id/action_feelingsScreen3_to_addNoteScreen2"
+            app:destination="@id/addNoteScreen2" />
     </fragment>
     <fragment
         android:id="@+id/statisticScreen"
@@ -43,4 +46,12 @@
         android:id="@+id/noteNavigation"
         android:name="com.example.firstlab.presentation.NoteNavigation"
         android:label="NoteNavigation" />
+    <fragment
+        android:id="@+id/addNoteScreen2"
+        android:name="com.example.firstlab.presentation.AddNoteScreen"
+        android:label="AddNoteScreen" >
+        <action
+            android:id="@+id/action_addNoteScreen2_to_feelingsScreen3"
+            app:destination="@id/feelingsScreen3" />
+    </fragment>
 </navigation>

@@ -36,7 +36,7 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
         binding = AddNoteScreenBinding.bind(view)
 
         binding?.backToBubbles?.setOnClickListener {
-            view.findNavController().navigate(R.id.addNoteScreenToChooseEmotionScreen)
+            view.findNavController().popBackStack()
         }
 
         binding?.saveButton?.setOnClickListener {

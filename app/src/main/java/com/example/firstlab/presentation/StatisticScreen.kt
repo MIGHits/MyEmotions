@@ -20,6 +20,7 @@ class StatisticScreen : Fragment(R.layout.statistic_screen) {
         ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            binding.viewPagerHorizontal.setPadding(0, 0, 0, -systemBars.bottom);
             insets
         }
 
@@ -32,7 +33,7 @@ class StatisticScreen : Fragment(R.layout.statistic_screen) {
 
         val daysList = listOf("17-23 фев", "10–16 фев", "3–9 фев", "27 янв – 2 фев")
         val horizontalAdapter =
-            FragmentAdapterHorizontal(this,fragments)
+            FragmentAdapterHorizontal(this, fragments)
         binding.viewPagerHorizontal.adapter = horizontalAdapter
 
         TabLayoutMediator(binding.daysTab, binding.viewPagerHorizontal) { tab, position ->

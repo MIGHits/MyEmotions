@@ -26,7 +26,7 @@ class WeeklyEmotesFragment : Fragment(R.layout.weekly_emotions) {
 
         recycler.adapter = emoteAdapter
         recycler.layoutManager = manager
-        recycler.suppressLayout(true)
+        recycler.suppressLayout(false)
 
         emoteAdapter.emotesList = listOf(
             WeeklyEmoteItem(
@@ -36,7 +36,7 @@ class WeeklyEmotesFragment : Fragment(R.layout.weekly_emotions) {
                     Emotion(R.drawable.mithosis_emote, "Спокойствие"),
                     Emotion(R.drawable.lightning_emote, "Продуктивность"),
                     Emotion(R.drawable.ellipse_icon, "Счастье"),
-                    Emotion(R.drawable.lightning_emote, "Удовлетворенность"),
+                    //Emotion(R.drawable.lightning_emote, "Удовлетворенность"),
                 )
             ),
             WeeklyEmoteItem(

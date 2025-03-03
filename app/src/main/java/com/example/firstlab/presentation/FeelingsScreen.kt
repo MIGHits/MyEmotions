@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.adapter.FeelingsRecyclerAdapter
@@ -34,7 +35,8 @@ class FeelingsScreen : Fragment(R.layout.feelings_screen) {
         }
 
         val layoutManager = LinearLayoutManager(requireContext())
-        adapter = FeelingsRecyclerAdapter()
+        adapter =
+            FeelingsRecyclerAdapter { findNavController().navigate(R.id.action_feelingsScreen3_to_addNoteScreen2) }
         adapter.feelingsList = listOf(
             FeelingItem(
                 "вчера,23:40",

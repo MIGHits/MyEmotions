@@ -6,19 +6,39 @@
     <fragment
         android:id="@+id/feelingsScreen3"
         android:name="com.example.firstlab.presentation.FeelingsScreen"
-        android:label="FeelingsScreen" >
+        android:label="FeelingsScreen">
         <action
             android:id="@+id/feelingsScreenToNoteNavigation"
             app:destination="@id/noteNavigation" />
+        <action
+            android:id="@+id/action_feelingsScreen3_to_statisticScreen"
+            app:destination="@id/statisticScreen" />
+        <action
+            android:id="@+id/action_feelingsScreen3_to_settingsScreen"
+            app:destination="@id/settingsScreen" />
     </fragment>
     <fragment
         android:id="@+id/statisticScreen"
         android:name="com.example.firstlab.presentation.StatisticScreen"
-        android:label="StatisticScreen" />
+        android:label="StatisticScreen">
+        <action
+            android:id="@+id/action_statisticScreen_to_feelingsScreen3"
+            app:destination="@id/feelingsScreen3" />
+        <action
+            android:id="@+id/action_statisticScreen_to_settingsScreen"
+            app:destination="@id/settingsScreen" />
+    </fragment>
     <fragment
         android:id="@+id/settingsScreen"
         android:name="com.example.firstlab.presentation.SettingsScreen"
-        android:label="SettingsScreen" />
+        android:label="SettingsScreen">
+        <action
+            android:id="@+id/action_settingsScreen_to_statisticScreen"
+            app:destination="@id/statisticScreen" />
+        <action
+            android:id="@+id/action_settingsScreen_to_feelingsScreen3"
+            app:destination="@id/feelingsScreen3" />
+    </fragment>
     <activity
         android:id="@+id/noteNavigation"
         android:name="com.example.firstlab.presentation.NoteNavigation"

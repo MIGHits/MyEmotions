@@ -1,9 +1,7 @@
 package com.example.firstlab.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -11,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firstlab.R
-import com.example.firstlab.components.BallsRecyclerAdapter
+import com.example.firstlab.adapter.BallsRecyclerAdapter
 import com.example.firstlab.databinding.EmotionsChooseBinding
 import com.example.firstlab.models.BallsItem
 

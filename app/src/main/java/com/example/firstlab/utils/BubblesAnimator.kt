@@ -9,7 +9,6 @@ import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
 import androidx.core.view.marginStart
-import com.example.firstlab.customView.BubbleView
 
 class BubblesAnimator {
     companion object {

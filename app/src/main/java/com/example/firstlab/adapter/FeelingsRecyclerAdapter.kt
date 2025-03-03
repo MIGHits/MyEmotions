@@ -1,4 +1,4 @@
-package com.example.firstlab.components
+package com.example.firstlab.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

@@ -1,21 +1,15 @@
 package com.example.firstlab.presentation
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
-import com.example.firstlab.components.FeelingsRecyclerAdapter
+import com.example.firstlab.adapter.FeelingsRecyclerAdapter
 import com.example.firstlab.databinding.FeelingsScreenBinding
 import com.example.firstlab.models.FeelingItem
 

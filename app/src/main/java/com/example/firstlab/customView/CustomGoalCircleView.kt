@@ -13,6 +13,7 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.core.content.ContextCompat
 import com.example.firstlab.R
+import com.example.firstlab.models.EmotionType
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -21,12 +22,6 @@ class CustomGoalCircleView(
     attrs: AttributeSet?
 ) : View(context, attrs) {
 
-    var goalsDone = 0
-        set(value) {
-            field = value
-            checkAnimationState()
-            invalidate()
-        }
 
     var totalGoals = 6
         set(value) {
@@ -35,9 +30,15 @@ class CustomGoalCircleView(
             invalidate()
         }
 
-    var emotionsColors: List<Int> = listOf(
-
-    )
+    var emotionsColors: List<EmotionType> =
+        listOf(
+            EmotionType.RED,
+            EmotionType.RED,
+            EmotionType.RED,
+            EmotionType.GREEN,
+            EmotionType.BLUE,
+            EmotionType.GREEN
+        )
         set(value) {
             field = value
             checkAnimationState()
@@ -91,7 +92,14 @@ class CustomGoalCircleView(
         centerY: Float,
         radius: Float
     ) {
-        val color = ContextCompat.getColor(context, R.color.circleSecondaryColor)
+        val mainColor = ContextCompat.getColor(context, R.color.circleSecondaryColor)
+        val colors = intArrayOf(
+            Color.TRANSPARENT,
+            Color.argb(64, Color.red(mainColor), Color.green(mainColor), Color.blue(mainColor)),
+            Color.argb(128, Color.red(mainColor), Color.green(mainColor), Color.blue(mainColor)),
+            Color.argb(192, Color.red(mainColor), Color.green(mainColor), Color.blue(mainColor)),
+            mainColor
+        )
         val rect = RectF(
             centerX - radius,
             centerY - radius,
@@ -100,7 +108,7 @@ class CustomGoalCircleView(
         )
 
         val arcPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            shader = createGradientForArc(angle, angle + 90f, centerX, centerY, radius, color)
+            shader = createGradientForArc(angle, angle + 90f, centerX, centerY, radius, colors)
             style = Paint.Style.STROKE
             strokeWidth = 60f
             strokeCap = Paint.Cap.ROUND
@@ -115,7 +123,7 @@ class CustomGoalCircleView(
         centerY: Float,
         radius: Float
     ) {
-        if (goalsDone == 0 || emotionsColors.isEmpty()) return
+        if (emotionsColors.isEmpty()) return
 
         val rect = RectF(
             centerX - radius,
@@ -127,11 +135,13 @@ class CustomGoalCircleView(
         val anglePerGoal = 360f / totalGoals
         var startAngle = -90f
 
-        val emotionCounts = emotionsColors.take(goalsDone).groupingBy { it }.eachCount()
+        val emotionCounts = emotionsColors.groupingBy { it }.eachCount()
 
-        emotionCounts.forEach { (color, count) ->
+        val totalSectors = emotionCounts.size
+        var currentSector = 0
+
+        emotionCounts.forEach { (type, count) ->
             val sectorAngle = anglePerGoal * count
-
             val arcPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
                 shader = createGradientForArc(
                     startAngle,
@@ -139,7 +149,27 @@ class CustomGoalCircleView(
                     centerX,
                     centerY,
                     radius,
-                    color
+                    when (type) {
+                        EmotionType.BLUE -> intArrayOf(
+                            ContextCompat.getColor(context, R.color.blueEmoteFirst),
+                            ContextCompat.getColor(context, R.color.blueEmoteSecond)
+                        )
+
+                        EmotionType.RED -> intArrayOf(
+                            ContextCompat.getColor(context, R.color.redEmoteFirst),
+                            ContextCompat.getColor(context, R.color.redEmoteSecond)
+                        )
+
+                        EmotionType.GREEN -> intArrayOf(
+                            ContextCompat.getColor(context, R.color.greenEmoteFirst),
+                            ContextCompat.getColor(context, R.color.greenEmoteSecond)
+                        )
+
+                        EmotionType.YELLOW -> intArrayOf(
+                            ContextCompat.getColor(context, R.color.yellowEmoteFirst),
+                            ContextCompat.getColor(context, R.color.yellowEmoteSecond)
+                        )
+                    }
                 )
                 style = Paint.Style.STROKE
                 strokeWidth = 60f
@@ -147,7 +177,27 @@ class CustomGoalCircleView(
             }
 
             canvas.drawArc(rect, startAngle, sectorAngle, false, arcPaint)
+
+            if ((currentSector == totalSectors - 1 && emotionsColors.size != totalGoals) ||
+                (currentSector == 0 && emotionsColors.size != totalGoals)
+            ) {
+                if (currentSector == totalSectors - 1) {
+                    val roundPaint = Paint(arcPaint).apply {
+                        strokeCap = Paint.Cap.ROUND
+                    }
+                    canvas.drawArc(rect, startAngle + sectorAngle - 1f, 1f, false, roundPaint)
+                }
+
+                if (currentSector == 0 && emotionsColors.size != totalGoals) {
+                    val roundPaint = Paint(arcPaint).apply {
+                        strokeCap = Paint.Cap.ROUND
+                    }
+                    canvas.drawArc(rect, startAngle - 1f, 1f, false, roundPaint)
+                }
+            }
+
             startAngle += sectorAngle
+            currentSector++
         }
     }
 
@@ -157,7 +207,7 @@ class CustomGoalCircleView(
         centerX: Float,
         centerY: Float,
         radius: Float,
-        color: Int
+        colors: IntArray
     ): Shader {
         val startRad = Math.toRadians(startAngle.toDouble())
         val endRad = Math.toRadians(endAngle.toDouble())
@@ -169,13 +219,7 @@ class CustomGoalCircleView(
 
         return LinearGradient(
             startX, startY, endX, endY,
-            intArrayOf(
-                Color.TRANSPARENT,
-                Color.argb(64, Color.red(color), Color.green(color), Color.blue(color)),
-                Color.argb(128, Color.red(color), Color.green(color), Color.blue(color)),
-                Color.argb(192, Color.red(color), Color.green(color), Color.blue(color)),
-                color
-            ),
+            colors,
             null,
             Shader.TileMode.CLAMP
         )

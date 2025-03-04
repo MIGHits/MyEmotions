@@ -14,7 +14,7 @@ object WeeklyEmotesScreen : KScreen<WeeklyEmotesScreen>() {
     override val layoutId = R.layout.weekly_emotions
     override val viewClass: Class<*>? = null
 
-    val emotionsCategoryHeader = KTextView() { withId(R.id.emotionsCategoryHeader) }
+    val emotionsCategoryHeader = KTextView() { withId(R.id.emotionsWeeklyHeader) }
     val weeklyEmotesRecycler =
         KRecyclerView(
             builder = { withId(R.id.weeklyEmotesRecycler) },

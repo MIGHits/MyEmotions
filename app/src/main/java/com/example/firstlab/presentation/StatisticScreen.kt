@@ -7,6 +7,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.firstlab.R
 import com.example.firstlab.adapter.FragmentAdapterHorizontal
+import com.example.firstlab.common.Constant.ZERO_CONST
 import com.example.firstlab.databinding.StatisticScreenBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -20,7 +21,7 @@ class StatisticScreen : Fragment(R.layout.statistic_screen) {
         ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            binding.viewPagerHorizontal.setPadding(0, 0, 0, -systemBars.bottom);
+            binding.viewPagerHorizontal.setPadding(ZERO_CONST, ZERO_CONST, ZERO_CONST, -systemBars.bottom);
             insets
         }
 

@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.firstlab.R
 import com.example.firstlab.adapter.FragmentAdapterVertical
+import com.example.firstlab.common.Constant.VIEW_PAGER_OFFSET
+import com.example.firstlab.common.Constant.ZERO_CONST
 import com.example.firstlab.databinding.StatisticMainFragmentBinding
 
 class StatisticMainFragment : Fragment(R.layout.statistic_main_fragment) {
@@ -30,7 +32,7 @@ class StatisticMainFragment : Fragment(R.layout.statistic_main_fragment) {
         verticalViewPager.adapter = verticalAdapter
         verticalViewPager.offscreenPageLimit = 1
         verticalViewPager.setPadding(
-            0, 0, 0, 70.dpToPx().toInt()
+            ZERO_CONST, ZERO_CONST, ZERO_CONST, VIEW_PAGER_OFFSET.dpToPx().toInt()
         )
 
         val indicator = binding.circleIndicator

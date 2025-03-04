@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.ARG_EMOTES_CATEGORY
 import com.example.firstlab.databinding.EmotionsCategoryBinding
 import com.example.firstlab.models.BallsItem
 import com.example.firstlab.models.EmotesCategory
@@ -14,10 +15,9 @@ class EmotionsCategoryFragment : Fragment(R.layout.emotions_category) {
     private var percentageList: List<EmotesCategory>? = null
 
     companion object {
-        const val ARG_EMOTES_CATEGORY = "ARG_CATEGORY_LIST"
 
-        fun setData(data: List<EmotesCategory>): StatisticMainFragment {
-            return StatisticMainFragment().apply {
+        fun setData(data: List<EmotesCategory>): EmotionsCategoryFragment {
+            return EmotionsCategoryFragment().apply {
                 arguments = Bundle().apply {
                     putParcelableArrayList(ARG_EMOTES_CATEGORY, ArrayList(data))
                 }

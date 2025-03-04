@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.adapter.EmotesFrequencyAdapter
+import com.example.firstlab.common.Constant.ARG_FREQUENT_DATA
 import com.example.firstlab.databinding.MostFrequentEmotesBinding
 import com.example.firstlab.databinding.MostFrequentItemBinding
 import com.example.firstlab.models.Emotion
@@ -17,7 +18,6 @@ class MostFrequentEmotesFragment : Fragment(R.layout.most_frequent_emotes) {
     private var frequentList: List<Emotion>? = null
 
     companion object {
-        const val ARG_FREQUENT_DATA = "ARG_FREQUENT_DATA"
 
 
         fun setData(data: List<Emotion>): MostFrequentEmotesFragment {

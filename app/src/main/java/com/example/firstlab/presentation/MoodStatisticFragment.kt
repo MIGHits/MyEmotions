@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.ARG_MOOD_DATA
 import com.example.firstlab.databinding.MoodScreenFragmentBinding
 import com.example.firstlab.databinding.MostFrequentEmotesBinding
 import com.example.firstlab.models.EmotesCategory
@@ -16,7 +17,6 @@ class MoodStatisticFragment : Fragment(R.layout.mood_screen_fragment) {
     private var moodList: List<EmotesCategory> = emptyList()
 
     companion object {
-         const val ARG_MOOD_DATA = "ARG_MOOD_DATA"
 
         fun setData(data: List<EmotesCategory>): MoodStatisticFragment {
             return MoodStatisticFragment().apply {
@@ -33,9 +33,9 @@ class MoodStatisticFragment : Fragment(R.layout.mood_screen_fragment) {
         moodList = arguments?.getParcelableArrayList(ARG_MOOD_DATA) ?: listOf(
             EmotesCategory(Pair(1f, EmotionType.GREEN), TimeOfDay.EARLY_MORNING),
             EmotesCategory(Pair(0.5f, EmotionType.YELLOW), TimeOfDay.MORNING),
-            EmotesCategory(Pair(0.5f, EmotionType.RED),TimeOfDay.MORNING),
-            EmotesCategory(Pair(1f, EmotionType.RED),TimeOfDay.DAY),
-            EmotesCategory(Pair(1f, EmotionType.BLUE),TimeOfDay.EVENING),
+            EmotesCategory(Pair(0.5f, EmotionType.RED), TimeOfDay.MORNING),
+            EmotesCategory(Pair(1f, EmotionType.RED), TimeOfDay.DAY),
+            EmotesCategory(Pair(1f, EmotionType.BLUE), TimeOfDay.EVENING),
         )
     }
 

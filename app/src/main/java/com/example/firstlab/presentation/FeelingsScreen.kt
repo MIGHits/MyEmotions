@@ -27,8 +27,8 @@ class FeelingsScreen : Fragment(R.layout.feelings_screen) {
         const val ARG_STAT_DATA = "ARG_FEELINGS_LiST"
         const val ARG_POST_AMOUNT = "ARG_POSTS"
 
-        fun setData(data: List<FeelingItem>, posts: Int): StatisticMainFragment {
-            return StatisticMainFragment().apply {
+        fun setData(data: List<FeelingItem>, posts: Int): FeelingsScreen {
+            return FeelingsScreen().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_POST_AMOUNT, posts)
                     putParcelableArrayList(ARG_STAT_DATA, ArrayList(data))

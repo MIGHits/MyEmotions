@@ -17,6 +17,12 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.ARG_ACTIVITIES_DATA
+import com.example.firstlab.common.Constant.ARG_COMPANY_DATA
+import com.example.firstlab.common.Constant.ARG_PLACES_DATA
+import com.example.firstlab.common.Constant.CORNER_RADIUS
+import com.example.firstlab.common.Constant.PADDING_MEDIUM
+import com.example.firstlab.common.Constant.PADDING_SMALL
 import com.example.firstlab.databinding.AddNoteScreenBinding
 import com.example.firstlab.models.FeelingItem
 import com.google.android.material.chip.Chip
@@ -29,9 +35,7 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
     private var activities: List<String>? = null
 
     companion object {
-        const val ARG_COMPANY_DATA = "ARG_COMPANY_LIST"
-        const val ARG_PLACES_DATA = "ARG_PLACES_LIST"
-        const val ARG_ACTIVITIES_DATA = "ARG_ACTIVITIES_LIST"
+
 
         fun setData(
             companyList: List<String>,
@@ -144,11 +148,16 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
             )
             setChipBackgroundColorResource(R.color.chip_group_color_selector)
             isCheckable = true
-            setPaddingRelative(16.dpToPx(), 8.dpToPx(), 16.dpToPx(), 8.dpToPx())
+            setPaddingRelative(
+                PADDING_MEDIUM.dpToPx(),
+                PADDING_SMALL.dpToPx(),
+                PADDING_MEDIUM.dpToPx(),
+                PADDING_SMALL.dpToPx()
+            )
             text = name
             setTextAppearance(R.style.chipText)
             setTextColor(ContextCompat.getColor(context, R.color.white))
-            chipCornerRadius = 64f
+            chipCornerRadius = CORNER_RADIUS
             chipStrokeColor = ColorStateList.valueOf(Color.TRANSPARENT)
             setEnsureMinTouchTargetSize(false)
         }
@@ -175,7 +184,12 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
                 setHintTextColor(Color.GRAY)
                 background =
                     ContextCompat.getDrawable(requireContext(), R.drawable.add_button_shape)
-                setPadding(16.dpToPx(), 8.dpToPx(), 16.dpToPx(), 8.dpToPx())
+                setPadding(
+                    PADDING_MEDIUM.dpToPx(),
+                    PADDING_SMALL.dpToPx(),
+                    PADDING_MEDIUM.dpToPx(),
+                    PADDING_SMALL.dpToPx()
+                )
 
 
                 setOnEditorActionListener { _, actionId, _ ->

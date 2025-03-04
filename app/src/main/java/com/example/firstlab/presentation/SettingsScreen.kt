@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.adapter.NotificationAdapter
+import com.example.firstlab.common.Constant.ARG_NOTIFICATION_DATA
 import com.example.firstlab.databinding.NotificationBottomSheetBinding
 import com.example.firstlab.databinding.SettingsScreenBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -23,12 +24,11 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
     private val calendar = Calendar.getInstance()
 
     companion object {
-        const val ARG_NOTIFICATION_DATA = "ARG_NOTIFICATION_DATA"
 
         fun setData(
             notificationList: List<String>
-        ): AddNoteScreen {
-            return AddNoteScreen().apply {
+        ): SettingsScreen {
+            return SettingsScreen().apply {
                 arguments = Bundle().apply {
                     putStringArrayList(ARG_NOTIFICATION_DATA, ArrayList(notificationList))
                 }

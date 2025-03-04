@@ -10,6 +10,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.adapter.BallsRecyclerAdapter
+import com.example.firstlab.common.Constant.ARG_BALLS_DATA
+import com.example.firstlab.common.Constant.GRID_SIZE
 import com.example.firstlab.databinding.EmotionsChooseBinding
 import com.example.firstlab.models.BallsItem
 import com.example.firstlab.models.FeelingItem
@@ -22,10 +24,9 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
     private var ballsList: List<BallsItem>? = null
 
     companion object {
-        const val ARG_BALLS_DATA = "ARG_BALLS_LIST"
 
-        fun setData(data: List<BallsItem>): StatisticMainFragment {
-            return StatisticMainFragment().apply {
+        fun setData(data: List<BallsItem>): ChooseEmotionScreen {
+            return ChooseEmotionScreen().apply {
                 arguments = Bundle().apply {
                     putParcelableArrayList(ARG_BALLS_DATA, ArrayList(data))
                 }
@@ -111,7 +112,7 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
         ballsList?.let { ballsAdapter.ballsList = it }
         binding?.ballsRecycler?.adapter = ballsAdapter
 
-        val manager = GridLayoutManager(requireContext(), 4)
+        val manager = GridLayoutManager(requireContext(), GRID_SIZE)
 
         binding?.ballsRecycler?.layoutManager = manager
 

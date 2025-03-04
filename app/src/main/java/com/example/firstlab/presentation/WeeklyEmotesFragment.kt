@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.adapter.WeeklyEmotesAdapter
+import com.example.firstlab.common.Constant.ARG_WEEKLY_EMOTES
 import com.example.firstlab.databinding.WeeklyEmotionsBinding
 import com.example.firstlab.models.EmotesCategory
 import com.example.firstlab.models.Emotion
@@ -16,7 +17,6 @@ class WeeklyEmotesFragment : Fragment(R.layout.weekly_emotions) {
     private var weeklyEmotesList: List<WeeklyEmoteItem>? = null
 
     companion object {
-        const val ARG_WEEKLY_EMOTES = "ARG_CATEGORY_LIST"
 
         fun setData(data: List<WeeklyEmoteItem>): WeeklyEmotesFragment {
             return WeeklyEmotesFragment().apply {

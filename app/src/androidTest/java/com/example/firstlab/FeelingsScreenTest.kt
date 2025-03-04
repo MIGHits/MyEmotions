@@ -1,7 +1,6 @@
 package com.example.firstlab
 
 import android.os.Bundle
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
@@ -17,7 +16,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class FeeliingsScreenTest : TestCase() {
+class FeelingsScreenTest : TestCase() {
     @Test
     fun checkFeelingsScreenWithCustomData() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext

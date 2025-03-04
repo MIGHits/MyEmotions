@@ -10,8 +10,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.adapter.NotificationAdapter
 import com.example.firstlab.databinding.NotificationBottomSheetBinding
@@ -55,6 +53,7 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
 
     }
 
+
     private fun showBottomDialog(notificationAdapter: NotificationAdapter) {
         val notificationDialog = BottomSheetDialog(requireContext())
 
@@ -65,8 +64,8 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
         val hours = dialogBinding.hours
         val minutes = dialogBinding.minutes
 
-        hours.hint = calendar.get(Calendar.HOUR_OF_DAY).toString()
-        minutes.hint = calendar.get(Calendar.MINUTE).toString()
+        hours.setText(calendar.get(Calendar.HOUR_OF_DAY).toString())
+        minutes.setText(calendar.get(Calendar.MINUTE).toString())
 
         hours.setOnClickListener {
             showTimePicker(dialogBinding.hours, dialogBinding.minutes)
@@ -81,7 +80,10 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
             notificationDialog.dismiss()
             val time = "${hours.text}:${minutes.text}"
 
-            if (hours.text.isNotEmpty() && minutes.text.isNotEmpty()) {
+            if (hours.text.isNotEmpty() &&
+                minutes.text.isNotEmpty() &&
+                !notificationList.contains(time)
+            ) {
                 notificationList.add(time)
                 notificationAdapter.notifyItemInserted(notificationList.size - 1)
                 binding.appBar.setExpanded(false, true)

@@ -148,7 +148,7 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
             text = name
             setTextAppearance(R.style.chipText)
             setTextColor(ContextCompat.getColor(context, R.color.white))
-            chipCornerRadius = 32f
+            chipCornerRadius = 64f
             chipStrokeColor = ColorStateList.valueOf(Color.TRANSPARENT)
             setEnsureMinTouchTargetSize(false)
         }
@@ -169,7 +169,7 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
                 inputType = InputType.TYPE_CLASS_TEXT
-                hint = "Введите текст"
+                hint = context.getString(R.string.edit_text_hint)
                 textSize = 14f
                 setTextColor(Color.BLACK)
                 setHintTextColor(Color.GRAY)

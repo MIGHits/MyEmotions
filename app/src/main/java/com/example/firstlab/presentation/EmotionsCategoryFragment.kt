@@ -16,8 +16,8 @@ class EmotionsCategoryFragment : Fragment(R.layout.emotions_category) {
 
         val percentageList = listOf(
             Pair(40f, EmotionType.GREEN),
-            Pair(20f, EmotionType.YELLOW),
-            Pair(0f, EmotionType.RED),
+            Pair(5f, EmotionType.YELLOW),
+            Pair(5f, EmotionType.RED),
             Pair(50f, EmotionType.BLUE)
         )
         binding.bubbleChart.percentages = percentageList

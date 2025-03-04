@@ -27,4 +27,11 @@
     <string name="hours_label">Часы</string>
     <string name="minutes_label">Минуты</string>
     <string name="profile_name">Иван Иванов</string>
+    <plurals name="posts_count">
+        <item quantity="one">%d запись</item>
+        <item quantity="two">%d записи</item>
+        <item quantity="few">%d записи</item>
+        <item quantity="many">%d записей</item>
+        <item quantity="other">%d записи</item>
+    </plurals>
 </resources>

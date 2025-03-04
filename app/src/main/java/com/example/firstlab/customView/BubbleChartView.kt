@@ -84,7 +84,7 @@ class BubbleChartView @JvmOverloads constructor(
         )
 
         arranged.forEachIndexed { index, (percentage) ->
-            val rawRadius = width * (percentage.first / 100f) * 0.7f
+            val rawRadius = width * (percentage.first / 100f) * 0.75f
             val radius = max(minRadius, min(maxRadius, rawRadius))
 
             val (cornerX, cornerY) = positions[index]

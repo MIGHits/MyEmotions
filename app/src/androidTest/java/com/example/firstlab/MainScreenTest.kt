@@ -1,7 +1,6 @@
 package com.example.firstlab
 
 import androidx.test.core.app.ActivityScenario
-import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.example.firstlab.page.`object`.MainScreen
@@ -12,10 +11,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class MainScreenHappyPathTest : TestCase() {
-
-    @get:Rule
-    val activityTestRule = ActivityTestRule(MainActivity::class.java, true, false)
+class MainScreenTest : TestCase() {
 
     @Test
     fun testMainScreenDisplay() {

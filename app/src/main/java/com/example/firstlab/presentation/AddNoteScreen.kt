@@ -18,11 +18,64 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.firstlab.R
 import com.example.firstlab.databinding.AddNoteScreenBinding
+import com.example.firstlab.models.FeelingItem
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
 class AddNoteScreen : Fragment(R.layout.add_note_screen) {
     private var binding: AddNoteScreenBinding? = null
+    private var company: List<String>? = null
+    private var places: List<String>? = null
+    private var activities: List<String>? = null
+
+    companion object {
+        const val ARG_COMPANY_DATA = "ARG_COMPANY_LIST"
+        const val ARG_PLACES_DATA = "ARG_PLACES_LIST"
+        const val ARG_ACTIVITIES_DATA = "ARG_ACTIVITIES_LIST"
+
+        fun setData(
+            companyList: List<String>,
+            placesList: List<String>,
+            activitiesList: List<String>
+        ): AddNoteScreen {
+            return AddNoteScreen().apply {
+                arguments = Bundle().apply {
+                    putStringArrayList(ARG_COMPANY_DATA, ArrayList(companyList))
+                    putStringArrayList(ARG_PLACES_DATA, ArrayList(placesList))
+                    putStringArrayList(ARG_ACTIVITIES_DATA, ArrayList(activitiesList))
+                }
+            }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activities = arguments?.getStringArrayList(ARG_ACTIVITIES_DATA) ?: listOf(
+            "Приём пищи",
+            "Встреча с друзьями",
+            "Тренировка",
+            "Хобби",
+            "Отдых",
+            "Поездка"
+        )
+
+        company = arguments?.getStringArrayList(ARG_COMPANY_DATA) ?: listOf(
+            "Один",
+            "Друзья",
+            "Семья",
+            "Коллеги",
+            "Партнёр",
+            "Питомцы"
+        )
+
+        places = arguments?.getStringArrayList(ARG_PLACES_DATA) ?: listOf(
+            "Дом",
+            "Работа",
+            "Школа",
+            "Транспорт",
+            "Улица"
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,31 +98,21 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
 
 
         val activitiesChipGroup = binding?.activitiesChipGroup
-        val activitiesList =
-            listOf(
-                "Приём пищи",
-                "Встреча с друзьями",
-                "Тренировка",
-                "Хобби",
-                "Отдых",
-                "Поездка"
-            )
 
-        activitiesList.forEach { activity ->
+
+        activities?.forEach { activity ->
             addNewChip(activitiesChipGroup, activity)
         }
 
         val companyChipGroup = binding?.companyChipGroup
-        val companyList = listOf("Один", "Друзья", "Семья", "Коллеги", "Партнёр", "Питомцы")
 
-        companyList.forEach { companion ->
+        company?.forEach { companion ->
             addNewChip(companyChipGroup, companion)
         }
 
         val placeChipGroup = binding?.placeChipGroup
-        val placeList = listOf("Дом", "Работа", "Школа", "Транспорт", "Улица")
 
-        placeList.forEach { place ->
+        places?.forEach { place ->
             addNewChip(placeChipGroup, place)
         }
 

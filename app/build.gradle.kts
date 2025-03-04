@@ -48,6 +48,7 @@ java {
 }
 
 dependencies {
+    implementation(libs.androidx.espresso.contrib)
     debugImplementation(libs.androidx.fragment.testing)
     androidTestImplementation(libs.kaspresso)
     androidTestImplementation(libs.androidx.rules)

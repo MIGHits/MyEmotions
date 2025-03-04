@@ -13,6 +13,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.firstlab.R
+import com.example.firstlab.models.EmotesCategory
 import com.example.firstlab.models.EmotionType
 import kotlin.math.abs
 import kotlin.math.max
@@ -38,7 +39,7 @@ class BubbleChartView @JvmOverloads constructor(
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var gradient: LinearGradient? = null
 
-    var percentages: List<Pair<Float, EmotionType>> = emptyList()
+    var percentages: List<EmotesCategory> = emptyList()
         set(value) {
             field = value
             invalidate()
@@ -51,19 +52,19 @@ class BubbleChartView @JvmOverloads constructor(
 
         val sorted = percentages
             .mapIndexed { index, percent -> Pair(percent, index) }
-            .sortedByDescending { it.first.first }
+            .sortedByDescending { it.first.category.first }
 
         var minDiffIndex = 0
         var minDiff = Float.MAX_VALUE
         for (i in 0 until sorted.size - 1) {
-            val diff = abs(sorted[i].first.first - sorted[i + 1].first.first)
+            val diff = abs(sorted[i].first.category.first - sorted[i + 1].first.category.first)
             if (diff < minDiff) {
                 minDiff = diff
                 minDiffIndex = i
             }
         }
 
-        val arranged = mutableListOf<Pair<Pair<Float, EmotionType>, Int>>()
+        val arranged = mutableListOf<Pair<EmotesCategory, Int>>()
         arranged.add(sorted[minDiffIndex])
         arranged.add(sorted[minDiffIndex + 1])
 
@@ -84,14 +85,14 @@ class BubbleChartView @JvmOverloads constructor(
         )
 
         arranged.forEachIndexed { index, (percentage) ->
-            val rawRadius = width * (percentage.first / 100f) * 0.75f
+            val rawRadius = width * (percentage.category.first / 100f) * 0.75f
             val radius = max(minRadius, min(maxRadius, rawRadius))
 
             val (cornerX, cornerY) = positions[index]
             val x = if (cornerX == 0) radius else width - radius
             val y = if (cornerY == 0) radius else height - radius
 
-            val gradientColors = when (percentage.second) {
+            val gradientColors = when (percentage.category.second) {
                 EmotionType.BLUE -> colors[2]
                 EmotionType.RED -> colors[3]
                 EmotionType.YELLOW -> colors[1]
@@ -107,9 +108,14 @@ class BubbleChartView @JvmOverloads constructor(
             )
             paint.shader = gradient
 
-            if (percentage.first != 0f) {
+            if (percentage.category.first != 0f) {
                 canvas.drawCircle(x, y, radius, paint)
-                canvas.drawText("${percentage.first.toInt()}%", x, y + dpToPx(6), textPaint)
+                canvas.drawText(
+                    "${percentage.category.first.toInt()}%",
+                    x,
+                    y + dpToPx(6),
+                    textPaint
+                )
             }
         }
     }

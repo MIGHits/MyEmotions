@@ -39,8 +39,38 @@ class FeelingsScreen : Fragment(R.layout.feelings_screen) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        feelingList = arguments?.getParcelableArrayList(ARG_STAT_DATA)
-        postsAmount = arguments?.getInt(ARG_POST_AMOUNT)
+        feelingList = arguments?.getParcelableArrayList(ARG_STAT_DATA) ?: listOf(
+            FeelingItem(
+                "вчера,23:40",
+                "выгорание",
+                R.drawable.sadness_icon,
+                R.drawable.blue_type_gradient,
+                ContextCompat.getColor(requireContext(), R.color.blueGradient)
+            ),
+            FeelingItem(
+                "вчера,14:08",
+                "спокойствие",
+                R.drawable.mithosis_icon,
+                R.drawable.green_type_gradient,
+                ContextCompat.getColor(requireContext(), R.color.greenGradient)
+            ),
+            FeelingItem(
+                "воскресенье,16:12",
+                "продуктивность",
+                R.drawable.lightning_icon,
+                R.drawable.yellow_type_gradient,
+                ContextCompat.getColor(requireContext(), R.color.yellowGradient)
+            ),
+            FeelingItem(
+                "воскресенье,03:59",
+                "беспокойство",
+                R.drawable.soft_flower_icon,
+                R.drawable.red_type_gradient,
+                ContextCompat.getColor(requireContext(), R.color.redGradient)
+            )
+        )
+
+        postsAmount = arguments?.getInt(ARG_POST_AMOUNT) ?: 0
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

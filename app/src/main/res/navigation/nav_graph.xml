@@ -7,6 +7,11 @@
         android:id="@+id/feelingsScreen3"
         android:name="com.example.firstlab.presentation.FeelingsScreen"
         android:label="FeelingsScreen">
+        <argument
+            android:name="ARG_STAT_DATA"
+            android:defaultValue="@null"
+            app:argType="com.example.firstlab.models.FeelingItem[]" />
+
         <action
             android:id="@+id/feelingsScreenToNoteNavigation"
             app:destination="@id/noteNavigation" />
@@ -49,7 +54,7 @@
     <fragment
         android:id="@+id/addNoteScreen2"
         android:name="com.example.firstlab.presentation.AddNoteScreen"
-        android:label="AddNoteScreen" >
+        android:label="AddNoteScreen">
         <action
             android:id="@+id/action_addNoteScreen2_to_feelingsScreen3"
             app:destination="@id/feelingsScreen3" />

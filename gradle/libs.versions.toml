@@ -19,6 +19,7 @@ rulesVersion = "1.5.0"
 runner = "1.5.0"
 yayandroidParallaxrecyclerview = "1.1"
 zoomlayout = "1.9.0"
+espressoContrib = "3.6.1"
 
 [libraries]
 androidx-core = { module = "androidx.test:core", version.ref = "rules" }
@@ -41,6 +42,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 relex-circleindicator = { module = "me.relex:circleindicator", version.ref = "circleindicatorVersion" }
 zoomlayout = { module = "com.otaliastudios:zoomlayout", version.ref = "zoomlayout" }
+androidx-espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espressoContrib" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

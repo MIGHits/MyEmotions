@@ -21,6 +21,31 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
     private lateinit var binding: SettingsScreenBinding
     private lateinit var notificationList: MutableList<String>
     private val calendar = Calendar.getInstance()
+
+    companion object {
+        const val ARG_NOTIFICATION_DATA = "ARG_NOTIFICATION_DATA"
+
+        fun setData(
+            notificationList: List<String>
+        ): AddNoteScreen {
+            return AddNoteScreen().apply {
+                arguments = Bundle().apply {
+                    putStringArrayList(ARG_NOTIFICATION_DATA, ArrayList(notificationList))
+                }
+            }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        notificationList = arguments?.getStringArrayList(ARG_NOTIFICATION_DATA) ?: mutableListOf(
+            "20:00",
+            "16:00",
+            "20:00",
+            "16:00",
+        )
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         SettingsScreenBinding.bind(view)
@@ -35,13 +60,8 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
 
         val manager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         val notificationAdapter = NotificationAdapter()
-        notificationList = mutableListOf(
-            "20:00",
-            "16:00",
-            "20:00",
-            "16:00",
-        )
-        notificationAdapter.notificationList = notificationList
+
+        notificationList.let { notificationAdapter.notificationList = it }
 
         recycler.adapter = notificationAdapter
         recycler.layoutManager = manager

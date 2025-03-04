@@ -5,5 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class EmotesCategory(
-    val category: Pair<Float, EmotionType>
+    val category: Pair<Float, EmotionType>,
+    val timeOfDay: TimeOfDay? = null
 ) : Parcelable

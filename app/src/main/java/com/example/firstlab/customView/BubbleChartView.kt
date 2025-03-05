@@ -13,6 +13,8 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.MIN_CATEGORY_SIZE
+import com.example.firstlab.common.Constant.ZERO_CONST
 import com.example.firstlab.models.EmotesCategory
 import com.example.firstlab.models.EmotionType
 import kotlin.math.abs
@@ -31,7 +33,7 @@ class BubbleChartView @JvmOverloads constructor(
     )
 
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        textSize = dpToPx(20)
+        textSize = dpToPx(MIN_CATEGORY_SIZE)
         textAlign = Paint.Align.CENTER
         typeface = ResourcesCompat.getFont(context, R.font.vela_sans_bold)
     }
@@ -75,12 +77,12 @@ class BubbleChartView @JvmOverloads constructor(
         }
 
         val maxRadius = width / 2f
-        val minRadius = dpToPx(20)
+        val minRadius = dpToPx(MIN_CATEGORY_SIZE)
 
         val positions = listOf(
-            Pair(width, 0),
-            Pair(0, height),
-            Pair(0, 0),
+        Pair(width, ZERO_CONST),
+            Pair(ZERO_CONST, height),
+            Pair(ZERO_CONST, ZERO_CONST),
             Pair(width, height),
         )
 

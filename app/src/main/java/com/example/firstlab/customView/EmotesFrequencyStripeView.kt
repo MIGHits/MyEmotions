@@ -8,6 +8,9 @@ import androidx.annotation.FloatRange
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.PADDING_LARGE
+import com.example.firstlab.common.Constant.PADDING_MEDIUM
+import com.example.firstlab.common.Constant.STRIPE_CORNER_SIZE
 
 class EmotesFrequencyStripeView @JvmOverloads constructor(
     context: Context,
@@ -24,7 +27,7 @@ class EmotesFrequencyStripeView @JvmOverloads constructor(
 
     init {
         textView.setTextAppearance(R.style.emotionFrequent)
-        textView.setPadding(32, 16, 32, 16)
+        textView.setPadding(PADDING_LARGE, PADDING_MEDIUM, PADDING_LARGE, PADDING_MEDIUM)
         addView(textView)
         updateBackground()
     }
@@ -47,7 +50,7 @@ class EmotesFrequencyStripeView @JvmOverloads constructor(
         val gradientDrawable = GradientDrawable(
             GradientDrawable.Orientation.LEFT_RIGHT, colors
         )
-        gradientDrawable.cornerRadius = 80f
+        gradientDrawable.cornerRadius = STRIPE_CORNER_SIZE
         gradientDrawable.gradientType = GradientDrawable.LINEAR_GRADIENT
 
         background = gradientDrawable

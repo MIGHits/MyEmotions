@@ -15,6 +15,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.PADDING_SMALL
 import com.example.firstlab.models.EmotesCategory
 import com.example.firstlab.models.Emotion
 import com.example.firstlab.models.EmotionType
@@ -28,6 +29,7 @@ class MoodColumnView @JvmOverloads constructor(
         textAlign = Paint.Align.CENTER
         typeface = ResourcesCompat.getFont(context, R.font.vela_sans_bold)
     }
+
     var emotionsList: List<EmotesCategory> =
         listOf()
     var colors = intArrayOf()
@@ -48,8 +50,8 @@ class MoodColumnView @JvmOverloads constructor(
                 top,
                 width.toFloat(),
                 height.toFloat(),
-                8.dpToPx(),
-                8.dpToPx(),
+                PADDING_SMALL.dpToPx(),
+                PADDING_SMALL.dpToPx(),
                 paint
             )
         } else {
@@ -73,8 +75,8 @@ class MoodColumnView @JvmOverloads constructor(
                     top,
                     width.toFloat(),
                     currentHeight,
-                    8.dpToPx(),
-                    8.dpToPx(),
+                    PADDING_SMALL.dpToPx(),
+                    PADDING_SMALL.dpToPx(),
                     paint
                 )
                 canvas.drawText(

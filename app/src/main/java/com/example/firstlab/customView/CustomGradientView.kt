@@ -12,6 +12,7 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.core.content.ContextCompat
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.GRADIENT_ANIM_DURATION
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -114,7 +115,7 @@ class CustomGradientView(context: Context, attrs: AttributeSet?) : View(context,
 
     private fun startAnimation() {
         ValueAnimator.ofFloat(0f, 360f).apply {
-            duration = 10000
+            duration =  GRADIENT_ANIM_DURATION
             repeatCount = ValueAnimator.INFINITE
             interpolator = LinearInterpolator()
             addUpdateListener {

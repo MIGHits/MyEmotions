@@ -13,6 +13,9 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.core.content.ContextCompat
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.CIRCLE_ANIM_DURATION
+import com.example.firstlab.common.Constant.START_ANGLE
+import com.example.firstlab.common.Constant.STROKE_WIDTH
 import com.example.firstlab.models.EmotionType
 import kotlin.math.cos
 import kotlin.math.sin
@@ -79,7 +82,7 @@ class CustomGoalCircleView(
         paint.apply {
             color = circleColor
             style = Paint.Style.STROKE
-            strokeWidth = 60f
+            strokeWidth = STROKE_WIDTH
         }
         canvas.drawCircle(cx, cy, radius, paint)
     }
@@ -108,7 +111,7 @@ class CustomGoalCircleView(
         val arcPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             shader = createGradientForArc(angle, angle + 90f, centerX, centerY, radius, colors)
             style = Paint.Style.STROKE
-            strokeWidth = 60f
+            strokeWidth = STROKE_WIDTH
             strokeCap = Paint.Cap.ROUND
         }
 
@@ -131,7 +134,7 @@ class CustomGoalCircleView(
         )
 
         val anglePerGoal = 360f / totalGoals
-        var startAngle = -90f
+        var startAngle = START_ANGLE
 
         val emotionCounts = emotionsColors.groupingBy { it }.eachCount()
 
@@ -170,7 +173,7 @@ class CustomGoalCircleView(
                     }
                 )
                 style = Paint.Style.STROKE
-                strokeWidth = 60f
+                strokeWidth = STROKE_WIDTH
                 strokeCap = Paint.Cap.BUTT
             }
 
@@ -234,7 +237,7 @@ class CustomGoalCircleView(
     private fun startAnimation() {
         if (animator == null) {
             animator = ValueAnimator.ofFloat(0f, 360f).apply {
-                duration = 5000
+                duration = CIRCLE_ANIM_DURATION
                 repeatCount = ValueAnimator.INFINITE
                 interpolator = LinearInterpolator()
                 addUpdateListener {

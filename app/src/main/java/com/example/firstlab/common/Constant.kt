@@ -21,4 +21,11 @@ object Constant {
     const val BASIC_ANIM_DURATION = 200L
     const val BALLS_TRANSLATION = 40f
     const val MINIMUM_CONST = -1
+    const val MIN_CATEGORY_SIZE = 20
+    const val STROKE_WIDTH = 60f
+    const val START_ANGLE = -90f
+    const val CIRCLE_ANIM_DURATION = 5000L
+    const val GRADIENT_ANIM_DURATION = 10000L
+    const val STRIPE_CORNER_SIZE = 80f
+    const val PADDING_LARGE = 32
 }

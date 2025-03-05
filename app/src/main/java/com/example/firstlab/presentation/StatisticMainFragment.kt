@@ -29,6 +29,7 @@ class StatisticMainFragment : Fragment(R.layout.statistic_main_fragment) {
             )
         val verticalAdapter = FragmentAdapterVertical(this, fragments)
         val verticalViewPager = binding.viewPagerVertical
+
         verticalViewPager.adapter = verticalAdapter
         verticalViewPager.offscreenPageLimit = 1
         verticalViewPager.setPadding(

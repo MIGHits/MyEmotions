@@ -8,7 +8,6 @@
 
 ## 📚 Libraries and tools used
 - Custom View
-- Coil
 - Material 3
 
 ## 📱 Screenshots 
@@ -16,12 +15,10 @@
 <table align="center" style="border: none; border-collapse: collapse; margin: 20px 0;">
   <tr valign="top">
     <td style="border: none; padding: 0 10px;">
-      <img src="https://github.com/user-attachments/assets/4fd0df94-1c9b-449a-8efc-a22a9ca4f7f4
-" alt="Welcome screen" width="300" />
+      <img src="https://github.com/user-attachments/assets/96b349b8-4747-45c8-a689-1a3140033b84" alt="Welcome screen" width="300" />
     </td>
     <td style="border: none; padding: 0 10px;">
-      <img src="https://github.com/user-attachments/assets/dfcb6669-1505-4825-92dc-18ce91a36497
-" alt="Journal" width="300" />
+      <img src="https://github.com/user-attachments/assets/bacd8e3f-d3dd-4273-b303-121324090e08" alt="Journal" width="300" />
     </td>
     <td style="border: none; padding: 0 10px;">
       <img src="https://github.com/user-attachments/assets/0a96192a-0ef8-466f-a3ce-ef8ad88a71b0" alt="Journal" width="300" />
@@ -33,8 +30,7 @@
 <table align="center" style="border: none; border-collapse: collapse; margin: 20px 0;">
   <tr valign="top">
     <td style="border: none; padding: 0 10px;">
-      <img src="https://github.com/user-attachments/assets/97a493d1-1242-4b74-9690-d89bb9eb895b
-" alt="Add new note" width="300" />
+      <img src="https://github.com/user-attachments/assets/2a5e7c76-eba2-4ad1-aa45-68ec44d587ee" alt="Add new note" width="300" />
     </td>
     <td style="border: none; padding: 0 10px;">
       <img src="https://github.com/user-attachments/assets/37b30d0f-0253-4391-aafe-f90ba090e67c" alt="Add note screen" width="300" />
@@ -55,7 +51,7 @@
 ### Profile Screen
 <table style="border: none;">
   <tr valign="top">
-    <td style="border: none;"><img src="https://github.com/user-attachments/assets/fe839c5b-c66a-4ed1-891b-b7d4f32246a" width="300" /></td>
+    <td style="border: none;"><img src="https://github.com/user-attachments/assets/605388ae-0606-49ee-8ae8-c8a4e8b9f5ac" width="300" /></td>
     <td style="border: none;"><img src="https://github.com/user-attachments/assets/6d52a26b-a8a5-4869-817b-b0c501a78b99" width="300" /></td>
   </tr>
 </table>

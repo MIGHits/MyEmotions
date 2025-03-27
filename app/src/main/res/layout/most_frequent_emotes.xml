@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/black"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
     <TextView
-        android:id="@+id/emotionsCategoryHeader"
+        android:id="@+id/mostFrequentHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -19,16 +21,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/weeklyEmotesRecycler"
+        android:id="@+id/frequentEmotesRecycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emotionsCategoryHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/mostFrequentHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

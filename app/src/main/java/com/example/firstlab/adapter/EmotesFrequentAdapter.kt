@@ -1,5 +1,6 @@
 package com.example.firstlab.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,6 +15,8 @@ import com.example.firstlab.models.EmotionType
 class EmotesFrequencyAdapter :
     RecyclerView.Adapter<EmotesFrequencyAdapter.EmotesFrequentViewHolder>() {
     var emotesList = emptyList<Emotion>()
+
+        @SuppressLint("NotifyDataSetChanged")
         set(newValue) {
             field = newValue.sortedByDescending { it.frequent }
             notifyDataSetChanged()
@@ -82,7 +85,7 @@ class EmotesFrequencyAdapter :
 
     }
 
-    fun setEmoteFrequency(stripe: EmotesFrequencyStripeView, frequency: Int) {
+    private fun setEmoteFrequency(stripe: EmotesFrequencyStripeView, frequency: Int) {
         stripe.setCardText(frequency.toString())
     }
 }

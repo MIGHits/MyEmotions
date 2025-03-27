@@ -5,6 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firstlab.common.Constant.BALLS_SCALE_DOWN
+import com.example.firstlab.common.Constant.BALLS_SCALE_UP
+import com.example.firstlab.common.Constant.BALLS_TRANSLATION
+import com.example.firstlab.common.Constant.BASIC_ANIM_DURATION
+import com.example.firstlab.common.Constant.MINIMUM_CONST
 import com.example.firstlab.databinding.EmotionsRecyclerItemBinding
 import com.example.firstlab.models.BallsItem
 
@@ -14,7 +19,7 @@ class BallsRecyclerAdapter(
 ) :
     RecyclerView.Adapter<BallsRecyclerAdapter.BallsViewHolder>() {
 
-    private var previousSelectedIndex = -1
+    private var previousSelectedIndex = MINIMUM_CONST
 
     class BallsViewHolder(val binding: EmotionsRecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -67,13 +72,14 @@ class BallsRecyclerAdapter(
     private fun resetSelectedState(parent: RecyclerView, ball: BallsItem) {
         val previousHolder = parent.findViewHolderForAdapterPosition(previousSelectedIndex)
         previousHolder?.itemView?.animate()
-            ?.scaleX(1f)
-            ?.scaleY(1f)
-            ?.setDuration(200)
+            ?.scaleX(BALLS_SCALE_DOWN)
+            ?.scaleY(BALLS_SCALE_DOWN)
+            ?.setDuration(BASIC_ANIM_DURATION)
             ?.start()
 
         parent.children.forEach { view ->
-            view.animate().translationX(0f).translationY(0f).setDuration(200).start()
+            view.animate().translationX(0f).translationY(0f).setDuration(BASIC_ANIM_DURATION)
+                .start()
         }
         ball.isSelected = false
         hideEmotion()
@@ -87,9 +93,9 @@ class BallsRecyclerAdapter(
         showEmotion(ballsList[position].color, ballsList[position].name)
 
         holder.binding.itemContainer.animate()
-            .scaleX(1.35f)
-            .scaleY(1.35f)
-            .setDuration(200)
+            .scaleX(BALLS_SCALE_UP)
+            .scaleY(BALLS_SCALE_UP)
+            .setDuration(BASIC_ANIM_DURATION)
             .start()
 
         parent.children.forEach { view ->
@@ -98,23 +104,23 @@ class BallsRecyclerAdapter(
 
             when {
                 childY == currentY && childX < currentX -> view.animate()
-                    .translationX(-40f)
-                    .setDuration(200)
+                    .translationX(-BALLS_TRANSLATION)
+                    .setDuration(BASIC_ANIM_DURATION)
                     .start()
 
                 childY == currentY && childX > currentX -> view.animate()
-                    .translationX(40f)
-                    .setDuration(200)
+                    .translationX(BALLS_TRANSLATION)
+                    .setDuration(BASIC_ANIM_DURATION)
                     .start()
 
                 childX == currentX && childY < currentY -> view.animate()
-                    .translationY(-40f)
-                    .setDuration(200)
+                    .translationY(-BALLS_TRANSLATION)
+                    .setDuration(BASIC_ANIM_DURATION)
                     .start()
 
                 childX == currentX && childY > currentY -> view.animate()
-                    .translationY(40f)
-                    .setDuration(200)
+                    .translationY(BALLS_TRANSLATION)
+                    .setDuration(BASIC_ANIM_DURATION)
                     .start()
             }
         }

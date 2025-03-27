@@ -10,29 +10,33 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.adapter.BallsRecyclerAdapter
+import com.example.firstlab.common.Constant.ARG_BALLS_DATA
+import com.example.firstlab.common.Constant.GRID_SIZE
 import com.example.firstlab.databinding.EmotionsChooseBinding
 import com.example.firstlab.models.BallsItem
+import com.example.firstlab.models.FeelingItem
+import com.example.firstlab.presentation.FeelingsScreen.Companion
+import com.example.firstlab.presentation.FeelingsScreen.Companion.ARG_POST_AMOUNT
 
 class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
     private var binding: EmotionsChooseBinding? = null
     private lateinit var ballsAdapter: BallsRecyclerAdapter
+    private var ballsList: List<BallsItem>? = null
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    companion object {
 
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        fun setData(data: List<BallsItem>): ChooseEmotionScreen {
+            return ChooseEmotionScreen().apply {
+                arguments = Bundle().apply {
+                    putParcelableArrayList(ARG_BALLS_DATA, ArrayList(data))
+                }
+            }
         }
+    }
 
-        binding = EmotionsChooseBinding.bind(view)
-
-        ballsAdapter =
-            BallsRecyclerAdapter({ color, name -> showEmotionInfo(color, name) },
-                { hideEmotionInfo() })
-
-        val bubbles = listOf(
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        ballsList = arguments?.getParcelableArrayList(ARG_BALLS_DATA) ?: listOf(
             BallsItem(ContextCompat.getColor(requireContext(), R.color.redGradient), "Ярость"),
             BallsItem(ContextCompat.getColor(requireContext(), R.color.redGradient), "Напряжение"),
             BallsItem(
@@ -84,13 +88,31 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
             BallsItem(
                 (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
                 "Защищенность"
-            ),
+            )
         )
+    }
 
-        ballsAdapter.ballsList = bubbles
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        binding = EmotionsChooseBinding.bind(view)
+
+        ballsAdapter =
+            BallsRecyclerAdapter({ color, name -> showEmotionInfo(color, name) },
+                { hideEmotionInfo() })
+
+
+
+        ballsList?.let { ballsAdapter.ballsList = it }
         binding?.ballsRecycler?.adapter = ballsAdapter
 
-        val manager = GridLayoutManager(requireContext(), 4)
+        val manager = GridLayoutManager(requireContext(), GRID_SIZE)
 
         binding?.ballsRecycler?.layoutManager = manager
 

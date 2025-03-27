@@ -1,7 +1,11 @@
 package com.example.firstlab.models
 
-data class BallsItem (
-    val color:Int,
-    val name:String,
-    var isSelected:Boolean = false
-)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class BallsItem(
+    val color: Int,
+    val name: String,
+    var isSelected: Boolean = false
+) : Parcelable

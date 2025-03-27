@@ -1,34 +1,35 @@
 package com.example.firstlab.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.adapter.WeeklyEmotesAdapter
+import com.example.firstlab.common.Constant.ARG_WEEKLY_EMOTES
 import com.example.firstlab.databinding.WeeklyEmotionsBinding
-import com.example.firstlab.databinding.WeeklyEmotionsItemBinding
+import com.example.firstlab.models.EmotesCategory
 import com.example.firstlab.models.Emotion
 import com.example.firstlab.models.WeeklyEmoteItem
 
 class WeeklyEmotesFragment : Fragment(R.layout.weekly_emotions) {
     private lateinit var binding: WeeklyEmotionsBinding
+    private var weeklyEmotesList: List<WeeklyEmoteItem>? = null
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding = WeeklyEmotionsBinding.bind(view)
+    companion object {
 
-        val emoteAdapter = WeeklyEmotesAdapter()
-        val manager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        fun setData(data: List<WeeklyEmoteItem>): WeeklyEmotesFragment {
+            return WeeklyEmotesFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelableArrayList(ARG_WEEKLY_EMOTES, ArrayList(data))
+                }
+            }
+        }
+    }
 
-        val recycler = binding.weeklyEmotesRecycler
-
-        recycler.adapter = emoteAdapter
-        recycler.layoutManager = manager
-        recycler.suppressLayout(true)
-
-        emoteAdapter.emotesList = listOf(
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        weeklyEmotesList = arguments?.getParcelableArrayList(ARG_WEEKLY_EMOTES) ?: listOf(
             WeeklyEmoteItem(
                 "17 фев",
                 "Понедельник",
@@ -36,7 +37,7 @@ class WeeklyEmotesFragment : Fragment(R.layout.weekly_emotions) {
                     Emotion(R.drawable.mithosis_emote, "Спокойствие"),
                     Emotion(R.drawable.lightning_emote, "Продуктивность"),
                     Emotion(R.drawable.ellipse_icon, "Счастье"),
-                    Emotion(R.drawable.lightning_emote, "Удовлетворенность"),
+                    //Emotion(R.drawable.lightning_emote, "Удовлетворенность"),
                 )
             ),
             WeeklyEmoteItem(
@@ -72,7 +73,22 @@ class WeeklyEmotesFragment : Fragment(R.layout.weekly_emotions) {
                 listOf()
             ),
         )
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = WeeklyEmotionsBinding.bind(view)
+
+        val emoteAdapter = WeeklyEmotesAdapter()
+        val manager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
+        val recycler = binding.weeklyEmotesRecycler
+
+        recycler.adapter = emoteAdapter
+        recycler.layoutManager = manager
+        recycler.suppressLayout(false)
+
+        weeklyEmotesList?.let { emoteAdapter.emotesList = it }
 
     }
 }

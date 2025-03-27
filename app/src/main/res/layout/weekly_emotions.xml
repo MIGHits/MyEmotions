@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/black"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
     <TextView
-        android:id="@+id/emotionsCategoryHeader"
+        android:id="@+id/emotionsWeeklyHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -28,6 +30,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emotionsCategoryHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/emotionsWeeklyHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,9 @@
     android:id="@+id/statistic_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/black"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/daysTab"
@@ -27,6 +29,8 @@
         android:id="@+id/viewPagerHorizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/daysTab" />

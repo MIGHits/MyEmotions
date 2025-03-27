@@ -17,12 +17,69 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.ARG_ACTIVITIES_DATA
+import com.example.firstlab.common.Constant.ARG_COMPANY_DATA
+import com.example.firstlab.common.Constant.ARG_PLACES_DATA
+import com.example.firstlab.common.Constant.CORNER_RADIUS
+import com.example.firstlab.common.Constant.PADDING_MEDIUM
+import com.example.firstlab.common.Constant.PADDING_SMALL
 import com.example.firstlab.databinding.AddNoteScreenBinding
+import com.example.firstlab.models.FeelingItem
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
 class AddNoteScreen : Fragment(R.layout.add_note_screen) {
     private var binding: AddNoteScreenBinding? = null
+    private var company: List<String>? = null
+    private var places: List<String>? = null
+    private var activities: List<String>? = null
+
+    companion object {
+
+
+        fun setData(
+            companyList: List<String>,
+            placesList: List<String>,
+            activitiesList: List<String>
+        ): AddNoteScreen {
+            return AddNoteScreen().apply {
+                arguments = Bundle().apply {
+                    putStringArrayList(ARG_COMPANY_DATA, ArrayList(companyList))
+                    putStringArrayList(ARG_PLACES_DATA, ArrayList(placesList))
+                    putStringArrayList(ARG_ACTIVITIES_DATA, ArrayList(activitiesList))
+                }
+            }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activities = arguments?.getStringArrayList(ARG_ACTIVITIES_DATA) ?: listOf(
+            "Приём пищи",
+            "Встреча с друзьями",
+            "Тренировка",
+            "Хобби",
+            "Отдых",
+            "Поездка"
+        )
+
+        company = arguments?.getStringArrayList(ARG_COMPANY_DATA) ?: listOf(
+            "Один",
+            "Друзья",
+            "Семья",
+            "Коллеги",
+            "Партнёр",
+            "Питомцы"
+        )
+
+        places = arguments?.getStringArrayList(ARG_PLACES_DATA) ?: listOf(
+            "Дом",
+            "Работа",
+            "Школа",
+            "Транспорт",
+            "Улица"
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,7 +93,7 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
         binding = AddNoteScreenBinding.bind(view)
 
         binding?.backToBubbles?.setOnClickListener {
-            view.findNavController().navigate(R.id.addNoteScreenToChooseEmotionScreen)
+            view.findNavController().popBackStack()
         }
 
         binding?.saveButton?.setOnClickListener {
@@ -45,31 +102,21 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
 
 
         val activitiesChipGroup = binding?.activitiesChipGroup
-        val activitiesList =
-            listOf(
-                "Приём пищи",
-                "Встреча с друзьями",
-                "Тренировка",
-                "Хобби",
-                "Отдых",
-                "Поездка"
-            )
 
-        activitiesList.forEach { activity ->
+
+        activities?.forEach { activity ->
             addNewChip(activitiesChipGroup, activity)
         }
 
         val companyChipGroup = binding?.companyChipGroup
-        val companyList = listOf("Один", "Друзья", "Семья", "Коллеги", "Партнёр", "Питомцы")
 
-        companyList.forEach { companion ->
+        company?.forEach { companion ->
             addNewChip(companyChipGroup, companion)
         }
 
         val placeChipGroup = binding?.placeChipGroup
-        val placeList = listOf("Дом", "Работа", "Школа", "Транспорт", "Улица")
 
-        placeList.forEach { place ->
+        places?.forEach { place ->
             addNewChip(placeChipGroup, place)
         }
 
@@ -101,11 +148,16 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
             )
             setChipBackgroundColorResource(R.color.chip_group_color_selector)
             isCheckable = true
-            setPaddingRelative(16.dpToPx(), 8.dpToPx(), 16.dpToPx(), 8.dpToPx())
+            setPaddingRelative(
+                PADDING_MEDIUM.dpToPx(),
+                PADDING_SMALL.dpToPx(),
+                PADDING_MEDIUM.dpToPx(),
+                PADDING_SMALL.dpToPx()
+            )
             text = name
             setTextAppearance(R.style.chipText)
             setTextColor(ContextCompat.getColor(context, R.color.white))
-            chipCornerRadius = 32f
+            chipCornerRadius = CORNER_RADIUS
             chipStrokeColor = ColorStateList.valueOf(Color.TRANSPARENT)
             setEnsureMinTouchTargetSize(false)
         }
@@ -126,13 +178,18 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
                 inputType = InputType.TYPE_CLASS_TEXT
-                hint = "Введите текст"
+                hint = context.getString(R.string.edit_text_hint)
                 textSize = 14f
                 setTextColor(Color.BLACK)
                 setHintTextColor(Color.GRAY)
                 background =
                     ContextCompat.getDrawable(requireContext(), R.drawable.add_button_shape)
-                setPadding(16.dpToPx(), 8.dpToPx(), 16.dpToPx(), 8.dpToPx())
+                setPadding(
+                    PADDING_MEDIUM.dpToPx(),
+                    PADDING_SMALL.dpToPx(),
+                    PADDING_MEDIUM.dpToPx(),
+                    PADDING_SMALL.dpToPx()
+                )
 
 
                 setOnEditorActionListener { _, actionId, _ ->

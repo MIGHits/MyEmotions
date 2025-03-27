@@ -15,6 +15,8 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.PADDING_SMALL
+import com.example.firstlab.models.EmotesCategory
 import com.example.firstlab.models.Emotion
 import com.example.firstlab.models.EmotionType
 
@@ -27,12 +29,9 @@ class MoodColumnView @JvmOverloads constructor(
         textAlign = Paint.Align.CENTER
         typeface = ResourcesCompat.getFont(context, R.font.vela_sans_bold)
     }
-    var emotionsList: List<Pair<EmotionType, Float>> =
-        listOf(
-            Pair(EmotionType.RED, 0.25f),
-            Pair(EmotionType.GREEN, 0.5f),
-            Pair(EmotionType.BLUE, 0.25f)
-        )
+
+    var emotionsList: List<EmotesCategory> =
+        listOf()
     var colors = intArrayOf()
 
     @SuppressLint("DrawAllocation")
@@ -51,14 +50,14 @@ class MoodColumnView @JvmOverloads constructor(
                 top,
                 width.toFloat(),
                 height.toFloat(),
-                8.dpToPx(),
-                8.dpToPx(),
+                PADDING_SMALL.dpToPx(),
+                PADDING_SMALL.dpToPx(),
                 paint
             )
         } else {
             emotionsList.forEach { index ->
-                currentHeight += height.toFloat() * index.second
-                colors = getGradientColors(index.first)
+                currentHeight += height.toFloat() * index.category.first
+                colors = getGradientColors(index.category.second)
                 paint.apply {
                     shader = LinearGradient(
                         0f,
@@ -76,12 +75,12 @@ class MoodColumnView @JvmOverloads constructor(
                     top,
                     width.toFloat(),
                     currentHeight,
-                    8.dpToPx(),
-                    8.dpToPx(),
+                    PADDING_SMALL.dpToPx(),
+                    PADDING_SMALL.dpToPx(),
                     paint
                 )
                 canvas.drawText(
-                    "${(index.second * 100).toInt()}%",
+                    "${(index.category.first * 100).toInt()}%",
                     width / 2f,
                     (currentHeight - (currentHeight - top) / 2f),
                     textPaint
@@ -91,7 +90,7 @@ class MoodColumnView @JvmOverloads constructor(
         }
     }
 
-    fun setEmotionList(emotions: List<Pair<EmotionType, Float>>) {
+    fun setEmotionList(emotions: List<EmotesCategory>) {
         emotionsList = emotions
     }
 

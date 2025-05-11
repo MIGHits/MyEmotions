@@ -9,14 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firstlab.R
-import com.example.firstlab.adapter.BallsRecyclerAdapter
+import com.example.firstlab.presentation.adapter.BallsRecyclerAdapter
 import com.example.firstlab.common.Constant.ARG_BALLS_DATA
 import com.example.firstlab.common.Constant.GRID_SIZE
 import com.example.firstlab.databinding.EmotionsChooseBinding
 import com.example.firstlab.models.BallsItem
-import com.example.firstlab.models.FeelingItem
-import com.example.firstlab.presentation.FeelingsScreen.Companion
-import com.example.firstlab.presentation.FeelingsScreen.Companion.ARG_POST_AMOUNT
 
 class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
     private var binding: EmotionsChooseBinding? = null

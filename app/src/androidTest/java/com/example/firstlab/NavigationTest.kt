@@ -6,6 +6,8 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers.isClickable
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.firstlab.page.`object`.AddNoteScreen
@@ -27,7 +29,7 @@ class NavigationTest : TestCase() {
 
         run {
             step("EnterApp") {
-                ActivityScenario.launch(MainActivity::class.java).use { scenario ->
+                ActivityScenario.launch(MainActivity::class.java).use {
                     step("Check screen views") {
                         MainScreen {
                             greetings.isDisplayed()
@@ -40,7 +42,6 @@ class NavigationTest : TestCase() {
                 }
             }
             step("FeelingsScreen is open") {
-                ActivityScenario.launch(NavigationActivity::class.java)
                 com.example.firstlab.page.`object`.FeelingsScreen {
                     addButton {
                         isDisplayed()

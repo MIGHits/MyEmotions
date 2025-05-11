@@ -35,10 +35,10 @@ class CustomGoalCircleView(
 
     var emotionsColors: List<EmotionType> =
         listOf(
-            EmotionType.RED,
+            /*EmotionType.RED,
             EmotionType.RED,
             EmotionType.GREEN,
-            EmotionType.BLUE,
+            EmotionType.BLUE,*/
         )
         set(value) {
             field = value

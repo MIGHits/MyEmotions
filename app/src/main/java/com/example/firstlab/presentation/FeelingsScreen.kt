@@ -12,7 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
-import com.example.firstlab.adapter.FeelingsRecyclerAdapter
+import com.example.firstlab.presentation.adapter.FeelingsRecyclerAdapter
 import com.example.firstlab.databinding.FeelingsScreenBinding
 import com.example.firstlab.models.FeelingItem
 

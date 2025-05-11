@@ -24,6 +24,7 @@
         android:lineHeight="57.6sp"
         android:text="@string/app_greetings"
         android:textSize="48sp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

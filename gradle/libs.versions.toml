@@ -1,23 +1,24 @@
 [versions]
 agp = "8.8.2"
 circleindicatorVersion = "2.1.6"
+converterGson = "2.11.0"
 flexbox = "3.0.0"
 fragmentTesting = "1.8.6"
 kaspresso = "1.5.2"
 kotlin = "1.9.0"
-coreKtx = "1.15.0"
+coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.5.0"
 appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.1"
+koinBom = "4.0.3"
 constraintlayout = "2.2.1"
-navigationFragmentKtx = "2.8.8"
-rules = "1.5.0"
-rulesVersion = "1.5.0"
-runner = "1.5.0"
-yayandroidParallaxrecyclerview = "1.1"
+navigationFragmentKtx = "2.9.0"
+roomKtx = "2.7.1"
+rules = "1.6.1"
+runner = "1.6.2"
 zoomlayout = "1.9.0"
 espressoContrib = "3.6.1"
 
@@ -27,16 +28,20 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-fragment-testing = { module = "androidx.fragment:fragment-testing", version.ref = "fragmentTesting" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomKtx" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-rules = { module = "androidx.test:rules", version.ref = "rules" }
-androidx-rules-v150 = { module = "androidx.test:rules", version.ref = "rulesVersion" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
-com-yayandroid-parallaxrecyclerview = { module = "com.yayandroid:ParallaxRecyclerView", version.ref = "yayandroidParallaxrecyclerview" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 kaspresso = { module = "com.kaspersky.android-components:kaspresso", version.ref = "kaspresso" }
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
+koin-core = { module = "io.insert-koin:koin-core" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }

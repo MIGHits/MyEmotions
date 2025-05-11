@@ -11,9 +11,9 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.example.firstlab.common.Constant.ARG_BALLS_DATA
 import com.example.firstlab.models.BallsItem
 import com.example.firstlab.page.`object`.ChooseFeelingScreen
-import com.example.firstlab.presentation.ChooseEmotionScreen.Companion.ARG_BALLS_DATA
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Test
 import org.junit.runner.RunWith

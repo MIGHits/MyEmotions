@@ -13,10 +13,10 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.example.firstlab.common.Constant.ARG_ACTIVITIES_DATA
+import com.example.firstlab.common.Constant.ARG_COMPANY_DATA
+import com.example.firstlab.common.Constant.ARG_PLACES_DATA
 import com.example.firstlab.page.`object`.AddNoteScreen
-import com.example.firstlab.presentation.AddNoteScreen.Companion.ARG_ACTIVITIES_DATA
-import com.example.firstlab.presentation.AddNoteScreen.Companion.ARG_COMPANY_DATA
-import com.example.firstlab.presentation.AddNoteScreen.Companion.ARG_PLACES_DATA
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.Test
@@ -65,24 +65,37 @@ class AddNoteScreenTest : TestCase() {
                         isDisplayed()
                     }
 
-                    onView(allOf(isDescendantOfA(withId(R.id.activitiesChipGroup)), withText("activity1")
-                    )).check(matches(isDisplayed()))
+                    onView(
+                        allOf(
+                            isDescendantOfA(withId(R.id.activitiesChipGroup)), withText("activity1")
+                        )
+                    ).check(matches(isDisplayed()))
 
-                    onView(allOf(isDescendantOfA(withId(R.id.placeChipGroup)), withText("Place1")
-                    )).check(matches(isDisplayed()))
+                    onView(
+                        allOf(
+                            isDescendantOfA(withId(R.id.placeChipGroup)), withText("Place1")
+                        )
+                    ).check(matches(isDisplayed()))
 
-                    onView(allOf(isDescendantOfA(withId(R.id.companyChipGroup)), withText("Test 1")
-                    )).check(matches(isDisplayed()))
+                    onView(
+                        allOf(
+                            isDescendantOfA(withId(R.id.companyChipGroup)), withText("Test 1")
+                        )
+                    ).check(matches(isDisplayed()))
 
-                    onView(allOf(
-                        isDescendantOfA(withId(R.id.activitiesChipGroup)),
-                        withText("activity1")
-                    )).perform(click())
+                    onView(
+                        allOf(
+                            isDescendantOfA(withId(R.id.activitiesChipGroup)),
+                            withText("activity1")
+                        )
+                    ).perform(click())
 
-                    onView(allOf(
-                        isDescendantOfA(withId(R.id.activitiesChipGroup)),
-                        withText("activity1")
-                    )).check(matches(isChecked()))
+                    onView(
+                        allOf(
+                            isDescendantOfA(withId(R.id.activitiesChipGroup)),
+                            withText("activity1")
+                        )
+                    ).check(matches(isChecked()))
                 }
             }
         }

@@ -4,12 +4,13 @@ import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
 import androidx.test.espresso.matcher.ViewMatchers.hasChildCount
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.example.firstlab.common.Constant.ARG_WEEKLY_EMOTES
 import com.example.firstlab.models.Emotion
 import com.example.firstlab.models.WeeklyEmoteItem
 import com.example.firstlab.page.`object`.WeeklyEmotesScreen
-import com.example.firstlab.presentation.WeeklyEmotesFragment.Companion.ARG_WEEKLY_EMOTES
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,7 +19,7 @@ import org.junit.runner.RunWith
 class WeeklyEmotesScreenTest : TestCase() {
     @Test
     fun testWeeklyEmotesWithData() {
-        val context = InstrumentationRegistry.getInstrumentation().targetContext
+
         val testWeeklyEmotes = listOf(
             WeeklyEmoteItem(
                 "17 фев",

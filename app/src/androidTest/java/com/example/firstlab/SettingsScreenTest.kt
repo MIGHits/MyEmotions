@@ -3,14 +3,12 @@ package com.example.firstlab
 import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.firstlab.models.Emotion
-import com.example.firstlab.models.EmotionType
-import com.example.firstlab.page.`object`.MostFrequentEmotesScreen
+import com.example.firstlab.common.Constant.ARG_NOTIFICATION_DATA
 import com.example.firstlab.page.`object`.SettingsScreen
-import com.example.firstlab.presentation.MostFrequentEmotesFragment.Companion.ARG_FREQUENT_DATA
-import com.example.firstlab.presentation.SettingsScreen.Companion.ARG_NOTIFICATION_DATA
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
+import org.hamcrest.collection.IsCollectionWithSize.hasSize
 import org.junit.Test
 import org.junit.runner.RunWith
 

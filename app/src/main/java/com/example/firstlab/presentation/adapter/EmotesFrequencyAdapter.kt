@@ -1,4 +1,4 @@
-package com.example.firstlab.adapter
+package com.example.firstlab.presentation.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,7 +12,7 @@ import com.example.firstlab.databinding.MostFrequentItemBinding
 import com.example.firstlab.models.Emotion
 import com.example.firstlab.models.EmotionType
 
-class EmotesFrequencyAdapter :
+class EmotesFrequencyAdapter() :
     RecyclerView.Adapter<EmotesFrequencyAdapter.EmotesFrequentViewHolder>() {
     var emotesList = emptyList<Emotion>()
 

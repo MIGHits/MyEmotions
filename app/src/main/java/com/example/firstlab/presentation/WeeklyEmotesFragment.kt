@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
-import com.example.firstlab.adapter.WeeklyEmotesAdapter
+import com.example.firstlab.presentation.adapter.WeeklyEmotesAdapter
 import com.example.firstlab.common.Constant.ARG_WEEKLY_EMOTES
 import com.example.firstlab.databinding.WeeklyEmotionsBinding
 import com.example.firstlab.models.EmotesCategory
@@ -37,13 +37,14 @@ class WeeklyEmotesFragment : Fragment(R.layout.weekly_emotions) {
                     Emotion(R.drawable.mithosis_emote, "Спокойствие"),
                     Emotion(R.drawable.lightning_emote, "Продуктивность"),
                     Emotion(R.drawable.ellipse_icon, "Счастье"),
-                    //Emotion(R.drawable.lightning_emote, "Удовлетворенность"),
                 )
             ),
             WeeklyEmoteItem(
                 "18 фев",
                 "Вторник",
                 listOf(
+                    Emotion(R.drawable.ellipse_icon, "Счастье"),
+                    Emotion(R.drawable.ellipse_icon, "Счастье"),
                     Emotion(R.drawable.shell_icon, "Выгорание"),
                 )
             ),

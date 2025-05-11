@@ -3,14 +3,13 @@ package com.example.firstlab
 import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.firstlab.common.Constant.ARG_MOOD_DATA
 import com.example.firstlab.models.EmotesCategory
 import com.example.firstlab.models.EmotionType
 import com.example.firstlab.models.TimeOfDay
 import com.example.firstlab.page.`object`.DailyMoodScreen
-import com.example.firstlab.page.`object`.EmotionsCategoryScreen
-import com.example.firstlab.presentation.EmotionsCategoryFragment.Companion.ARG_EMOTES_CATEGORY
-import com.example.firstlab.presentation.MoodStatisticFragment.Companion.ARG_MOOD_DATA
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Test
 import org.junit.runner.RunWith

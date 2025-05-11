@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
-import com.example.firstlab.adapter.NotificationAdapter
+import com.example.firstlab.presentation.adapter.NotificationAdapter
 import com.example.firstlab.common.Constant.ARG_NOTIFICATION_DATA
 import com.example.firstlab.databinding.NotificationBottomSheetBinding
 import com.example.firstlab.databinding.SettingsScreenBinding
@@ -74,6 +74,7 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun showBottomDialog(notificationAdapter: NotificationAdapter) {
         val notificationDialog = BottomSheetDialog(requireContext())
 

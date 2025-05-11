@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    id("kotlin-kapt")
 }
 
 android {
@@ -48,6 +49,12 @@ java {
 }
 
 dependencies {
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    implementation(libs.koin.compose)
+    implementation(libs.converter.gson)
     implementation(libs.androidx.espresso.contrib)
     debugImplementation(libs.androidx.fragment.testing)
     androidTestImplementation(libs.kaspresso)
@@ -67,6 +74,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation (libs.androidx.core)
     androidTestImplementation (libs.androidx.runner)
-    androidTestImplementation( libs.androidx.rules.v150)
     androidTestImplementation(libs.androidx.espresso.core)
 }

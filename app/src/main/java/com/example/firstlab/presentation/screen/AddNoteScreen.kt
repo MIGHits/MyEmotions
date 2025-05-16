@@ -1,4 +1,4 @@
-package com.example.firstlab.presentation
+package com.example.firstlab.presentation.screen
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -24,7 +24,6 @@ import com.example.firstlab.common.Constant.CORNER_RADIUS
 import com.example.firstlab.common.Constant.PADDING_MEDIUM
 import com.example.firstlab.common.Constant.PADDING_SMALL
 import com.example.firstlab.databinding.AddNoteScreenBinding
-import com.example.firstlab.models.FeelingItem
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 

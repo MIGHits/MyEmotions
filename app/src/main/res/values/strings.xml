@@ -1,4 +1,5 @@
 <resources>
+    <string name="web_client_id">939719790276-bb0j1gq6oi213v0quv3jbar4e02m917l.apps.googleusercontent.com</string>
     <string name="app_name">FirstLab</string>
     <string name="app_greetings">Добро пожаловать</string>
     <string name="use_google_account">Войти через Google</string>

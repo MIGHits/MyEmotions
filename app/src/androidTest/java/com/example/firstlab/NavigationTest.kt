@@ -6,8 +6,6 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers.isClickable
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.firstlab.page.`object`.AddNoteScreen
@@ -16,8 +14,7 @@ import com.example.firstlab.page.`object`.EmotionsCategoryScreen
 import com.example.firstlab.page.`object`.MainScreen
 import com.example.firstlab.page.`object`.NavigationScreen
 import com.example.firstlab.page.`object`.SettingsScreen
-import com.example.firstlab.presentation.MainActivity
-import com.example.firstlab.presentation.NavigationActivity
+import com.example.firstlab.presentation.screen.MainActivity
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -1,4 +1,4 @@
-package com.example.firstlab.presentation
+package com.example.firstlab.presentation.screen
 
 import android.os.Bundle
 import android.view.View

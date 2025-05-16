@@ -1,4 +1,4 @@
-package com.example.firstlab.presentation
+package com.example.firstlab.presentation.screen
 
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog

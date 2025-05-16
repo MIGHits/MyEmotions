@@ -8,6 +8,7 @@ import com.example.firstlab.common.Constant.ARG_EMOTES_CATEGORY
 import com.example.firstlab.models.EmotesCategory
 import com.example.firstlab.models.EmotionType
 import com.example.firstlab.page.`object`.EmotionsCategoryScreen
+import com.example.firstlab.presentation.screen.EmotionsCategoryFragment
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -29,7 +30,7 @@ class EmotionsCategoryScreenTest : TestCase() {
                     putParcelableArrayList(ARG_EMOTES_CATEGORY, ArrayList(categoryList))
                 }
                 val scenario =
-                    launchFragmentInContainer<com.example.firstlab.presentation.EmotionsCategoryFragment>(
+                    launchFragmentInContainer<EmotionsCategoryFragment>(
                         args,
                         themeResId = R.style.Theme_FirstLab
                     )

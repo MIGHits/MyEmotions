@@ -5,7 +5,7 @@
     app:startDestination="@id/chooseEmotionScreen2">
     <fragment
         android:id="@+id/chooseEmotionScreen2"
-        android:name="com.example.firstlab.presentation.ChooseEmotionScreen"
+        android:name="com.example.firstlab.presentation.screen.ChooseEmotionScreen"
         android:label="ChooseEmotionScreen" >
         <action
             android:id="@+id/action_chooseEmotionScreen2_to_addNoteScreen"
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/addNoteScreen"
-        android:name="com.example.firstlab.presentation.AddNoteScreen"
+        android:name="com.example.firstlab.presentation.screen.AddNoteScreen"
         android:label="AddNoteScreen" >
         <action
             android:id="@+id/addNoteScreenToChooseEmotionScreen"
@@ -27,6 +27,6 @@
     </fragment>
     <activity
         android:id="@+id/navigationActivity"
-        android:name="com.example.firstlab.presentation.NavigationActivity"
+        android:name="com.example.firstlab.presentation.screen.NavigationActivity"
         android:label="NavigationActivity" />
 </navigation>

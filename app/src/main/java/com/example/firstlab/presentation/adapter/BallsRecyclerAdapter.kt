@@ -15,7 +15,7 @@ import com.example.firstlab.models.BallsItem
 
 class BallsRecyclerAdapter(
     private val showEmotion: (Int, String) -> Unit,
-    private val hideEmotion: () -> Unit
+    private val hideEmotion: () -> Unit,
 ) :
     RecyclerView.Adapter<BallsRecyclerAdapter.BallsViewHolder>() {
 

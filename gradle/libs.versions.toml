@@ -2,10 +2,11 @@
 agp = "8.8.2"
 circleindicatorVersion = "2.1.6"
 converterGson = "2.11.0"
+firebaseBom = "33.13.0"
 flexbox = "3.0.0"
 fragmentTesting = "1.8.6"
 kaspresso = "1.5.2"
-kotlin = "1.9.0"
+kotlin = "2.1.0"
 coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -16,11 +17,18 @@ activity = "1.10.1"
 koinBom = "4.0.3"
 constraintlayout = "2.2.1"
 navigationFragmentKtx = "2.9.0"
-roomKtx = "2.7.1"
+playServicesAuth = "21.3.0"
+roomKtx = "2.6.1"
 rules = "1.6.1"
 runner = "1.6.2"
+sqliteJdbc = "3.42.0.0"
 zoomlayout = "1.9.0"
 espressoContrib = "3.6.1"
+googleGmsGoogleServices = "4.4.2"
+firebaseAuth = "23.2.0"
+credentials = "1.5.0"
+credentialsPlayServicesAuth = "1.5.0"
+googleid = "1.1.1"
 
 [libraries]
 androidx-core = { module = "androidx.test:core", version.ref = "rules" }
@@ -33,6 +41,7 @@ androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx"
 androidx-rules = { module = "androidx.test:rules", version.ref = "rules" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -45,11 +54,18 @@ koin-compose = { module = "io.insert-koin:koin-androidx-compose" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
 relex-circleindicator = { module = "me.relex:circleindicator", version.ref = "circleindicatorVersion" }
+sqlite-jdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqliteJdbc" }
 zoomlayout = { module = "com.otaliastudios:zoomlayout", version.ref = "zoomlayout" }
 androidx-espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espressoContrib" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+androidx-credentials = { group = "androidx.credentials", name = "credentials", version.ref = "credentials" }
+androidx-credentials-play-services-auth = { group = "androidx.credentials", name = "credentials-play-services-auth", version.ref = "credentialsPlayServicesAuth" }
+googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 

@@ -1,4 +1,4 @@
-package com.example.firstlab.presentation
+package com.example.firstlab.presentation.screen
 
 import android.os.Bundle
 import android.view.View
@@ -8,10 +8,8 @@ import com.example.firstlab.R
 import com.example.firstlab.presentation.adapter.EmotesFrequencyAdapter
 import com.example.firstlab.common.Constant.ARG_FREQUENT_DATA
 import com.example.firstlab.databinding.MostFrequentEmotesBinding
-import com.example.firstlab.databinding.MostFrequentItemBinding
 import com.example.firstlab.models.Emotion
 import com.example.firstlab.models.EmotionType
-import com.example.firstlab.models.FeelingItem
 
 class MostFrequentEmotesFragment : Fragment(R.layout.most_frequent_emotes) {
     private lateinit var binding: MostFrequentEmotesBinding

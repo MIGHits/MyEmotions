@@ -1,4 +1,4 @@
-package com.example.firstlab.presentation
+package com.example.firstlab.presentation.screen
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.presentation.adapter.BallsRecyclerAdapter
@@ -14,14 +15,17 @@ import com.example.firstlab.common.Constant.ARG_BALLS_DATA
 import com.example.firstlab.common.Constant.GRID_SIZE
 import com.example.firstlab.databinding.EmotionsChooseBinding
 import com.example.firstlab.models.BallsItem
+import com.example.firstlab.presentation.viewModel.CreateEmotionViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
     private var binding: EmotionsChooseBinding? = null
+    private var emotionColor: Int? = null
     private lateinit var ballsAdapter: BallsRecyclerAdapter
     private var ballsList: List<BallsItem>? = null
+    private val viewModel: CreateEmotionViewModel by navGraphViewModels<CreateEmotionViewModel>(R.id.note_navigation_graph)
 
     companion object {
-
         fun setData(data: List<BallsItem>): ChooseEmotionScreen {
             return ChooseEmotionScreen().apply {
                 arguments = Bundle().apply {
@@ -34,57 +38,85 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ballsList = arguments?.getParcelableArrayList(ARG_BALLS_DATA) ?: listOf(
-            BallsItem(ContextCompat.getColor(requireContext(), R.color.redGradient), "Ярость"),
-            BallsItem(ContextCompat.getColor(requireContext(), R.color.redGradient), "Напряжение"),
-            BallsItem(
-                ContextCompat.getColor(requireContext(), R.color.yellowGradient),
-                "Возбуждение"
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.yellowGradient)),
-                "Восторг"
-            ),
-            BallsItem(ContextCompat.getColor(requireContext(), R.color.redGradient), "Зависть"),
             BallsItem(
                 ContextCompat.getColor(requireContext(), R.color.redGradient),
-                "Беспокойство"
+                name = "Ярость",
+                description = ""
+            ),
+            BallsItem(
+                ContextCompat.getColor(requireContext(), R.color.redGradient),
+                name = "Напряжение",
+                description = ""
+            ),
+            BallsItem(
+                ContextCompat.getColor(requireContext(), R.color.yellowGradient),
+                name = "Возбуждение",
+                description = ""
             ),
             BallsItem(
                 (ContextCompat.getColor(requireContext(), R.color.yellowGradient)),
-                "Уверенность"
+                name = "Восторг",
+                description = ""
+            ),
+            BallsItem(
+                ContextCompat.getColor(requireContext(), R.color.redGradient),
+                name = "Зависть",
+                description = ""
+            ),
+            BallsItem(
+                ContextCompat.getColor(requireContext(), R.color.redGradient),
+                name = "Беспокойство",
+                description = ""
             ),
             BallsItem(
                 (ContextCompat.getColor(requireContext(), R.color.yellowGradient)),
-                "Счастье"
+                name = "Уверенность",
+                description = ""
+            ),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.yellowGradient)),
+                name = "Счастье",
+                description = ""
             ),
             BallsItem(
                 (ContextCompat.getColor(requireContext(), R.color.blueGradient)),
-                "Выгопание"
+                name = "Выгопание",
+                description = ""
             ),
             BallsItem(
                 (ContextCompat.getColor(requireContext(), R.color.blueGradient)),
-                "Усталость"
+                name = "Усталость",
+                description = ""
             ),
             BallsItem(
                 (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
-                "Спокойствие"
+                name = "Спокойствие",
+                description = ""
             ),
             BallsItem(
                 (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
-                "Удовлетворенность"
+                name = "Удовлетворенность",
+                description = ""
             ),
             BallsItem(
                 (ContextCompat.getColor(requireContext(), R.color.blueGradient)),
-                "Депрессия"
-            ),
-            BallsItem((ContextCompat.getColor(requireContext(), R.color.blueGradient)), "Апатия"),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
-                "Благодарность"
+                name = "Депрессия",
+                description = ""
             ),
             BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.blueGradient)),
+                name = "Апатия",
+                description = ""
+            ),
+            BallsItem(
                 (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
-                "Защищенность"
+                name = "Благодарность",
+                description = ""
+            ),
+            BallsItem(
+                (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
+                name = "Защищенность",
+                description = ""
             )
         )
     }
@@ -101,7 +133,10 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
         binding = EmotionsChooseBinding.bind(view)
 
         ballsAdapter =
-            BallsRecyclerAdapter({ color, name -> showEmotionInfo(color, name) },
+            BallsRecyclerAdapter({ color, name ->
+                showEmotionInfo(color, name)
+                emotionColor = color
+            },
                 { hideEmotionInfo() })
 
 
@@ -119,15 +154,16 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
             view.findNavController()
                 .navigate(R.id.chooseEmotionScreenToNavigationActivity)
         }
-        binding?.continueButton?.setOnClickListener {
-            view.findNavController().navigate(R.id.action_chooseEmotionScreen2_to_addNoteScreen)
+        binding?.apply {
+            continueButton.setOnClickListener {
+                val name = emotionName.text.toString()
+                viewModel.chooseEmotion(
+                    name = name,
+                    color = emotionColor ?: R.color.circleSecondaryColor
+                )
+                view.findNavController().navigate(R.id.action_chooseEmotionScreen2_to_addNoteScreen)
+            }
         }
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        binding = null
     }
 
     private fun showEmotionInfo(color: Int, name: String) {
@@ -148,5 +184,10 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
             emotionStub.visibility = View.VISIBLE
             continueButton.isEnabled = false
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 }

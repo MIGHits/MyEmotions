@@ -1,7 +1,6 @@
 package com.example.firstlab.page.`object`
 
 import com.example.firstlab.R
-import com.example.firstlab.presentation.AddNoteScreen
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.common.views.KView
 import io.github.kakaocup.kakao.text.KButton

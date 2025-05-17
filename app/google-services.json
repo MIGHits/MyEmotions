@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "939719790276",
+    "project_id": "my-emotions-b5a65",
+    "storage_bucket": "my-emotions-b5a65.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939719790276:android:ceb1ac1f67c92bd524c391",
+        "android_client_info": {
+          "package_name": "com.example.firstlab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939719790276-lrh0ljjlom6grhv5ae4dkielrh4f6fki.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firstlab",
+            "certificate_hash": "7fa3231fe2a81d305a837a28b53bfcd3734221d7"
+          }
+        },
+        {
+          "client_id": "939719790276-6d6dankd3bithm5873q9l0tjb6b02u5b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtpY5cRuKPY8lUduNsjBbeJd1dTK4tAxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939719790276-6d6dankd3bithm5873q9l0tjb6b02u5b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,10 +4,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.LocalTime
 
-@Entity
+@Entity(tableName = "notifications")
 data class NotificationDbModel(
     @PrimaryKey(autoGenerate = true)
-    val id:Int? = null,
-    val userId:Int,
-    val time:LocalTime
+    val id: Int? = null,
+    val userId: String,
+    val time: LocalTime
 )

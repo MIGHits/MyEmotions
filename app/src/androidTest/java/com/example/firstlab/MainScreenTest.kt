@@ -2,11 +2,9 @@ package com.example.firstlab
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.rule.ActivityTestRule
 import com.example.firstlab.page.`object`.MainScreen
-import com.example.firstlab.presentation.MainActivity
+import com.example.firstlab.presentation.screen.MainActivity
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 

@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "users")
 data class UserDbModel(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int? = null,
+    @PrimaryKey val id: String,
     val username: String,
+    val avatar: String,
     val isNotificationEnabled: Boolean = false,
     val isFingerprintEnabled: Boolean = false
 )

@@ -1,4 +1,5 @@
 <resources>
+    <string name="web_client_id">939719790276-bb0j1gq6oi213v0quv3jbar4e02m917l.apps.googleusercontent.com</string>
     <string name="app_name">FirstLab</string>
     <string name="app_greetings">Добро пожаловать</string>
     <string name="use_google_account">Войти через Google</string>
@@ -35,6 +36,8 @@
     <string name="late_evening">Поздний вечер</string>
     <string name="chip_places">Где вы были?</string>
     <string name="edit_text_hint">Введите текст</string>
+    <string name="today">Сегодня %1$s</string>
+    <string name="yesterday">Вчера,%1$s</string>
     <plurals name="posts_count">
         <item quantity="one">%d запись</item>
         <item quantity="two">%d записи</item>

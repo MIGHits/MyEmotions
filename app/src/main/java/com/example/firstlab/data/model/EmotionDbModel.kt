@@ -10,9 +10,9 @@ data class EmotionDbModel(
     val id: Int?,
     val name: String,
     val type: EmotionType,
+    val userId: String,
     val createTime: Long,
     val iconRes: Int,
-    val description: String?,
     val actions: List<String>,
     val company: List<String>,
     val location: List<String>

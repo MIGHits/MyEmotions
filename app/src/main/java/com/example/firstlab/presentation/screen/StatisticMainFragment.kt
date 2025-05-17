@@ -1,15 +1,12 @@
-package com.example.firstlab.presentation
+package com.example.firstlab.presentation.screen
 
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
-import androidx.core.view.marginBottom
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
 import com.example.firstlab.R
 import com.example.firstlab.presentation.adapter.FragmentAdapterVertical
-import com.example.firstlab.common.Constant.ARG_EMOTES_CATEGORY
 import com.example.firstlab.common.Constant.ARG_MAIN_STATISTIC
 import com.example.firstlab.common.Constant.VIEW_PAGER_OFFSET
 import com.example.firstlab.common.Constant.ZERO_CONST

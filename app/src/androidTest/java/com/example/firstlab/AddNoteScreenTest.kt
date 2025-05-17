@@ -42,7 +42,7 @@ class AddNoteScreenTest : TestCase() {
                     putStringArrayList(ARG_ACTIVITIES_DATA, ArrayList(activities))
                 }
                 val scenario =
-                    launchFragmentInContainer<com.example.firstlab.presentation.AddNoteScreen>(
+                    launchFragmentInContainer<com.example.firstlab.presentation.screen.AddNoteScreen>(
                         args,
                         themeResId = R.style.Theme_FirstLab
                     )

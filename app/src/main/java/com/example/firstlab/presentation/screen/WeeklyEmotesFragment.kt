@@ -1,4 +1,4 @@
-package com.example.firstlab.presentation
+package com.example.firstlab.presentation.screen
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,6 @@ import com.example.firstlab.R
 import com.example.firstlab.presentation.adapter.WeeklyEmotesAdapter
 import com.example.firstlab.common.Constant.ARG_WEEKLY_EMOTES
 import com.example.firstlab.databinding.WeeklyEmotionsBinding
-import com.example.firstlab.models.EmotesCategory
 import com.example.firstlab.models.Emotion
 import com.example.firstlab.models.WeeklyEmoteItem
 

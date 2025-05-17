@@ -1,9 +1,7 @@
-package com.example.firstlab.presentation
+package com.example.firstlab.presentation.screen
 
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat

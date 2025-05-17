@@ -14,6 +14,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.example.firstlab.common.Constant.ARG_BALLS_DATA
 import com.example.firstlab.models.BallsItem
 import com.example.firstlab.page.`object`.ChooseFeelingScreen
+import com.example.firstlab.presentation.screen.ChooseEmotionScreen
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -81,7 +82,7 @@ class ChooseEmotionsScreenTest : TestCase() {
                     putParcelableArrayList(ARG_BALLS_DATA, ArrayList(testBalls))
                 }
                 val scenario =
-                    launchFragmentInContainer<com.example.firstlab.presentation.ChooseEmotionScreen>(
+                    launchFragmentInContainer<ChooseEmotionScreen>(
                         args,
                         themeResId = R.style.Theme_FirstLab
                     )

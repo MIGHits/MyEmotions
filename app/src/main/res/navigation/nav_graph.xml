@@ -5,7 +5,7 @@
     app:startDestination="@id/feelingsScreen3">
     <fragment
         android:id="@+id/feelingsScreen3"
-        android:name="com.example.firstlab.presentation.FeelingsScreen"
+        android:name="com.example.firstlab.presentation.screen.FeelingsScreen"
         android:label="FeelingsScreen">
         <argument
             android:name="ARG_STAT_DATA"
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/statisticScreen"
-        android:name="com.example.firstlab.presentation.StatisticScreen"
+        android:name="com.example.firstlab.presentation.screen.StatisticScreen"
         android:label="StatisticScreen">
         <action
             android:id="@+id/action_statisticScreen_to_feelingsScreen3"
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsScreen"
-        android:name="com.example.firstlab.presentation.SettingsScreen"
+        android:name="com.example.firstlab.presentation.screen.SettingsScreen"
         android:label="SettingsScreen">
         <action
             android:id="@+id/action_settingsScreen_to_statisticScreen"
@@ -49,11 +49,11 @@
     </fragment>
     <activity
         android:id="@+id/noteNavigation"
-        android:name="com.example.firstlab.presentation.NoteNavigation"
+        android:name="com.example.firstlab.presentation.screen.NoteNavigation"
         android:label="NoteNavigation" />
     <fragment
         android:id="@+id/addNoteScreen2"
-        android:name="com.example.firstlab.presentation.AddNoteScreen"
+        android:name="com.example.firstlab.presentation.screen.AddNoteScreen"
         android:label="AddNoteScreen">
         <action
             android:id="@+id/action_addNoteScreen2_to_feelingsScreen3"

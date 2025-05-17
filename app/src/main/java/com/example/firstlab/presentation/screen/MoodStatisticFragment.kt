@@ -1,4 +1,4 @@
-package com.example.firstlab.presentation
+package com.example.firstlab.presentation.screen
 
 import android.os.Bundle
 import android.view.View
@@ -6,9 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.firstlab.R
 import com.example.firstlab.common.Constant.ARG_MOOD_DATA
 import com.example.firstlab.databinding.MoodScreenFragmentBinding
-import com.example.firstlab.databinding.MostFrequentEmotesBinding
 import com.example.firstlab.models.EmotesCategory
-import com.example.firstlab.models.Emotion
 import com.example.firstlab.models.EmotionType
 import com.example.firstlab.models.TimeOfDay
 

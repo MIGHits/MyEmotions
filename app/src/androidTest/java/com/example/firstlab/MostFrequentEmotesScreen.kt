@@ -8,6 +8,7 @@ import com.example.firstlab.common.Constant.ARG_FREQUENT_DATA
 import com.example.firstlab.models.Emotion
 import com.example.firstlab.models.EmotionType
 import com.example.firstlab.page.`object`.MostFrequentEmotesScreen
+import com.example.firstlab.presentation.screen.MostFrequentEmotesFragment
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -29,7 +30,7 @@ class MostFrequentEmotesScreen : TestCase() {
                     putParcelableArrayList(ARG_FREQUENT_DATA, ArrayList(emotesFrequent))
                 }
                 val scenario =
-                    launchFragmentInContainer<com.example.firstlab.presentation.MostFrequentEmotesFragment>(
+                    launchFragmentInContainer<MostFrequentEmotesFragment>(
                         args,
                         themeResId = R.style.Theme_FirstLab
                     )

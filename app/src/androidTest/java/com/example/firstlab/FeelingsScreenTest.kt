@@ -9,8 +9,8 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.example.firstlab.models.FeelingItem
 import com.example.firstlab.page.`object`.FeelingItemObject
 import com.example.firstlab.page.`object`.FeelingsScreen
-import com.example.firstlab.presentation.FeelingsScreen.Companion.ARG_POST_AMOUNT
-import com.example.firstlab.presentation.FeelingsScreen.Companion.ARG_STAT_DATA
+import com.example.firstlab.presentation.screen.FeelingsScreen.Companion.ARG_POST_AMOUNT
+import com.example.firstlab.presentation.screen.FeelingsScreen.Companion.ARG_STAT_DATA
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -52,7 +52,7 @@ class FeelingsScreenTest : TestCase() {
                     putParcelableArrayList(ARG_STAT_DATA, ArrayList(testFeelings))
                 }
                 val scenario =
-                    launchFragmentInContainer<com.example.firstlab.presentation.FeelingsScreen>(
+                    launchFragmentInContainer<com.example.firstlab.presentation.screen.FeelingsScreen>(
                         args,
                         themeResId = R.style.Theme_FirstLab
                     )

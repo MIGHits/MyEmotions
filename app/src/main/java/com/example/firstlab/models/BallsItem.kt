@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class BallsItem(
     val color: Int,
     val name: String,
-    var isSelected: Boolean = false
+    var isSelected: Boolean = false,
+    val description: String
 ) : Parcelable

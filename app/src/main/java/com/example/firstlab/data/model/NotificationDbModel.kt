@@ -8,6 +8,6 @@ import java.time.LocalTime
 data class NotificationDbModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    val userId: Int,
+    val userId: String,
     val time: LocalTime
 )

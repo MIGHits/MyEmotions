@@ -16,7 +16,7 @@ import com.example.firstlab.data.model.NotificationDbModel
 import com.example.firstlab.data.model.UserDbModel
 
 @Database(
-    version = 1,
+    version = 2,
     exportSchema = false,
     entities = [EmotionDbModel::class, NotificationDbModel::class, UserDbModel::class]
 )

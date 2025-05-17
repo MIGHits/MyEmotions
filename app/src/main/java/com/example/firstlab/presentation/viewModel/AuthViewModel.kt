@@ -1,23 +1,12 @@
 package com.example.firstlab.presentation.viewModel
 
-import android.content.ContentValues.TAG
-import android.util.Log
-import androidx.core.content.ContextCompat.getString
 import androidx.credentials.Credential
-import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
-import androidx.credentials.GetCredentialRequest
-import androidx.credentials.exceptions.GetCredentialException
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
-import com.example.firstlab.R
 import com.example.firstlab.domain.usecase.LoginUseCase
 import com.example.firstlab.presentation.state.AuthState
-import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
-import com.google.firebase.Firebase
-import com.google.firebase.auth.auth
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update

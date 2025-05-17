@@ -36,6 +36,8 @@
     <string name="late_evening">Поздний вечер</string>
     <string name="chip_places">Где вы были?</string>
     <string name="edit_text_hint">Введите текст</string>
+    <string name="today">Сегодня %1$s</string>
+    <string name="yesterday">Вчера,%1$s</string>
     <plurals name="posts_count">
         <item quantity="one">%d запись</item>
         <item quantity="two">%d записи</item>

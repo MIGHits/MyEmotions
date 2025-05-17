@@ -8,5 +8,5 @@ data class BallsItem(
     val color: Int,
     val name: String,
     var isSelected: Boolean = false,
-    val description: String
+    val description: String = ""
 ) : Parcelable

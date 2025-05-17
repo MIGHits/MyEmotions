@@ -9,6 +9,7 @@ import com.example.firstlab.presentation.viewModel.StatisticsViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import org.koin.core.module.dsl.viewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
@@ -20,7 +21,7 @@ val appModule = module {
         CredentialManager.create(get())
     }
     viewModelOf(::AuthViewModel)
-    viewModelOf(::CreateEmotionViewModel)
+    viewModel { CreateEmotionViewModel(get()) }
     viewModelOf(::JournalViewModel)
     viewModelOf(::SettingsViewModel)
     viewModelOf(::StatisticsViewModel)

@@ -57,7 +57,6 @@ class MainActivity() : AppCompatActivity() {
                         val intent = Intent(this@MainActivity, NavigationActivity::class.java)
                         startActivity(intent)
                     }
-
                     is AuthState.Error -> {}
                 }
             }

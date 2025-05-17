@@ -7,14 +7,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firstlab.R
-import com.example.firstlab.presentation.adapter.BallsRecyclerAdapter
 import com.example.firstlab.common.Constant.ARG_BALLS_DATA
 import com.example.firstlab.common.Constant.GRID_SIZE
 import com.example.firstlab.databinding.EmotionsChooseBinding
 import com.example.firstlab.models.BallsItem
+import com.example.firstlab.presentation.adapter.BallsRecyclerAdapter
 import com.example.firstlab.presentation.viewModel.CreateEmotionViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
@@ -23,7 +22,7 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
     private var emotionColor: Int? = null
     private lateinit var ballsAdapter: BallsRecyclerAdapter
     private var ballsList: List<BallsItem>? = null
-    private val viewModel: CreateEmotionViewModel by navGraphViewModels<CreateEmotionViewModel>(R.id.note_navigation_graph)
+    private val viewModel: CreateEmotionViewModel by activityViewModel<CreateEmotionViewModel>()
 
     companion object {
         fun setData(data: List<BallsItem>): ChooseEmotionScreen {

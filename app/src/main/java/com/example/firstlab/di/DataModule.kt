@@ -1,11 +1,12 @@
 package com.example.firstlab.di
 
 import com.example.firstlab.data.EmotionDatabase
-import com.example.firstlab.data.repository.ProfileRepositoryImpl
 import com.example.firstlab.data.repository.EmotionsRepositoryImpl
 import com.example.firstlab.data.repository.FirebaseAuthRepositoryImpl
+import com.example.firstlab.data.repository.ProfileRepositoryImpl
+import com.example.firstlab.data.mapper.EmotionMapper
+import com.example.firstlab.domain.repository.EmotionsRepository
 import com.example.firstlab.domain.repository.FirebaseAuthRepository
-import com.google.firebase.auth.FirebaseAuth
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
@@ -24,8 +25,8 @@ val dataModule = module {
         get<EmotionDatabase>().NotificationDao()
     }
 
-
+    factoryOf(::EmotionMapper)
     factoryOf(::ProfileRepositoryImpl)
-    factoryOf(::EmotionsRepositoryImpl)
+    factory<EmotionsRepository> { EmotionsRepositoryImpl(emotionDao = get(), mapper = get()) }
     factory<FirebaseAuthRepository> { FirebaseAuthRepositoryImpl(auth = get(), userDao = get()) }
 }

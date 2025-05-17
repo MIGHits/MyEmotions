@@ -14,10 +14,10 @@ import android.widget.EditText
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import androidx.navigation.navGraphViewModels
 import com.example.firstlab.R
 import com.example.firstlab.common.Constant.ARG_ACTIVITIES_DATA
 import com.example.firstlab.common.Constant.ARG_COMPANY_DATA
@@ -33,6 +33,7 @@ import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -42,26 +43,10 @@ import java.util.Locale
 
 class AddNoteScreen : Fragment(R.layout.add_note_screen) {
     private var binding: AddNoteScreenBinding? = null
-    private var company: List<String>? = null
-    private var places: List<String>? = null
-    private var activities: List<String>? = null
-    private val viewModel: CreateEmotionViewModel by navGraphViewModels<CreateEmotionViewModel>(R.id.note_navigation_graph)
-
-    companion object {
-        fun setData(
-            companyList: List<String>,
-            placesList: List<String>,
-            activitiesList: List<String>
-        ): AddNoteScreen {
-            return AddNoteScreen().apply {
-                arguments = Bundle().apply {
-                    putStringArrayList(ARG_COMPANY_DATA, ArrayList(companyList))
-                    putStringArrayList(ARG_PLACES_DATA, ArrayList(placesList))
-                    putStringArrayList(ARG_ACTIVITIES_DATA, ArrayList(activitiesList))
-                }
-            }
-        }
-    }
+    private val company: MutableList<String>? = null
+    private val places: MutableList<String>? = null
+    private val activities: MutableList<String>? = null
+    private val viewModel: CreateEmotionViewModel by activityViewModel<CreateEmotionViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,7 +58,7 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
                         time.text = state.createTime?.let { getDateTime(it) }
                         emotion.text = state.name
                         state.iconRes?.let { feelingIcon.setBackgroundResource(it) }
-                        when (state.emotionType) {
+                        when (state.type) {
                             EmotionType.GREEN -> {
                                 chosenFeelingCard.setBackgroundResource(R.drawable.green_type_gradient)
                                 emotion.setTextColor(resources.getColor(R.color.greenGradient))
@@ -100,32 +85,35 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
                 }
             }
         }
-
-        activities = arguments?.getStringArrayList(ARG_ACTIVITIES_DATA) ?: listOf(
-            "Приём пищи",
-            "Встреча с друзьями",
-            "Тренировка",
-            "Хобби",
-            "Отдых",
-            "Поездка"
-        )
-
-        company = arguments?.getStringArrayList(ARG_COMPANY_DATA) ?: listOf(
-            "Один",
-            "Друзья",
-            "Семья",
-            "Коллеги",
-            "Партнёр",
-            "Питомцы"
-        )
-
-        places = arguments?.getStringArrayList(ARG_PLACES_DATA) ?: listOf(
-            "Дом",
-            "Работа",
-            "Школа",
-            "Транспорт",
-            "Улица"
-        )
+        arguments?.getStringArrayList(ARG_ACTIVITIES_DATA)?.let {
+            activities?.addAll(it) ?: mutableListOf(
+                "Приём пищи",
+                "Встреча с друзьями",
+                "Тренировка",
+                "Хобби",
+                "Отдых",
+                "Поездка"
+            )
+        }
+        arguments?.getStringArrayList(ARG_COMPANY_DATA)?.let {
+            company?.addAll(it) ?: listOf(
+                "Один",
+                "Друзья",
+                "Семья",
+                "Коллеги",
+                "Партнёр",
+                "Питомцы"
+            )
+        }
+        arguments?.getStringArrayList(ARG_PLACES_DATA)?.let {
+            places?.addAll(it) ?: listOf(
+                "Дом",
+                "Работа",
+                "Школа",
+                "Транспорт",
+                "Улица"
+            )
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -143,39 +131,50 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
             view.findNavController().popBackStack()
         }
 
+        val activitiesChipGroup = binding?.activitiesChipGroup
+        val companyChipGroup = binding?.companyChipGroup
+        val placeChipGroup = binding?.placeChipGroup
+
         binding?.saveButton?.setOnClickListener {
+            viewModel.addEmotion(
+                actions = activitiesChipGroup?.children?.filter { it is Chip && it.isChecked }
+                    ?.map { (it as Chip).text.toString() }?.toList() ?: emptyList(),
+                company = companyChipGroup?.children?.filter { it is Chip && it.isChecked }
+                    ?.map { (it as Chip).text.toString() }?.toList() ?: emptyList(),
+                places = placeChipGroup?.children?.filter { it is Chip && it.isChecked }
+                    ?.map { (it as Chip).text.toString() }?.toList() ?: emptyList()
+            )
             view.findNavController().navigate(R.id.addNoteScreenToNavigationActivity)
         }
 
 
-        val activitiesChipGroup = binding?.activitiesChipGroup
-
-
         activities?.forEach { activity ->
-            addNewChip(activitiesChipGroup, activity)
+            addNewChip(
+                activitiesChipGroup,
+                activity
+            ) { newActivity -> activities.add(newActivity) }
         }
 
-        val companyChipGroup = binding?.companyChipGroup
+
 
         company?.forEach { companion ->
             addNewChip(companyChipGroup, companion)
+            { newCompany -> company.add(newCompany) }
         }
-
-        val placeChipGroup = binding?.placeChipGroup
 
         places?.forEach { place ->
             addNewChip(placeChipGroup, place)
+            { newPlace -> places.add(newPlace) }
         }
-
 
         binding?.addActivityButton?.setOnClickListener {
-            showEditText(activitiesChipGroup)
+            showEditText(activitiesChipGroup) { newActivity -> activities?.add(newActivity) }
         }
         binding?.addCompanionButton?.setOnClickListener {
-            showEditText(companyChipGroup)
+            showEditText(companyChipGroup) { newCompany -> company?.add(newCompany) }
         }
         binding?.addPlaceButton?.setOnClickListener {
-            showEditText(placeChipGroup)
+            showEditText(placeChipGroup) { newPlace -> places?.add(newPlace) }
         }
     }
 
@@ -187,7 +186,7 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
 
     private fun Int.dpToPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 
-    fun addNewChip(chipGroup: ChipGroup?, name: String) {
+    fun addNewChip(chipGroup: ChipGroup?, name: String, addToList: (String) -> Unit) {
         val chip = Chip(requireContext()).apply {
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -209,15 +208,14 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
             setEnsureMinTouchTargetSize(false)
         }
         chipGroup?.addView(chip, chipGroup.childCount - 1)
+        addToList(name)
     }
 
-    private fun showEditText(chipGroup: ChipGroup?) {
+    private fun showEditText(chipGroup: ChipGroup?, addToList: (String) -> Unit) {
         chipGroup?.let { group ->
-
             val lastIndex = group.childCount - 1
             val lastChip = group.getChildAt(lastIndex) as? Chip
             lastChip?.visibility = View.GONE
-
 
             val editText = EditText(requireContext()).apply {
                 layoutParams = ViewGroup.LayoutParams(
@@ -244,14 +242,10 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
                         val inputText = text.toString()
                         if (inputText.isNotEmpty()) {
 
-                            addNewChip(group, inputText)
+                            addNewChip(group, inputText, addToList)
                         }
-
-
                         lastChip?.visibility = View.VISIBLE
                         group.removeView(this)
-
-
                         val imm =
                             requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                         imm.hideSoftInputFromWindow(windowToken, 0)
@@ -262,11 +256,7 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
                     }
                 }
             }
-
-
             group.addView(editText, lastIndex)
-
-
             editText.requestFocus()
             val imm =
                 requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -301,6 +291,22 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
             "$dayOfWeek,$time"
         } else {
             zonedDateTime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy,HH:mm"))
+        }
+    }
+
+    companion object {
+        fun setData(
+            companyList: List<String>,
+            placesList: List<String>,
+            activitiesList: List<String>
+        ): AddNoteScreen {
+            return AddNoteScreen().apply {
+                arguments = Bundle().apply {
+                    putStringArrayList(ARG_COMPANY_DATA, ArrayList(companyList))
+                    putStringArrayList(ARG_PLACES_DATA, ArrayList(placesList))
+                    putStringArrayList(ARG_ACTIVITIES_DATA, ArrayList(activitiesList))
+                }
+            }
         }
     }
 }

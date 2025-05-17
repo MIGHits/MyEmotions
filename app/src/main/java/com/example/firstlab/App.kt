@@ -6,6 +6,8 @@ import com.example.firstlab.di.dataModule
 import com.example.firstlab.di.domainModule
 import org.koin.core.context.startKoin
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.logger.Level
 
 class App : Application() {
     companion object {
@@ -19,6 +21,7 @@ class App : Application() {
         startKoin {
             androidContext(this@App)
             modules(appModule, dataModule, domainModule)
+            androidLogger(Level.DEBUG)
         }
     }
 }

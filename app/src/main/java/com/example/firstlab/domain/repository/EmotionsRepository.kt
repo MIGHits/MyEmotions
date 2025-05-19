@@ -7,4 +7,5 @@ interface EmotionsRepository {
     suspend fun addEmotion(emotion: EmotionEntity)
     suspend fun getEmotionById(id: Int): EmotionEntity?
     fun getEmotionsByPeriod(start: Long, end: Long): Flow<List<EmotionEntity>>
+    fun getAllEmotions(): Flow<List<EmotionEntity>>
 }

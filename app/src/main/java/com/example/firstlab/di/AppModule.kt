@@ -1,6 +1,7 @@
 package com.example.firstlab.di
 
 import androidx.credentials.CredentialManager
+import com.example.firstlab.presentation.mapper.EmotionsMapper
 import com.example.firstlab.presentation.viewModel.AuthViewModel
 import com.example.firstlab.presentation.viewModel.CreateEmotionViewModel
 import com.example.firstlab.presentation.viewModel.JournalViewModel
@@ -19,6 +20,9 @@ val appModule = module {
     }
     single {
         CredentialManager.create(get())
+    }
+    factory {
+        EmotionsMapper()
     }
     viewModelOf(::AuthViewModel)
     viewModel { CreateEmotionViewModel(get()) }

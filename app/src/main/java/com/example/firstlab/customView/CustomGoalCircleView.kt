@@ -16,7 +16,8 @@ import com.example.firstlab.R
 import com.example.firstlab.common.Constant.CIRCLE_ANIM_DURATION
 import com.example.firstlab.common.Constant.START_ANGLE
 import com.example.firstlab.common.Constant.STROKE_WIDTH
-import com.example.firstlab.models.EmotionType
+import com.example.firstlab.common.Constant.TOTAL_GOALS
+import com.example.firstlab.domain.entity.EmotionType
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -26,7 +27,7 @@ class CustomGoalCircleView(
 ) : View(context, attrs) {
 
 
-    var totalGoals = 6
+     var totalGoals = TOTAL_GOALS
         set(value) {
             field = if (value == 0) 1 else value
             checkAnimationState()

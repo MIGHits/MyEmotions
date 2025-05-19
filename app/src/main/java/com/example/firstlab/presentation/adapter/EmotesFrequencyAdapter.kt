@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.firstlab.R
 import com.example.firstlab.customView.EmotesFrequencyStripeView
 import com.example.firstlab.databinding.MostFrequentItemBinding
-import com.example.firstlab.models.Emotion
-import com.example.firstlab.models.EmotionType
+import com.example.firstlab.presentation.models.Emotion
+import com.example.firstlab.domain.entity.EmotionType
 
 class EmotesFrequencyAdapter() :
     RecyclerView.Adapter<EmotesFrequencyAdapter.EmotesFrequentViewHolder>() {

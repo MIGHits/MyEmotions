@@ -26,7 +26,7 @@ import com.example.firstlab.common.Constant.CORNER_RADIUS
 import com.example.firstlab.common.Constant.PADDING_MEDIUM
 import com.example.firstlab.common.Constant.PADDING_SMALL
 import com.example.firstlab.databinding.AddNoteScreenBinding
-import com.example.firstlab.models.EmotionType
+import com.example.firstlab.domain.entity.EmotionType
 import com.example.firstlab.presentation.viewModel.CreateEmotionViewModel
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -55,7 +55,7 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
             viewModel.createState.collect { state ->
                 withContext(Dispatchers.Main) {
                     binding?.apply {
-                        time.text = state.createTime?.let { getDateTime(it) }
+                        time.text = state.createTime
                         emotion.text = state.name
                         state.iconRes?.let { feelingIcon.setBackgroundResource(it) }
                         when (state.type) {
@@ -264,35 +264,6 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
         }
     }
 
-    fun getDateTime(millis: Long): String {
-        val zoneId = ZoneId.systemDefault()
-        val zonedDateTime = Instant.ofEpochMilli(millis).atZone(zoneId)
-
-        val today = LocalDate.now(zoneId)
-
-        when (zonedDateTime.toLocalDate()) {
-            today -> return getString(
-                R.string.today,
-                zonedDateTime.format(DateTimeFormatter.ofPattern("HH:mm"))
-            )
-
-            today.minusDays(1) -> return getString(
-                R.string.yesterday,
-                zonedDateTime.format(DateTimeFormatter.ofPattern("HH:mm"))
-            )
-        }
-
-        val weekStart = today.minusDays(today.dayOfWeek.value.toLong() - 1)
-        val weekEnd = weekStart.plusDays(6)
-
-        return if (zonedDateTime.toLocalDate() in weekStart..weekEnd) {
-            val dayOfWeek = zonedDateTime.dayOfWeek.getDisplayName(TextStyle.FULL, Locale("ru"))
-            val time = zonedDateTime.format(DateTimeFormatter.ofPattern("HH:mm"))
-            "$dayOfWeek,$time"
-        } else {
-            zonedDateTime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy,HH:mm"))
-        }
-    }
 
     companion object {
         fun setData(

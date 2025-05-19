@@ -15,7 +15,9 @@ interface EmotionDao {
     @Query("SELECT * FROM Emotions WHERE id = :id")
     suspend fun getEmotionById(id: Int): EmotionDbModel?
 
-    @Query("SELECT * FROM Emotions WHERE createTime BETWEEN :start AND :end  ORDER BY createTime DESC")
-    fun getEmotionsByPeriod(start: Long, end: Long): Flow<List<EmotionDbModel>>
+    @Query("SELECT * FROM Emotions WHERE userId = :userId AND createTime BETWEEN :start AND :end  ORDER BY createTime DESC")
+    fun getEmotionsByPeriod(userId: String, start: Long, end: Long): Flow<List<EmotionDbModel>>
 
+    @Query("SELECT * FROM Emotions WHERE userId = :userId ORDER BY createTime DESC")
+    fun getAllEmotions(userId: String): Flow<List<EmotionDbModel>>
 }

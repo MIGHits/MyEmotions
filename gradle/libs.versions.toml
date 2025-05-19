@@ -22,6 +22,7 @@ roomKtx = "2.6.1"
 rules = "1.6.1"
 runner = "1.6.2"
 sqliteJdbc = "3.42.0.0"
+threetenabp = "1.4.6"
 zoomlayout = "1.9.0"
 espressoContrib = "3.6.1"
 googleGmsGoogleServices = "4.4.2"
@@ -57,6 +58,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
 relex-circleindicator = { module = "me.relex:circleindicator", version.ref = "circleindicatorVersion" }
 sqlite-jdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqliteJdbc" }
+threetenabp = { module = "com.jakewharton.threetenabp:threetenabp", version.ref = "threetenabp" }
 zoomlayout = { module = "com.otaliastudios:zoomlayout", version.ref = "zoomlayout" }
 androidx-espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espressoContrib" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }

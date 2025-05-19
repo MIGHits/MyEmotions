@@ -2,7 +2,7 @@ package com.example.firstlab.data.mapper
 
 import com.example.firstlab.data.model.EmotionDbModel
 import com.example.firstlab.domain.entity.EmotionEntity
-import com.example.firstlab.models.EmotionType
+import com.example.firstlab.domain.entity.EmotionType
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

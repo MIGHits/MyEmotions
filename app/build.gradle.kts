@@ -50,6 +50,7 @@ java {
 }
 
 dependencies {
+    implementation (libs.threetenabp)
     implementation(libs.play.services.auth)
     implementation(libs.androidx.room.ktx)
     implementation(libs.firebase.auth)

@@ -6,9 +6,7 @@ import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.LinearGradient
 import android.graphics.Paint
-import android.graphics.Paint.Style
 import android.graphics.Shader
-import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
@@ -16,9 +14,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.firstlab.R
 import com.example.firstlab.common.Constant.PADDING_SMALL
-import com.example.firstlab.models.EmotesCategory
-import com.example.firstlab.models.Emotion
-import com.example.firstlab.models.EmotionType
+import com.example.firstlab.presentation.models.EmotesCategory
+import com.example.firstlab.domain.entity.EmotionType
 
 class MoodColumnView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0

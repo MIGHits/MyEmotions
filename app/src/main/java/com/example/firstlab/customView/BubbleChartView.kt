@@ -15,8 +15,8 @@ import androidx.core.content.res.ResourcesCompat
 import com.example.firstlab.R
 import com.example.firstlab.common.Constant.MIN_CATEGORY_SIZE
 import com.example.firstlab.common.Constant.ZERO_CONST
-import com.example.firstlab.models.EmotesCategory
-import com.example.firstlab.models.EmotionType
+import com.example.firstlab.presentation.models.EmotesCategory
+import com.example.firstlab.domain.entity.EmotionType
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min

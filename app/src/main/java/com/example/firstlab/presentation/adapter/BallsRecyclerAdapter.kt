@@ -11,7 +11,7 @@ import com.example.firstlab.common.Constant.BALLS_TRANSLATION
 import com.example.firstlab.common.Constant.BASIC_ANIM_DURATION
 import com.example.firstlab.common.Constant.MINIMUM_CONST
 import com.example.firstlab.databinding.EmotionsRecyclerItemBinding
-import com.example.firstlab.models.BallsItem
+import com.example.firstlab.presentation.models.BallsItem
 
 class BallsRecyclerAdapter(
     private val showEmotion: (Int, String) -> Unit,

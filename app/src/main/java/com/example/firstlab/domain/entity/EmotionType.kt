@@ -1,4 +1,4 @@
-package com.example.firstlab.models
+package com.example.firstlab.domain.entity
 
 
 enum class EmotionType {

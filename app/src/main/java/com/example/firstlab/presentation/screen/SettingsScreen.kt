@@ -11,8 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
-import com.example.firstlab.presentation.adapter.NotificationAdapter
-import com.example.firstlab.common.Constant.ARG_NOTIFICATION_DATA
+import com.example.firstlab.adapter.NotificationAdapter
 import com.example.firstlab.databinding.NotificationBottomSheetBinding
 import com.example.firstlab.databinding.SettingsScreenBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -22,30 +21,6 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
     private lateinit var binding: SettingsScreenBinding
     private lateinit var notificationList: MutableList<String>
     private val calendar = Calendar.getInstance()
-
-    companion object {
-
-        fun setData(
-            notificationList: List<String>
-        ): SettingsScreen {
-            return SettingsScreen().apply {
-                arguments = Bundle().apply {
-                    putStringArrayList(ARG_NOTIFICATION_DATA, ArrayList(notificationList))
-                }
-            }
-        }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        notificationList = arguments?.getStringArrayList(ARG_NOTIFICATION_DATA) ?: mutableListOf(
-            "20:00",
-            "16:00",
-            "20:00",
-            "16:00",
-        )
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         SettingsScreenBinding.bind(view)
@@ -60,8 +35,13 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
 
         val manager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         val notificationAdapter = NotificationAdapter()
-
-        notificationList.let { notificationAdapter.notificationList = it }
+        notificationList = mutableListOf(
+            "20:00",
+            "16:00",
+            "20:00",
+            "16:00",
+        )
+        notificationAdapter.notificationList = notificationList
 
         recycler.adapter = notificationAdapter
         recycler.layoutManager = manager
@@ -73,8 +53,6 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
 
     }
 
-
-    @SuppressLint("SetTextI18n")
     private fun showBottomDialog(notificationAdapter: NotificationAdapter) {
         val notificationDialog = BottomSheetDialog(requireContext())
 
@@ -85,8 +63,8 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
         val hours = dialogBinding.hours
         val minutes = dialogBinding.minutes
 
-        hours.setText(calendar.get(Calendar.HOUR_OF_DAY).toString())
-        minutes.setText(calendar.get(Calendar.MINUTE).toString())
+        hours.hint = calendar.get(Calendar.HOUR_OF_DAY).toString()
+        minutes.hint = calendar.get(Calendar.MINUTE).toString()
 
         hours.setOnClickListener {
             showTimePicker(dialogBinding.hours, dialogBinding.minutes)
@@ -101,10 +79,7 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
             notificationDialog.dismiss()
             val time = "${hours.text}:${minutes.text}"
 
-            if (hours.text.isNotEmpty() &&
-                minutes.text.isNotEmpty() &&
-                !notificationList.contains(time)
-            ) {
+            if (hours.text.isNotEmpty() && minutes.text.isNotEmpty()) {
                 notificationList.add(time)
                 notificationAdapter.notifyItemInserted(notificationList.size - 1)
                 binding.appBar.setExpanded(false, true)

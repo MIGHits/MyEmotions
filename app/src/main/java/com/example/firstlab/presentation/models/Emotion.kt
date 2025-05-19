@@ -1,6 +1,7 @@
-package com.example.firstlab.models
+package com.example.firstlab.presentation.models
 
 import android.os.Parcelable
+import com.example.firstlab.domain.entity.EmotionType
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

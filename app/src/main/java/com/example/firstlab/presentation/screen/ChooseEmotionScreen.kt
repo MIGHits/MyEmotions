@@ -12,7 +12,7 @@ import com.example.firstlab.R
 import com.example.firstlab.common.Constant.ARG_BALLS_DATA
 import com.example.firstlab.common.Constant.GRID_SIZE
 import com.example.firstlab.databinding.EmotionsChooseBinding
-import com.example.firstlab.models.BallsItem
+import com.example.firstlab.presentation.models.BallsItem
 import com.example.firstlab.presentation.adapter.BallsRecyclerAdapter
 import com.example.firstlab.presentation.viewModel.CreateEmotionViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -23,16 +23,6 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
     private lateinit var ballsAdapter: BallsRecyclerAdapter
     private var ballsList: List<BallsItem>? = null
     private val viewModel: CreateEmotionViewModel by activityViewModel<CreateEmotionViewModel>()
-
-    companion object {
-        fun setData(data: List<BallsItem>): ChooseEmotionScreen {
-            return ChooseEmotionScreen().apply {
-                arguments = Bundle().apply {
-                    putParcelableArrayList(ARG_BALLS_DATA, ArrayList(data))
-                }
-            }
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -188,5 +178,15 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
     override fun onDestroy() {
         super.onDestroy()
         binding = null
+    }
+
+    companion object {
+        fun setData(data: List<BallsItem>): ChooseEmotionScreen {
+            return ChooseEmotionScreen().apply {
+                arguments = Bundle().apply {
+                    putParcelableArrayList(ARG_BALLS_DATA, ArrayList(data))
+                }
+            }
+        }
     }
 }

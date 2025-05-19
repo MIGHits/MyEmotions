@@ -1,33 +1,51 @@
 package com.example.firstlab.presentation.viewModel
 
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.firstlab.App
-import com.example.firstlab.R
 import com.example.firstlab.domain.entity.EmotionEntity
 import com.example.firstlab.domain.usecase.CreateEmotionUseCase
-import com.example.firstlab.models.EmotionType
+import com.example.firstlab.presentation.mapper.convertColorToEmotion
+import com.example.firstlab.presentation.mapper.convertColorToIcon
+import com.example.firstlab.presentation.mapper.convertTime
+import com.example.firstlab.presentation.mapper.parseTimeToMillis
+import com.example.firstlab.presentation.models.EmotionFullModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class CreateEmotionViewModel(private val createEmotionUseCase: CreateEmotionUseCase) : ViewModel() {
-    private val _createState = MutableStateFlow(EmotionEntity())
-    val createState: StateFlow<EmotionEntity> get() = _createState
+class CreateEmotionViewModel(
+    private val createEmotionUseCase: CreateEmotionUseCase,
+) : ViewModel() {
+    private val _createState = MutableStateFlow(EmotionFullModel())
+    val createState: StateFlow<EmotionFullModel> get() = _createState
 
     fun chooseEmotion(name: String, color: Int) {
-        val emotionType = convertColorToEmotion(color)
+        val emotionType = color.convertColorToEmotion()
         _createState.update {
             _createState.value.copy(
                 type = emotionType,
                 name = name,
-                createTime = System.currentTimeMillis(),
-                iconRes = convertColorToIcon(emotionType)
+                createTime = System.currentTimeMillis().convertTime(),
+                iconRes = emotionType?.convertColorToIcon()
             )
         }
+    }
+
+    private fun EmotionFullModel.toDomain(): EmotionEntity {
+        return EmotionEntity(
+            id = this.id,
+            name = this.name,
+            userId = this.userId,
+            createTime = this.createTime?.parseTimeToMillis()
+                ?: System.currentTimeMillis(),
+            type = this.type,
+            iconRes = this.iconRes,
+            actions = this.actions,
+            location = this.location,
+            company = this.company
+        )
     }
 
     private fun chooseNotes(actions: List<String>, company: List<String>, places: List<String>) {
@@ -43,27 +61,7 @@ class CreateEmotionViewModel(private val createEmotionUseCase: CreateEmotionUseC
     fun addEmotion(actions: List<String>, company: List<String>, places: List<String>) {
         chooseNotes(actions, company, places)
         viewModelScope.launch(Dispatchers.IO) {
-            createEmotionUseCase(_createState.value)
-        }
-    }
-
-    private fun convertColorToEmotion(color: Int): EmotionType? {
-        return when (color) {
-            (ContextCompat.getColor(App.app, R.color.redGradient)) -> EmotionType.RED
-            (ContextCompat.getColor(App.app, R.color.yellowGradient)) -> EmotionType.YELLOW
-            (ContextCompat.getColor(App.app, R.color.blueGradient)) -> EmotionType.BLUE
-            (ContextCompat.getColor(App.app, R.color.greenGradient)) -> EmotionType.GREEN
-            else -> null
-        }
-    }
-
-    private fun convertColorToIcon(emotionType: EmotionType?): Int? {
-        return when (emotionType) {
-            EmotionType.RED -> R.drawable.soft_flower_icon
-            EmotionType.YELLOW -> R.drawable.lightning_icon
-            EmotionType.BLUE -> R.drawable.sadness_icon
-            EmotionType.GREEN -> R.drawable.mithosis_icon
-            else -> null
+            createEmotionUseCase(_createState.value.toDomain())
         }
     }
 

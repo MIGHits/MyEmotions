@@ -1,0 +1,35 @@
+package com.example.firstlab.presentation.mapper
+
+import androidx.core.content.ContextCompat
+import com.example.firstlab.App
+import com.example.firstlab.R
+import com.example.firstlab.domain.entity.EmotionType
+
+
+fun Int.convertColorToEmotion(): EmotionType? {
+    return when (this) {
+        (ContextCompat.getColor(App.app, R.color.redGradient)) -> EmotionType.RED
+        (ContextCompat.getColor(App.app, R.color.yellowGradient)) -> EmotionType.YELLOW
+        (ContextCompat.getColor(App.app, R.color.blueGradient)) -> EmotionType.BLUE
+        (ContextCompat.getColor(App.app, R.color.greenGradient)) -> EmotionType.GREEN
+        else -> null
+    }
+}
+
+fun EmotionType.convertTypeToColor(): Int {
+    return when (this) {
+        EmotionType.RED -> (ContextCompat.getColor(App.app, R.color.redGradient))
+        EmotionType.GREEN -> (ContextCompat.getColor(App.app, R.color.greenGradient))
+        EmotionType.BLUE -> (ContextCompat.getColor(App.app, R.color.blueGradient))
+        EmotionType.YELLOW -> (ContextCompat.getColor(App.app, R.color.yellowGradient))
+    }
+}
+
+fun EmotionType.convertColorToIcon(): Int {
+    return when (this) {
+        EmotionType.RED -> R.drawable.soft_flower_icon
+        EmotionType.YELLOW -> R.drawable.lightning_icon
+        EmotionType.BLUE -> R.drawable.sadness_icon
+        EmotionType.GREEN -> R.drawable.mithosis_icon
+    }
+}

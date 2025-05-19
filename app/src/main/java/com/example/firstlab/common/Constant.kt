@@ -29,4 +29,5 @@ object Constant {
     const val GRADIENT_ANIM_DURATION = 10000L
     const val STRIPE_CORNER_SIZE = 80f
     const val PADDING_LARGE = 32
+    const val TOTAL_GOALS =  2
 }

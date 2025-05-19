@@ -43,6 +43,6 @@
         <item quantity="two">%d записи</item>
         <item quantity="few">%d записи</item>
         <item quantity="many">%d записей</item>
-        <item quantity="other">%d записи</item>
+        <item quantity="other">%d записей</item>
     </plurals>
 </resources>

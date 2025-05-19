@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstlab.R
 import com.example.firstlab.databinding.WeeklyEmotionsItemBinding
-import com.example.firstlab.models.FeelingItem
-import com.example.firstlab.models.WeeklyEmoteItem
+import com.example.firstlab.presentation.models.WeeklyEmoteItem
 
 class WeeklyEmotesAdapter : RecyclerView.Adapter<WeeklyEmotesAdapter.EmotesViewHolder>() {
     inner class EmotesViewHolder(val binding: WeeklyEmotionsItemBinding) :

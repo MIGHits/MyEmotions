@@ -3,17 +3,16 @@ package com.example.firstlab.presentation.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstlab.databinding.FeelingsRecyclerItemBinding
-import com.example.firstlab.models.FeelingItem
+import com.example.firstlab.presentation.models.JournalItem
 
 class FeelingsRecyclerAdapter(val navigate: () -> Unit) :
     RecyclerView.Adapter<FeelingsRecyclerAdapter.FeelingsViewHolder>() {
     class FeelingsViewHolder(val binding: FeelingsRecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    var feelingsList: List<FeelingItem> = emptyList()
+    var feelingsList: List<JournalItem> = emptyList()
         @SuppressLint("NotifyDataSetChanged")
         set(newValue) {
             field = newValue

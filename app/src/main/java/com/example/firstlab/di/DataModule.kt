@@ -27,6 +27,6 @@ val dataModule = module {
 
     factoryOf(::EmotionMapper)
     factoryOf(::ProfileRepositoryImpl)
-    factory<EmotionsRepository> { EmotionsRepositoryImpl(emotionDao = get(), mapper = get()) }
+    factory<EmotionsRepository> { EmotionsRepositoryImpl(emotionDao = get(), mapper = get(), auth = get()) }
     factory<FirebaseAuthRepository> { FirebaseAuthRepositoryImpl(auth = get(), userDao = get()) }
 }

@@ -10,7 +10,7 @@
         <argument
             android:name="ARG_STAT_DATA"
             android:defaultValue="@null"
-            app:argType="com.example.firstlab.models.FeelingItem[]" />
+            app:argType="com.example.firstlab.presentation.models.JournalItem[]" />
 
         <action
             android:id="@+id/feelingsScreenToNoteNavigation"

@@ -1,4 +1,4 @@
-package com.example.firstlab.models
+package com.example.firstlab.presentation.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

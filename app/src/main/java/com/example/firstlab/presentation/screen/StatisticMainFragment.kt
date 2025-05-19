@@ -11,7 +11,7 @@ import com.example.firstlab.common.Constant.ARG_MAIN_STATISTIC
 import com.example.firstlab.common.Constant.VIEW_PAGER_OFFSET
 import com.example.firstlab.common.Constant.ZERO_CONST
 import com.example.firstlab.databinding.StatisticMainFragmentBinding
-import com.example.firstlab.models.EmotesCategory
+import com.example.firstlab.presentation.models.EmotesCategory
 
 class StatisticMainFragment : Fragment(R.layout.statistic_main_fragment) {
     private lateinit var binding: StatisticMainFragmentBinding

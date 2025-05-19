@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import com.example.firstlab.R
 import com.example.firstlab.common.Constant.ARG_EMOTES_CATEGORY
 import com.example.firstlab.databinding.EmotionsCategoryBinding
-import com.example.firstlab.models.EmotesCategory
-import com.example.firstlab.models.EmotionType
+import com.example.firstlab.presentation.models.EmotesCategory
+import com.example.firstlab.domain.entity.EmotionType
 
 class EmotionsCategoryFragment : Fragment(R.layout.emotions_category) {
     private lateinit var binding: EmotionsCategoryBinding

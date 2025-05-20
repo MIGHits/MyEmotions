@@ -4,10 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.firstlab.domain.entity.EmotionEntity
 import com.example.firstlab.domain.usecase.CreateEmotionUseCase
+import com.example.firstlab.domain.usecase.GetEmotionByIdUseCase
+import com.example.firstlab.presentation.mapper.EmotionsMapper
 import com.example.firstlab.presentation.mapper.convertColorToEmotion
 import com.example.firstlab.presentation.mapper.convertColorToIcon
 import com.example.firstlab.presentation.mapper.convertTime
 import com.example.firstlab.presentation.mapper.parseTimeToMillis
+import com.example.firstlab.presentation.mapper.toDomain
 import com.example.firstlab.presentation.models.EmotionFullModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +20,8 @@ import kotlinx.coroutines.launch
 
 class CreateEmotionViewModel(
     private val createEmotionUseCase: CreateEmotionUseCase,
+    private val getEmotionByIdUseCase: GetEmotionByIdUseCase,
+    private val emotionsMapper: EmotionsMapper
 ) : ViewModel() {
     private val _createState = MutableStateFlow(EmotionFullModel())
     val createState: StateFlow<EmotionFullModel> get() = _createState
@@ -33,19 +38,12 @@ class CreateEmotionViewModel(
         }
     }
 
-    private fun EmotionFullModel.toDomain(): EmotionEntity {
-        return EmotionEntity(
-            id = this.id,
-            name = this.name,
-            userId = this.userId,
-            createTime = this.createTime?.parseTimeToMillis()
-                ?: System.currentTimeMillis(),
-            type = this.type,
-            iconRes = this.iconRes,
-            actions = this.actions,
-            location = this.location,
-            company = this.company
-        )
+    fun getEmotionDetails(id: Int) {
+        viewModelScope.launch {
+            _createState.update {
+                emotionsMapper.mapToFullEmotionModel(getEmotionByIdUseCase(id))
+            }
+        }
     }
 
     private fun chooseNotes(actions: List<String>, company: List<String>, places: List<String>) {
@@ -64,5 +62,4 @@ class CreateEmotionViewModel(
             createEmotionUseCase(_createState.value.toDomain())
         }
     }
-
 }

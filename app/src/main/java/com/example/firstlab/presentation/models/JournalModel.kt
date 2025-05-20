@@ -1,6 +1,5 @@
 package com.example.firstlab.presentation.models
 
-import com.example.firstlab.domain.entity.EmotionEntity
 import com.example.firstlab.domain.entity.EmotionType
 
 data class JournalModel(

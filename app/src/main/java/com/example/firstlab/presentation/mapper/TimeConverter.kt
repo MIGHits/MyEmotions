@@ -58,31 +58,37 @@ fun String.parseTimeToMillis(): Long {
     val today = LocalDate.now(zoneId)
 
     return try {
-        if (this.startsWith(R.string.today.toChar()) || this.startsWith(R.string.yesterday.toChar())) {
-            val parts = this.split(" ")
-            val time = LocalTime.parse(parts.last(), DateTimeFormatter.ofPattern("HH:mm"))
+        val todayStr = App.app.getString(R.string.today, "")
+        val yesterdayStr = App.app.getString(R.string.yesterday, "")
 
-            val date = when {
-                this.startsWith(R.string.today.toChar()) -> today
-                this.startsWith(R.string.yesterday.toChar()) -> today.minusDays(1)
-                else -> today
+        return when {
+            this.startsWith(todayStr.dropLast(1)) -> {
+                val time = this.substringAfter(",").trim()
+                val localTime = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"))
+                ZonedDateTime.of(today, localTime, zoneId).toInstant().toEpochMilli()
             }
 
-            ZonedDateTime.of(date, time, zoneId).toInstant().toEpochMilli()
-        } else if (this.contains(",") && !this.contains(".")) {
-            val (dayPart, timePart) = this.split(",")
-            val time = LocalTime.parse(timePart, DateTimeFormatter.ofPattern("HH:mm"))
-
-            val dayOfWeek = DayOfWeek.entries.first {
-                it.getDisplayName(TextStyle.FULL, Locale("ru")) == dayPart
+            this.startsWith(yesterdayStr.dropLast(1)) -> {
+                val time = this.substringAfter(",").trim()
+                val localTime = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"))
+                ZonedDateTime.of(today.minusDays(1), localTime, zoneId).toInstant().toEpochMilli()
             }
 
-            val date = today.with(TemporalAdjusters.previousOrSame(dayOfWeek))
-            ZonedDateTime.of(date, time, zoneId).toInstant().toEpochMilli()
-        } else {
-            val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy,HH:mm")
-            val parsed = LocalDateTime.parse(this, formatter)
-            ZonedDateTime.of(parsed, zoneId).toInstant().toEpochMilli()
+            "," in this && !this.contains('.') -> {
+                val (dayOfWeekStr, timeStr) = this.split(",")
+                val time = LocalTime.parse(timeStr.trim(), DateTimeFormatter.ofPattern("HH:mm"))
+                val dayOfWeek = DayOfWeek.entries.first {
+                    it.getDisplayName(TextStyle.FULL, Locale("ru")) == dayOfWeekStr.trim()
+                }
+                val date = today.with(TemporalAdjusters.previousOrSame(dayOfWeek))
+                ZonedDateTime.of(date, time, zoneId).toInstant().toEpochMilli()
+            }
+
+            else -> {
+                val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy,HH:mm")
+                val parsed = LocalDateTime.parse(this, formatter)
+                ZonedDateTime.of(parsed, zoneId).toInstant().toEpochMilli()
+            }
         }
     } catch (e: Exception) {
         System.currentTimeMillis()

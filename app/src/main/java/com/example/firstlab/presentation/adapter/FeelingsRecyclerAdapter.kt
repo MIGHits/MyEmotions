@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.firstlab.databinding.FeelingsRecyclerItemBinding
 import com.example.firstlab.presentation.models.JournalItem
 
-class FeelingsRecyclerAdapter(val navigate: () -> Unit) :
+class FeelingsRecyclerAdapter(val navigate: (Int) -> Unit) :
     RecyclerView.Adapter<FeelingsRecyclerAdapter.FeelingsViewHolder>() {
     class FeelingsViewHolder(val binding: FeelingsRecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -37,7 +37,7 @@ class FeelingsRecyclerAdapter(val navigate: () -> Unit) :
         holder.binding.apply {
             time.text = feelingItem.time
             feelingCard.setBackgroundResource(feelingItem.background)
-            feelingCard.setOnClickListener { navigate() }
+            feelingCard.setOnClickListener { navigate(feelingItem.id) }
             emotion.text = feelingItem.name
             feelingIcon.setImageResource(feelingItem.icon)
             emotion.setTextColor(feelingItem.color)

@@ -36,13 +36,22 @@
     <string name="late_evening">Поздний вечер</string>
     <string name="chip_places">Где вы были?</string>
     <string name="edit_text_hint">Введите текст</string>
-    <string name="today">Сегодня %1$s</string>
+    <string name="today">Сегодня,%1$s</string>
     <string name="yesterday">Вчера,%1$s</string>
+    <string name="back_button">back_button</string>
+    <string name="feelingicon">feelingIcon</string>
     <plurals name="posts_count">
         <item quantity="one">%d запись</item>
         <item quantity="two">%d записи</item>
         <item quantity="few">%d записи</item>
         <item quantity="many">%d записей</item>
         <item quantity="other">%d записей</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d день</item>
+        <item quantity="two">%d дня</item>
+        <item quantity="few">%d дня</item>
+        <item quantity="many">%d дней</item>
+        <item quantity="other">%d дней</item>
     </plurals>
 </resources>

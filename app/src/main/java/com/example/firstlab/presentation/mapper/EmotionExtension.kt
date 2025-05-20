@@ -3,7 +3,9 @@ package com.example.firstlab.presentation.mapper
 import androidx.core.content.ContextCompat
 import com.example.firstlab.App
 import com.example.firstlab.R
+import com.example.firstlab.domain.entity.EmotionEntity
 import com.example.firstlab.domain.entity.EmotionType
+import com.example.firstlab.presentation.models.EmotionFullModel
 
 
 fun Int.convertColorToEmotion(): EmotionType? {
@@ -32,4 +34,19 @@ fun EmotionType.convertColorToIcon(): Int {
         EmotionType.BLUE -> R.drawable.sadness_icon
         EmotionType.GREEN -> R.drawable.mithosis_icon
     }
+}
+
+fun EmotionFullModel.toDomain(): EmotionEntity {
+    return EmotionEntity(
+        id = this.id,
+        name = this.name,
+        userId = this.userId,
+        createTime = this.createTime?.parseTimeToMillis()
+            ?: System.currentTimeMillis(),
+        type = this.type,
+        iconRes = this.iconRes,
+        actions = this.actions,
+        location = this.location,
+        company = this.company
+    )
 }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.common.Constant.ARG_BALLS_DATA
 import com.example.firstlab.common.Constant.GRID_SIZE
+import com.example.firstlab.common.Constant.MINIMUM_CONST
 import com.example.firstlab.databinding.EmotionsChooseBinding
 import com.example.firstlab.presentation.models.BallsItem
 import com.example.firstlab.presentation.adapter.BallsRecyclerAdapter
@@ -150,7 +151,9 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
                     name = name,
                     color = emotionColor ?: R.color.circleSecondaryColor
                 )
-                view.findNavController().navigate(R.id.action_chooseEmotionScreen2_to_addNoteScreen)
+                view.findNavController().navigate(
+                    ChooseEmotionScreenDirections.actionChooseEmotionScreen2ToAddNoteScreen()
+                )
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.example.firstlab.presentation.screen
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -28,6 +29,17 @@ class NavigationActivity : AppCompatActivity() {
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.setupWithNavController(navController)
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.addNoteScreen -> {
+                    bottomNavigation.visibility = View.GONE
+                }
+                else -> {
+                    bottomNavigation.visibility = View.VISIBLE
+                }
+            }
+        }
+
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.statisticScreen -> {
@@ -41,7 +53,7 @@ class NavigationActivity : AppCompatActivity() {
                 }
 
                 R.id.feelingsScreen -> {
-                    navController.navigate(R.id.feelingsScreen3, null)
+                    navController.navigate(R.id.feelingsScreen, null)
                     true
                 }
 

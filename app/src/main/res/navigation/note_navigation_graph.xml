@@ -2,14 +2,18 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/note_navigation_graph"
-    app:startDestination="@id/chooseEmotionScreen2">
+    app:startDestination="@id/chooseEmotionScreen">
     <fragment
-        android:id="@+id/chooseEmotionScreen2"
+        android:id="@+id/chooseEmotionScreen"
         android:name="com.example.firstlab.presentation.screen.ChooseEmotionScreen"
         android:label="ChooseEmotionScreen" >
         <action
             android:id="@+id/action_chooseEmotionScreen2_to_addNoteScreen"
-            app:destination="@id/addNoteScreen" />
+            app:destination="@id/addNoteScreen">
+            <argument android:name="emotionId"
+                app:argType="integer"
+                android:defaultValue="-1"/>
+        </action>
         <action
             android:id="@+id/chooseEmotionScreenToNavigationActivity"
             app:destination="@id/navigationActivity" />
@@ -20,7 +24,7 @@
         android:label="AddNoteScreen" >
         <action
             android:id="@+id/addNoteScreenToChooseEmotionScreen"
-            app:destination="@id/chooseEmotionScreen2" />
+            app:destination="@id/chooseEmotionScreen" />
         <action
             android:id="@+id/addNoteScreenToNavigationActivity"
             app:destination="@id/navigationActivity" />

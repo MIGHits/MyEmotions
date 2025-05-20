@@ -5,6 +5,7 @@ import com.example.firstlab.domain.usecase.GetProfileUseCase
 import com.example.firstlab.domain.usecase.GetJournalDataUseCase
 import com.example.firstlab.domain.usecase.GetStatisticsDataUseCase
 import com.example.firstlab.domain.usecase.CreateEmotionUseCase
+import com.example.firstlab.domain.usecase.GetEmotionByIdUseCase
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
@@ -14,4 +15,5 @@ val domainModule = module {
     factoryOf(::GetJournalDataUseCase)
     factoryOf(::GetStatisticsDataUseCase)
     factoryOf(::CreateEmotionUseCase)
+    factoryOf(::GetEmotionByIdUseCase)
 }

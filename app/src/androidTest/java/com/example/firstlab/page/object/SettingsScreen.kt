@@ -2,7 +2,6 @@ package com.example.firstlab.page.`object`
 
 import android.view.View
 import com.example.firstlab.R
-import com.example.firstlab.presentation.models.WeeklyEmoteItem
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.common.views.KView
 import io.github.kakaocup.kakao.recycler.KRecyclerItem

@@ -2,6 +2,7 @@ package com.example.firstlab.presentation.screen
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.ARG_EMOTION_ID
 import com.example.firstlab.common.Constant.TOTAL_GOALS
 import com.example.firstlab.presentation.adapter.FeelingsRecyclerAdapter
 import com.example.firstlab.databinding.FeelingsScreenBinding
@@ -27,10 +29,6 @@ class FeelingsScreen : Fragment(R.layout.feelings_screen) {
     private lateinit var adapter: FeelingsRecyclerAdapter
     private val viewModel by viewModel<JournalViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +42,16 @@ class FeelingsScreen : Fragment(R.layout.feelings_screen) {
         }
 
         binding?.addButton?.setOnClickListener {
-            view.findNavController().navigate(R.id.feelingsScreenToNoteNavigation)
+            findNavController().navigate(FeelingsScreenDirections.feelingsScreenToNoteNavigation())
         }
 
         val layoutManager = LinearLayoutManager(requireContext())
         adapter =
-            FeelingsRecyclerAdapter { findNavController().navigate(R.id.action_feelingsScreen3_to_addNoteScreen2) }
+            FeelingsRecyclerAdapter { emotionId ->
+                findNavController().navigate(
+                    FeelingsScreenDirections.actionFeelingsScreen3ToAddNoteScreen2(emotionId)
+                )
+            }
 
         lifecycleScope.launch {
             viewModel.journalState.collect { journal ->
@@ -65,7 +67,7 @@ class FeelingsScreen : Fragment(R.layout.feelings_screen) {
                                     journal.content.amountOFEmotions
                                 )
                                 notesStreak.text = resources.getQuantityString(
-                                    R.plurals.posts_count,
+                                    R.plurals.days,
                                     journal.content.series,
                                     journal.content.series
                                 )

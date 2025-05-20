@@ -1,6 +1,8 @@
 package com.example.firstlab.presentation.models
 
+import com.example.firstlab.domain.entity.EmotionEntity
 import com.example.firstlab.domain.entity.EmotionType
+import com.example.firstlab.presentation.mapper.parseTimeToMillis
 
 data class EmotionFullModel(
     val id: Int? = null,

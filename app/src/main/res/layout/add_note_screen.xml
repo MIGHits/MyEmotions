@@ -30,6 +30,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/circle_shape"
                     android:backgroundTint="@color/labelPrimaryColor"
+                    android:contentDescription="@string/back_button"
                     android:padding="8dp"
                     android:src="@drawable/back_icon" />
 
@@ -110,14 +111,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/cardEmotion"
-                             />
+                            />
                     </LinearLayout>
 
                     <ImageView
                         android:id="@+id/feelingIcon"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.21" />
+                        android:layout_weight="0.21"
+                        android:contentDescription="@string/feelingicon" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

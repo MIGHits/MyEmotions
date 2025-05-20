@@ -2,19 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/feelingsScreen3">
+    app:startDestination="@id/feelingsScreen">
     <fragment
-        android:id="@+id/feelingsScreen3"
+        android:id="@+id/feelingsScreen"
         android:name="com.example.firstlab.presentation.screen.FeelingsScreen"
         android:label="FeelingsScreen">
         <argument
             android:name="ARG_STAT_DATA"
             android:defaultValue="@null"
-            app:argType="com.example.firstlab.presentation.models.JournalItem[]" />
+            app:argType="com.example.firstlab.presentation.models.JournalItem[]"
+            app:nullable="true" />
 
         <action
             android:id="@+id/feelingsScreenToNoteNavigation"
-            app:destination="@id/noteNavigation" />
+            app:destination="@id/noteNavigation">
+            <argument
+                android:name="emotionId"
+                android:defaultValue="-1"
+                app:argType="integer" />
+        </action>
         <action
             android:id="@+id/action_feelingsScreen3_to_statisticScreen"
             app:destination="@id/statisticScreen" />
@@ -23,7 +29,11 @@
             app:destination="@id/settingsScreen" />
         <action
             android:id="@+id/action_feelingsScreen3_to_addNoteScreen2"
-            app:destination="@id/addNoteScreen2" />
+            app:destination="@id/addNoteScreen">
+            <argument
+                android:name="emotionId"
+                app:argType="integer" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/statisticScreen"
@@ -31,7 +41,7 @@
         android:label="StatisticScreen">
         <action
             android:id="@+id/action_statisticScreen_to_feelingsScreen3"
-            app:destination="@id/feelingsScreen3" />
+            app:destination="@id/feelingsScreen" />
         <action
             android:id="@+id/action_statisticScreen_to_settingsScreen"
             app:destination="@id/settingsScreen" />
@@ -45,18 +55,23 @@
             app:destination="@id/statisticScreen" />
         <action
             android:id="@+id/action_settingsScreen_to_feelingsScreen3"
-            app:destination="@id/feelingsScreen3" />
+            app:destination="@id/feelingsScreen" />
     </fragment>
     <activity
         android:id="@+id/noteNavigation"
         android:name="com.example.firstlab.presentation.screen.NoteNavigation"
         android:label="NoteNavigation" />
     <fragment
-        android:id="@+id/addNoteScreen2"
+        android:id="@+id/addNoteScreen"
         android:name="com.example.firstlab.presentation.screen.AddNoteScreen"
         android:label="AddNoteScreen">
+        <argument
+            android:name="emotionId"
+            android:defaultValue="-1"
+            app:argType="integer" />
         <action
-            android:id="@+id/action_addNoteScreen2_to_feelingsScreen3"
-            app:destination="@id/feelingsScreen3" />
+            android:id="@+id/action_addNoteScreen_to_feelingsScreen"
+            app:destination="@id/feelingsScreen" />
     </fragment>
+    <include app:graph="@navigation/note_navigation_graph" />
 </navigation>

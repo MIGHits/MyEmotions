@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class JournalItem(
+    val id: Int,
     val time: String,
     val name: String,
     val icon: Int,

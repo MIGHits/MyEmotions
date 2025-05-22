@@ -2,6 +2,7 @@ package com.example.firstlab.presentation.mapper
 
 import com.example.firstlab.App
 import com.example.firstlab.R
+import com.example.firstlab.presentation.models.TimeOfDay
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.Instant
 import org.threeten.bp.LocalDate
@@ -12,6 +13,8 @@ import org.threeten.bp.ZonedDateTime
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.TextStyle
 import org.threeten.bp.temporal.TemporalAdjusters
+import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 
@@ -93,4 +96,26 @@ fun String.parseTimeToMillis(): Long {
     } catch (e: Exception) {
         System.currentTimeMillis()
     }
+}
+
+fun Long.getTimeOfDay(): TimeOfDay {
+    val hour =
+        Calendar.getInstance().apply { timeInMillis = this@getTimeOfDay }.get(Calendar.HOUR_OF_DAY)
+    return when (hour) {
+        in 5..7 -> TimeOfDay.EARLY_MORNING
+        in 8..11 -> TimeOfDay.MORNING
+        in 12..16 -> TimeOfDay.DAY
+        in 17..20 -> TimeOfDay.EVENING
+        else -> TimeOfDay.LATE_EVENING
+    }
+}
+
+fun Date.truncateToDay(): Date {
+    val cal = Calendar.getInstance()
+    cal.time = this
+    cal.set(Calendar.HOUR_OF_DAY, 0)
+    cal.set(Calendar.MINUTE, 0)
+    cal.set(Calendar.SECOND, 0)
+    cal.set(Calendar.MILLISECOND, 0)
+    return cal.time
 }

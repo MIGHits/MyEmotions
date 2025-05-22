@@ -1,5 +1,7 @@
 package com.example.firstlab.presentation.mapper
 
+import android.content.res.Resources
+import android.util.TypedValue
 import androidx.core.content.ContextCompat
 import com.example.firstlab.App
 import com.example.firstlab.R
@@ -48,5 +50,11 @@ fun EmotionFullModel.toDomain(): EmotionEntity {
         actions = this.actions,
         location = this.location,
         company = this.company
+    )
+}
+
+fun Int.dpToPx(): Float {
+    return TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), Resources.getSystem().displayMetrics
     )
 }

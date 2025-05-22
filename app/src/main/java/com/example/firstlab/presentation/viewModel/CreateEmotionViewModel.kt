@@ -2,14 +2,12 @@ package com.example.firstlab.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.firstlab.domain.entity.EmotionEntity
 import com.example.firstlab.domain.usecase.CreateEmotionUseCase
 import com.example.firstlab.domain.usecase.GetEmotionByIdUseCase
 import com.example.firstlab.presentation.mapper.EmotionsMapper
 import com.example.firstlab.presentation.mapper.convertColorToEmotion
 import com.example.firstlab.presentation.mapper.convertColorToIcon
 import com.example.firstlab.presentation.mapper.convertTime
-import com.example.firstlab.presentation.mapper.parseTimeToMillis
 import com.example.firstlab.presentation.mapper.toDomain
 import com.example.firstlab.presentation.models.EmotionFullModel
 import kotlinx.coroutines.Dispatchers

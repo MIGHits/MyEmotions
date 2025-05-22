@@ -17,6 +17,7 @@ import com.example.firstlab.common.Constant.MIN_CATEGORY_SIZE
 import com.example.firstlab.common.Constant.ZERO_CONST
 import com.example.firstlab.presentation.models.EmotesCategory
 import com.example.firstlab.domain.entity.EmotionType
+import com.example.firstlab.presentation.mapper.dpToPx
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -33,7 +34,7 @@ class BubbleChartView @JvmOverloads constructor(
     )
 
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        textSize = dpToPx(MIN_CATEGORY_SIZE)
+        textSize = MIN_CATEGORY_SIZE.dpToPx()
         textAlign = Paint.Align.CENTER
         typeface = ResourcesCompat.getFont(context, R.font.vela_sans_bold)
     }
@@ -77,10 +78,10 @@ class BubbleChartView @JvmOverloads constructor(
         }
 
         val maxRadius = width / 2f
-        val minRadius = dpToPx(MIN_CATEGORY_SIZE)
+        val minRadius = MIN_CATEGORY_SIZE.dpToPx()
 
         val positions = listOf(
-        Pair(width, ZERO_CONST),
+            Pair(width, ZERO_CONST),
             Pair(ZERO_CONST, height),
             Pair(ZERO_CONST, ZERO_CONST),
             Pair(width, height),
@@ -94,39 +95,40 @@ class BubbleChartView @JvmOverloads constructor(
             val x = if (cornerX == 0) radius else width - radius
             val y = if (cornerY == 0) radius else height - radius
 
-            val gradientColors = when (percentage.category.second) {
-                EmotionType.BLUE -> colors[2]
-                EmotionType.RED -> colors[3]
-                EmotionType.YELLOW -> colors[1]
-                EmotionType.GREEN -> colors[0]
-            }.map { ContextCompat.getColor(context, it) }.toIntArray()
+            if (radius > 0f && width > 0 && height > 0) {
+                val gradientColors = when (percentage.category.second) {
+                    EmotionType.BLUE -> colors[2]
+                    EmotionType.RED -> colors[3]
+                    EmotionType.YELLOW -> colors[1]
+                    EmotionType.GREEN -> colors[0]
+                }.map { ContextCompat.getColor(context, it) }.toIntArray()
 
-            gradient = LinearGradient(
-                x - radius, y - radius,
-                x + radius, y + radius,
-                gradientColors,
-                null,
-                Shader.TileMode.CLAMP
-            )
-            paint.shader = gradient
+                if ((x - radius != x + radius) || (y - radius != y + radius)) {
+                    gradient = LinearGradient(
+                        x - radius, y - radius,
+                        x + radius, y + radius,
+                        gradientColors,
+                        null,
+                        Shader.TileMode.CLAMP
+                    )
+                    paint.shader = gradient
+                } else {
+                    paint.shader = null
+                }
 
-            if (percentage.category.first != 0f) {
-                canvas.drawCircle(x, y, radius, paint)
-                canvas.drawText(
-                    "${percentage.category.first.toInt()}%",
-                    x,
-                    y + dpToPx(6),
-                    textPaint
-                )
+                if (percentage.category.first != 0f) {
+                    canvas.drawCircle(x, y, radius, paint)
+                    canvas.drawText(
+                        "${percentage.category.first.toInt()}%",
+                        x,
+                        y + 6.dpToPx(),
+                        textPaint
+                    )
+                }
             }
         }
     }
 
-    private fun dpToPx(dp: Int): Float {
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), Resources.getSystem().displayMetrics
-        )
-    }
 }
 
 

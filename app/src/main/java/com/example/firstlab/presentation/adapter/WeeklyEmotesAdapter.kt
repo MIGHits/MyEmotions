@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstlab.R
 import com.example.firstlab.databinding.WeeklyEmotionsItemBinding
+import com.example.firstlab.presentation.mapper.dpToPx
 import com.example.firstlab.presentation.models.WeeklyEmoteItem
 
 class WeeklyEmotesAdapter : RecyclerView.Adapter<WeeklyEmotesAdapter.EmotesViewHolder>() {
@@ -44,9 +45,12 @@ class WeeklyEmotesAdapter : RecyclerView.Adapter<WeeklyEmotesAdapter.EmotesViewH
             date.text = item.date
             if (item.emotes.isNotEmpty()) {
                 item.emotes.forEach { emote ->
-                    val iconImage = ImageView(context)
-                    iconImage.setImageResource(emote.icon)
-                    iconImage.setPaddingRelative(4, 4, 4, 4)
+                    val iconImage = ImageView(context).apply {
+                        setImageResource(emote.icon)
+                        setPaddingRelative(4, 4, 4, 4)
+                        layoutParams =
+                            ViewGroup.LayoutParams(40.dpToPx().toInt(), 40.dpToPx().toInt())
+                    }
 
                     val textEmote = TextView(context)
                     textEmote.text = emote.name

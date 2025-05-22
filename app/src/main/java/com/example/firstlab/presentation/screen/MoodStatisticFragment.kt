@@ -8,15 +8,16 @@ import com.example.firstlab.common.Constant.ARG_MOOD_DATA
 import com.example.firstlab.databinding.MoodScreenFragmentBinding
 import com.example.firstlab.presentation.models.EmotesCategory
 import com.example.firstlab.domain.entity.EmotionType
+import com.example.firstlab.presentation.models.MoodCategory
 import com.example.firstlab.presentation.models.TimeOfDay
 
 class MoodStatisticFragment : Fragment(R.layout.mood_screen_fragment) {
     private lateinit var binding: MoodScreenFragmentBinding
-    private var moodList: List<EmotesCategory> = emptyList()
+    private var moodList: List<MoodCategory> = emptyList()
 
     companion object {
 
-        fun setData(data: List<EmotesCategory>): MoodStatisticFragment {
+        fun setData(data: List<MoodCategory>): MoodStatisticFragment {
             return MoodStatisticFragment().apply {
                 arguments = Bundle().apply {
                     putParcelableArrayList(ARG_MOOD_DATA, ArrayList(data))
@@ -28,13 +29,7 @@ class MoodStatisticFragment : Fragment(R.layout.mood_screen_fragment) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        moodList = arguments?.getParcelableArrayList(ARG_MOOD_DATA) ?: listOf(
-            EmotesCategory(Pair(1f, EmotionType.GREEN), TimeOfDay.EARLY_MORNING),
-            EmotesCategory(Pair(0.5f, EmotionType.YELLOW), TimeOfDay.MORNING),
-            EmotesCategory(Pair(0.5f, EmotionType.RED), TimeOfDay.MORNING),
-            EmotesCategory(Pair(1f, EmotionType.RED), TimeOfDay.DAY),
-            EmotesCategory(Pair(1f, EmotionType.BLUE), TimeOfDay.EVENING),
-        )
+        moodList = arguments?.getParcelableArrayList(ARG_MOOD_DATA) ?: emptyList()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -12,6 +12,8 @@ object Constant {
     const val ARG_NOTIFICATION_DATA = "ARG_NOTIFICATION_DATA"
     const val ARG_WEEKLY_EMOTES = "ARG_CATEGORY_LIST"
     const val ARG_EMOTION_ID = "emotion_id_argument"
+    const val ARG_NOTE_COUNT = "note_count_key"
+    const val ARG_WEEK_INDEX = "ARG_WEEK_INDEX"
     const val VIEW_PAGER_OFFSET = 70
     const val ZERO_CONST = 0
     const val PADDING_SMALL = 8
@@ -31,4 +33,5 @@ object Constant {
     const val STRIPE_CORNER_SIZE = 80f
     const val PADDING_LARGE = 32
     const val TOTAL_GOALS = 2
+    const val RELEASE_YEAR = 2025
 }

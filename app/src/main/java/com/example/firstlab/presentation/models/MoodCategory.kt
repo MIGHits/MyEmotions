@@ -5,6 +5,7 @@ import com.example.firstlab.domain.entity.EmotionType
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class EmotesCategory(
-    val category: Pair<Float, EmotionType>
+data class MoodCategory(
+    val category: Pair<Float, EmotionType>,
+    val timeOfDay: TimeOfDay
 ) : Parcelable

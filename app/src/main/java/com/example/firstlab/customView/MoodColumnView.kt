@@ -16,6 +16,7 @@ import com.example.firstlab.R
 import com.example.firstlab.common.Constant.PADDING_SMALL
 import com.example.firstlab.presentation.models.EmotesCategory
 import com.example.firstlab.domain.entity.EmotionType
+import com.example.firstlab.presentation.models.MoodCategory
 
 class MoodColumnView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -27,7 +28,7 @@ class MoodColumnView @JvmOverloads constructor(
         typeface = ResourcesCompat.getFont(context, R.font.vela_sans_bold)
     }
 
-    var emotionsList: List<EmotesCategory> =
+    var emotionsList: List<MoodCategory> =
         listOf()
     var colors = intArrayOf()
 
@@ -87,7 +88,7 @@ class MoodColumnView @JvmOverloads constructor(
         }
     }
 
-    fun setEmotionList(emotions: List<EmotesCategory>) {
+    fun setEmotionList(emotions: List<MoodCategory>) {
         emotionsList = emotions
     }
 

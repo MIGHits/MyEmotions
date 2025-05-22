@@ -28,9 +28,16 @@
         <action
             android:id="@+id/addNoteScreenToNavigationActivity"
             app:destination="@id/navigationActivity" />
+        <action
+            android:id="@+id/action_addNoteScreen_to_feelingsScreen"
+            app:destination="@id/feelingsScreen" />
     </fragment>
     <activity
         android:id="@+id/navigationActivity"
         android:name="com.example.firstlab.presentation.screen.NavigationActivity"
         android:label="NavigationActivity" />
+    <fragment
+        android:id="@+id/feelingsScreen"
+        android:name="com.example.firstlab.presentation.screen.FeelingsScreen"
+        android:label="FeelingsScreen" />
 </navigation>

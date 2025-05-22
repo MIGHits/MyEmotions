@@ -13,7 +13,7 @@ import com.example.firstlab.domain.entity.EmotionType
 
 class MostFrequentEmotesFragment : Fragment(R.layout.most_frequent_emotes) {
     private lateinit var binding: MostFrequentEmotesBinding
-    private var frequentList: List<Emotion>? = null
+    private var frequentList: List<Emotion> = emptyList()
 
     companion object {
 
@@ -29,13 +29,7 @@ class MostFrequentEmotesFragment : Fragment(R.layout.most_frequent_emotes) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        frequentList = arguments?.getParcelableArrayList(ARG_FREQUENT_DATA) ?: listOf(
-            Emotion(R.drawable.mithosis_emote, "Спокойствие", 2, EmotionType.GREEN),
-            Emotion(R.drawable.lightning_emote, "Продуктивность", 1, EmotionType.YELLOW),
-            Emotion(R.drawable.ellipse_icon, "Счастье", 4, EmotionType.YELLOW),
-            Emotion(R.drawable.shell_icon, "Усталость", 1, EmotionType.BLUE)
-
-        )
+        frequentList = arguments?.getParcelableArrayList(ARG_FREQUENT_DATA) ?: emptyList()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,7 +41,7 @@ class MostFrequentEmotesFragment : Fragment(R.layout.most_frequent_emotes) {
         val emotesRecycler = binding.frequentEmotesRecycler
 
         emotesRecycler.adapter = adapter
-        frequentList?.let {
+        frequentList.let {
             adapter.emotesList = it
         }
         emotesRecycler.layoutManager = manager

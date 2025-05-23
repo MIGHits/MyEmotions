@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstlab.databinding.NotificationRecyclerItemBinding
+import com.example.firstlab.presentation.models.NotificationPresentationModel
 
-class NotificationAdapter : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
+class NotificationAdapter(private val onRemoveAction: (NotificationPresentationModel) -> Unit) :
+    RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
 
     inner class NotificationViewHolder(val binding: NotificationRecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    var notificationList: MutableList<String> = mutableListOf()
+    var notificationList: MutableList<NotificationPresentationModel> = mutableListOf()
         @SuppressLint("NotifyDataSetChanged")
         set(newValue) {
             field = newValue
@@ -31,11 +33,9 @@ class NotificationAdapter : RecyclerView.Adapter<NotificationAdapter.Notificatio
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
         val currentNotification = notificationList[position]
         holder.binding.apply {
-            chosenTime.text = currentNotification
+            chosenTime.text = currentNotification.time
             deleteButton.setOnClickListener {
-                notificationList.removeAt(position)
-                notifyItemRemoved(position)
-                notifyItemRangeChanged(position, notificationList.size)
+                onRemoveAction(currentNotification)
             }
         }
     }

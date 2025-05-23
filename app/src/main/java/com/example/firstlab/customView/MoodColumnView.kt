@@ -14,7 +14,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.firstlab.R
 import com.example.firstlab.common.Constant.PADDING_SMALL
-import com.example.firstlab.presentation.models.EmotesCategory
 import com.example.firstlab.domain.entity.EmotionType
 import com.example.firstlab.presentation.models.MoodCategory
 

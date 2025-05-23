@@ -8,9 +8,6 @@ import com.example.firstlab.common.Constant.ARG_EMOTES_CATEGORY
 import com.example.firstlab.common.Constant.ARG_NOTE_COUNT
 import com.example.firstlab.databinding.EmotionsCategoryBinding
 import com.example.firstlab.presentation.models.EmotesCategory
-import com.example.firstlab.domain.entity.EmotionType
-import com.example.firstlab.presentation.viewModel.StatisticsViewModel
-import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.properties.Delegates
 
 class EmotionsCategoryFragment : Fragment(R.layout.emotions_category) {

@@ -2,20 +2,16 @@ package com.example.firstlab.presentation.screen
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
-import com.example.firstlab.common.Constant.ARG_EMOTION_ID
 import com.example.firstlab.common.Constant.TOTAL_GOALS
-import com.example.firstlab.presentation.adapter.FeelingsRecyclerAdapter
 import com.example.firstlab.databinding.FeelingsScreenBinding
-import com.example.firstlab.presentation.models.JournalItem
+import com.example.firstlab.presentation.adapter.FeelingsRecyclerAdapter
 import com.example.firstlab.presentation.state.JournalState
 import com.example.firstlab.presentation.viewModel.JournalViewModel
 import kotlinx.coroutines.Dispatchers
@@ -98,19 +94,5 @@ class FeelingsScreen : Fragment(R.layout.feelings_screen) {
     override fun onDestroy() {
         super.onDestroy()
         binding = null
-    }
-
-    companion object {
-        const val ARG_STAT_DATA = "ARG_FEELINGS_LiST"
-        const val ARG_POST_AMOUNT = "ARG_POSTS"
-
-        fun setData(data: List<JournalItem>, posts: Int): FeelingsScreen {
-            return FeelingsScreen().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_POST_AMOUNT, posts)
-                    putParcelableArrayList(ARG_STAT_DATA, ArrayList(data))
-                }
-            }
-        }
     }
 }

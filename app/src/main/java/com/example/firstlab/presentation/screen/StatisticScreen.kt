@@ -7,20 +7,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.firstlab.R
-import com.example.firstlab.common.Constant.RELEASE_YEAR
-import com.example.firstlab.presentation.adapter.FragmentAdapterHorizontal
 import com.example.firstlab.common.Constant.ZERO_CONST
 import com.example.firstlab.databinding.StatisticScreenBinding
+import com.example.firstlab.presentation.adapter.FragmentAdapterHorizontal
 import com.example.firstlab.presentation.models.WeekInfo
 import com.example.firstlab.presentation.viewModel.StatisticsViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.util.Calendar
-import java.util.Locale
 
 class StatisticScreen : Fragment(R.layout.statistic_screen) {
     private lateinit var binding: StatisticScreenBinding

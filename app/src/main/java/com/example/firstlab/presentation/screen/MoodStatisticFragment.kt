@@ -6,8 +6,6 @@ import androidx.fragment.app.Fragment
 import com.example.firstlab.R
 import com.example.firstlab.common.Constant.ARG_MOOD_DATA
 import com.example.firstlab.databinding.MoodScreenFragmentBinding
-import com.example.firstlab.presentation.models.EmotesCategory
-import com.example.firstlab.domain.entity.EmotionType
 import com.example.firstlab.presentation.models.MoodCategory
 import com.example.firstlab.presentation.models.TimeOfDay
 

@@ -5,11 +5,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstlab.R
-import com.example.firstlab.presentation.adapter.EmotesFrequencyAdapter
 import com.example.firstlab.common.Constant.ARG_FREQUENT_DATA
 import com.example.firstlab.databinding.MostFrequentEmotesBinding
+import com.example.firstlab.presentation.adapter.EmotesFrequencyAdapter
 import com.example.firstlab.presentation.models.Emotion
-import com.example.firstlab.domain.entity.EmotionType
 
 class MostFrequentEmotesFragment : Fragment(R.layout.most_frequent_emotes) {
     private lateinit var binding: MostFrequentEmotesBinding

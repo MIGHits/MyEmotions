@@ -21,7 +21,7 @@ class AuthViewModel(private val loginUseCase: LoginUseCase) : ViewModel() {
             try {
                 val idToken = extractIdToken(credential)
                 val user = loginUseCase(idToken)
-                _authState.update { AuthState.Success(user) }
+                _authState.update { AuthState.Success }
             } catch (e: Exception) {
                 _authState.update { AuthState.Error(e.message ?: "Unknown error") }
             }

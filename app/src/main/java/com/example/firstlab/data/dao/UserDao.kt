@@ -27,5 +27,5 @@ interface UserDao {
 
     @Transaction
     @Query("SELECT * FROM users WHERE id = :userId")
-    fun getUserWithNotifications(userId: String): Flow<List<UserWithNotifications>>?
+    fun getUserWithNotifications(userId: String): Flow<UserWithNotifications>?
 }

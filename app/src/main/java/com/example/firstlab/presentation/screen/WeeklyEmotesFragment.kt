@@ -28,51 +28,7 @@ class WeeklyEmotesFragment : Fragment(R.layout.weekly_emotions) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        weeklyEmotesList = arguments?.getParcelableArrayList(ARG_WEEKLY_EMOTES) ?: listOf(
-            WeeklyEmoteItem(
-                "17 фев",
-                "Понедельник",
-                listOf(
-                    Emotion(R.drawable.mithosis_emote, "Спокойствие"),
-                    Emotion(R.drawable.lightning_emote, "Продуктивность"),
-                    Emotion(R.drawable.ellipse_icon, "Счастье"),
-                )
-            ),
-            WeeklyEmoteItem(
-                "18 фев",
-                "Вторник",
-                listOf(
-                    Emotion(R.drawable.ellipse_icon, "Счастье"),
-                    Emotion(R.drawable.ellipse_icon, "Счастье"),
-                    Emotion(R.drawable.shell_icon, "Выгорание"),
-                )
-            ),
-            WeeklyEmoteItem(
-                "19 фев",
-                "Среда",
-                listOf()
-            ),
-            WeeklyEmoteItem(
-                "20 фев",
-                "Четверг",
-                listOf()
-            ),
-            WeeklyEmoteItem(
-                "21 фев",
-                "Пятница",
-                listOf()
-            ),
-            WeeklyEmoteItem(
-                "22 фев",
-                "Суббота",
-                listOf()
-            ),
-            WeeklyEmoteItem(
-                "23 фев",
-                "Воскресенье",
-                listOf()
-            ),
-        )
+        weeklyEmotesList = arguments?.getParcelableArrayList(ARG_WEEKLY_EMOTES) ?: emptyList()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

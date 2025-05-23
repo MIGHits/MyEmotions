@@ -12,13 +12,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.threeten.bp.DayOfWeek
 import org.threeten.bp.Instant
-import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.ZoneId
 import org.threeten.bp.temporal.ChronoUnit
-import org.threeten.bp.temporal.TemporalAdjusters
 
 
 class JournalViewModel(
@@ -55,10 +52,8 @@ class JournalViewModel(
         }
     }
 
-
     private fun calculateSeries(emotions: List<EmotionEntity>): Int {
         if (emotions.isEmpty()) return 0
-
         val uniqueDates = emotions
             .mapNotNull { emotion ->
                 emotion.createTime?.let { time ->
@@ -67,9 +62,7 @@ class JournalViewModel(
                 }
             }
             .distinct()
-
         if (uniqueDates.isEmpty()) return 0
-
         var maxStreak = 1
         var currentStreak = 1
 
@@ -85,23 +78,6 @@ class JournalViewModel(
                 else -> currentStreak = 1
             }
         }
-
         return maxStreak
-    }
-
-    private fun getPeriod(): Pair<Long, Long> {
-        val today = LocalDate.now()
-        val startOfWeek = today.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
-        val endOfWeek = startOfWeek.plusDays(6)
-        return Pair(
-            first = startOfWeek.atStartOfDay(ZoneId.systemDefault())
-                .toInstant()
-                .toEpochMilli(),
-            second = endOfWeek.atTime(23, 59, 59)
-                .atZone(ZoneId.systemDefault())
-                .toInstant()
-                .toEpochMilli()
-
-        )
     }
 }

@@ -18,7 +18,7 @@ class FirebaseAuthRepositoryImpl(
 ) : FirebaseAuthRepository {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override suspend fun signInWithGoogle(idToken: String): FirebaseUser {
+    override suspend fun signInWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
 
         val firebaseUser = suspendCancellableCoroutine { cont ->
@@ -43,6 +43,5 @@ class FirebaseAuthRepositoryImpl(
                 userDao.addUser(user)
             }
         }
-        return firebaseUser
     }
 }

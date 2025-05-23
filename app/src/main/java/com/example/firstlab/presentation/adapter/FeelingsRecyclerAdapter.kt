@@ -32,7 +32,7 @@ class FeelingsRecyclerAdapter(val navigate: (Int) -> Unit) :
 
     override fun onBindViewHolder(holder: FeelingsViewHolder, position: Int) {
         val feelingItem = feelingsList[position]
-        val context = holder.itemView.context
+        holder.itemView.context
 
         holder.binding.apply {
             time.text = feelingItem.time

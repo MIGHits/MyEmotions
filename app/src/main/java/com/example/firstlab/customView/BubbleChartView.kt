@@ -2,22 +2,20 @@ package com.example.firstlab.customView
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.LinearGradient
 import android.graphics.Paint
 import android.graphics.Shader
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.firstlab.R
 import com.example.firstlab.common.Constant.MIN_CATEGORY_SIZE
 import com.example.firstlab.common.Constant.ZERO_CONST
-import com.example.firstlab.presentation.models.EmotesCategory
 import com.example.firstlab.domain.entity.EmotionType
 import com.example.firstlab.presentation.mapper.dpToPx
+import com.example.firstlab.presentation.models.EmotesCategory
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min

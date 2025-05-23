@@ -18,10 +18,11 @@ class AuthViewModel(private val loginUseCase: LoginUseCase) : ViewModel() {
 
     fun signInWithGoogleCredential(credential: Credential) {
         viewModelScope.launch {
+            _authState.update { AuthState.Loading }
             try {
                 val idToken = extractIdToken(credential)
-                val user = loginUseCase(idToken)
-                _authState.update { AuthState.Success }
+                val isBiometricAuthEnabled = loginUseCase(idToken)
+                _authState.update { AuthState.Success(isBiometricAuthEnabled) }
             } catch (e: Exception) {
                 _authState.update { AuthState.Error(e.message ?: "Unknown error") }
             }

@@ -14,7 +14,7 @@ import com.example.firstlab.page.`object`.EmotionsCategoryScreen
 import com.example.firstlab.page.`object`.MainScreen
 import com.example.firstlab.page.`object`.NavigationScreen
 import com.example.firstlab.page.`object`.SettingsScreen
-import com.example.firstlab.presentation.screen.MainActivity
+import com.example.firstlab.presentation.screen.AuthActivity
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,7 +26,7 @@ class NavigationTest : TestCase() {
 
         run {
             step("EnterApp") {
-                ActivityScenario.launch(MainActivity::class.java).use {
+                ActivityScenario.launch(AuthActivity::class.java).use {
                     step("Check screen views") {
                         MainScreen {
                             greetings.isDisplayed()

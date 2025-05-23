@@ -9,7 +9,7 @@ data class EmotionFullModel(
     val type: EmotionType? = null,
     val createTime: String? = null,
     val iconRes: Int? = null,
-    val actions: List<String> = emptyList(),
-    val company: List<String> = emptyList(),
-    val location: List<String> = emptyList()
+    val actions: Set<String> = emptySet(),
+    val company: Set<String> = emptySet(),
+    val location: Set<String> = emptySet()
 )

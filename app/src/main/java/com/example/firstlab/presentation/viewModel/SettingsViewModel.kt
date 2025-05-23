@@ -7,6 +7,7 @@ import com.example.firstlab.domain.entity.UserEntity
 import com.example.firstlab.domain.usecase.CancelNotificationsUseCase
 import com.example.firstlab.domain.usecase.CreateNotificationUseCase
 import com.example.firstlab.domain.usecase.GetProfileDataUseCase
+import com.example.firstlab.domain.usecase.LogoutUseCase
 import com.example.firstlab.domain.usecase.RemoveNotificationUseCase
 import com.example.firstlab.domain.usecase.ScheduleNotificationsUseCase
 import com.example.firstlab.domain.usecase.UpdateUserUseCase
@@ -18,7 +19,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.util.Calendar
 
 class SettingsViewModel(
     private val getProfileDataUseCase: GetProfileDataUseCase,
@@ -27,7 +27,8 @@ class SettingsViewModel(
     private val updateUserUseCase: UpdateUserUseCase,
     private val notificationMapper: NotificationMapper,
     private val scheduleNotificationsUseCase: ScheduleNotificationsUseCase,
-    private val cancelNotificationsUseCase: CancelNotificationsUseCase
+    private val cancelNotificationsUseCase: CancelNotificationsUseCase,
+    private val logoutUseCase: LogoutUseCase
 ) : ViewModel() {
     private val _settingsState = MutableStateFlow<SettingsState>(SettingsState.Initial)
     val settingsState: StateFlow<SettingsState> get() = _settingsState
@@ -37,8 +38,8 @@ class SettingsViewModel(
     }
 
     private fun getProfileData() {
-        _settingsState.update { SettingsState.Loading }
         viewModelScope.launch {
+            _settingsState.update { SettingsState.Loading }
             getProfileDataUseCase().collect { data ->
                 _settingsState.update {
                     SettingsState.Content(
@@ -54,6 +55,12 @@ class SettingsViewModel(
                     cancelNotificationsUseCase(data.second)
                 }
             }
+        }
+    }
+
+    fun logout() {
+        viewModelScope.launch {
+            logoutUseCase()
         }
     }
 

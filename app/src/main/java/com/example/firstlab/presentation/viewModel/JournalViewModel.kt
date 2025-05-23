@@ -2,11 +2,12 @@ package com.example.firstlab.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.firstlab.common.Constant.TOTAL_GOALS
 import com.example.firstlab.domain.entity.EmotionEntity
 import com.example.firstlab.presentation.models.JournalModel
 import com.example.firstlab.domain.usecase.GetJournalDataUseCase
 import com.example.firstlab.presentation.mapper.EmotionsMapper
-import com.example.firstlab.presentation.mapper.isToday
+import com.example.firstlab.extension.isToday
 import com.example.firstlab.presentation.state.JournalState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -43,7 +44,7 @@ class JournalViewModel(
                                 amountOFEmotions = emotions.size,
                                 series = calculateSeries(emotions),
                                 today = emotions.filter { it.createTime?.isToday() ?: false }
-                                    .mapNotNull { it.type }
+                                    .mapNotNull { it.type }.take(TOTAL_GOALS)
                             )
                         )
                     }

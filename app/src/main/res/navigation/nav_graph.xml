@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/feelingsScreen">
     <fragment
@@ -15,7 +16,8 @@
 
         <action
             android:id="@+id/feelingsScreenToNoteNavigation"
-            app:destination="@id/noteNavigation">
+            app:destination="@id/noteNavigation"
+            >
             <argument
                 android:name="emotionId"
                 android:defaultValue="-1"
@@ -56,6 +58,9 @@
         <action
             android:id="@+id/action_settingsScreen_to_feelingsScreen3"
             app:destination="@id/feelingsScreen" />
+        <action
+            android:id="@+id/action_settingsScreen_to_authActivity"
+            app:destination="@id/authActivity" />
     </fragment>
     <activity
         android:id="@+id/noteNavigation"
@@ -70,8 +75,13 @@
             android:defaultValue="-1"
             app:argType="integer" />
         <action
-            android:id="@+id/action_addNoteScreen_to_feelingsScreen"
+            android:id="@+id/back_to_journal"
             app:destination="@id/feelingsScreen" />
     </fragment>
     <include app:graph="@navigation/note_navigation_graph" />
+    <activity
+        android:id="@+id/authActivity"
+        android:name="com.example.firstlab.presentation.screen.AuthActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>

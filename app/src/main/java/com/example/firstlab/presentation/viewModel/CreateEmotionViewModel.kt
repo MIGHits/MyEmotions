@@ -5,10 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.firstlab.domain.usecase.CreateEmotionUseCase
 import com.example.firstlab.domain.usecase.GetEmotionByIdUseCase
 import com.example.firstlab.presentation.mapper.EmotionsMapper
-import com.example.firstlab.presentation.mapper.convertColorToEmotion
-import com.example.firstlab.presentation.mapper.convertColorToIcon
-import com.example.firstlab.presentation.mapper.convertTime
-import com.example.firstlab.presentation.mapper.toDomain
+import com.example.firstlab.extension.convertColorToEmotion
+import com.example.firstlab.extension.convertColorToIcon
+import com.example.firstlab.extension.convertTime
+import com.example.firstlab.extension.toDomain
 import com.example.firstlab.presentation.models.EmotionFullModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -47,9 +47,9 @@ class CreateEmotionViewModel(
     private fun chooseNotes(actions: List<String>, company: List<String>, places: List<String>) {
         _createState.update {
             _createState.value.copy(
-                actions = actions,
-                company = company,
-                location = places
+                actions = actions.toSet(),
+                company = company.toSet(),
+                location = places.toSet()
             )
         }
     }

@@ -1,4 +1,4 @@
-package com.example.firstlab.presentation.mapper
+package com.example.firstlab.extension
 
 import android.content.res.Resources
 import android.util.TypedValue
@@ -47,9 +47,9 @@ fun EmotionFullModel.toDomain(): EmotionEntity {
             ?: System.currentTimeMillis(),
         type = this.type,
         iconRes = this.iconRes,
-        actions = this.actions,
-        location = this.location,
-        company = this.company
+        actions = this.actions.toList(),
+        location = this.location.toList(),
+        company = this.company.toList()
     )
 }
 

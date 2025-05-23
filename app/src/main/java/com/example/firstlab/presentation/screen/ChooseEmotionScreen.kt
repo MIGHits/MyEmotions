@@ -2,7 +2,6 @@ package com.example.firstlab.presentation.screen
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -10,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firstlab.R
 import com.example.firstlab.common.Constant.ARG_BALLS_DATA
+import com.example.firstlab.common.Constant.BALLS
 import com.example.firstlab.common.Constant.GRID_SIZE
 import com.example.firstlab.databinding.EmotionsChooseBinding
 import com.example.firstlab.presentation.adapter.BallsRecyclerAdapter
@@ -26,88 +26,7 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ballsList = arguments?.getParcelableArrayList(ARG_BALLS_DATA) ?: listOf(
-            BallsItem(
-                ContextCompat.getColor(requireContext(), R.color.redGradient),
-                name = "Ярость",
-                description = ""
-            ),
-            BallsItem(
-                ContextCompat.getColor(requireContext(), R.color.redGradient),
-                name = "Напряжение",
-                description = ""
-            ),
-            BallsItem(
-                ContextCompat.getColor(requireContext(), R.color.yellowGradient),
-                name = "Возбуждение",
-                description = ""
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.yellowGradient)),
-                name = "Восторг",
-                description = ""
-            ),
-            BallsItem(
-                ContextCompat.getColor(requireContext(), R.color.redGradient),
-                name = "Зависть",
-                description = ""
-            ),
-            BallsItem(
-                ContextCompat.getColor(requireContext(), R.color.redGradient),
-                name = "Беспокойство",
-                description = ""
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.yellowGradient)),
-                name = "Уверенность",
-                description = ""
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.yellowGradient)),
-                name = "Счастье",
-                description = ""
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.blueGradient)),
-                name = "Выгопание",
-                description = ""
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.blueGradient)),
-                name = "Усталость",
-                description = ""
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
-                name = "Спокойствие",
-                description = ""
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
-                name = "Удовлетворенность",
-                description = ""
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.blueGradient)),
-                name = "Депрессия",
-                description = ""
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.blueGradient)),
-                name = "Апатия",
-                description = ""
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
-                name = "Благодарность",
-                description = ""
-            ),
-            BallsItem(
-                (ContextCompat.getColor(requireContext(), R.color.greenGradient)),
-                name = "Защищенность",
-                description = ""
-            )
-        )
+        ballsList = arguments?.getParcelableArrayList(ARG_BALLS_DATA) ?: BALLS
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -180,15 +99,5 @@ class ChooseEmotionScreen : Fragment(R.layout.emotions_choose) {
     override fun onDestroy() {
         super.onDestroy()
         binding = null
-    }
-
-    companion object {
-        fun setData(data: List<BallsItem>): ChooseEmotionScreen {
-            return ChooseEmotionScreen().apply {
-                arguments = Bundle().apply {
-                    putParcelableArrayList(ARG_BALLS_DATA, ArrayList(data))
-                }
-            }
-        }
     }
 }

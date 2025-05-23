@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstlab.R
 import com.example.firstlab.databinding.WeeklyEmotionsItemBinding
-import com.example.firstlab.presentation.mapper.dpToPx
+import com.example.firstlab.extension.dpToPx
 import com.example.firstlab.presentation.models.WeeklyEmoteItem
 
 class WeeklyEmotesAdapter : RecyclerView.Adapter<WeeklyEmotesAdapter.EmotesViewHolder>() {
@@ -57,7 +57,7 @@ class WeeklyEmotesAdapter : RecyclerView.Adapter<WeeklyEmotesAdapter.EmotesViewH
                     textEmote.setTextAppearance(R.style.labelThin)
                     textEmote.setTextColor(ContextCompat.getColor(context, R.color.weeklyEmotion))
                     textEmote.maxLines = 1
-                    textEmote.ellipsize = TextUtils.TruncateAt.END;
+                    textEmote.ellipsize = TextUtils.TruncateAt.END
 
                     emotesIcons.addView(iconImage)
                     weekEmotes.addView(textEmote)

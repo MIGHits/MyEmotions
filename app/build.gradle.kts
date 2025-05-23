@@ -51,6 +51,7 @@ java {
 }
 
 dependencies {
+    implementation (libs.glide)
     implementation (libs.threetenabp)
     implementation(libs.play.services.auth)
     implementation(libs.androidx.room.ktx)

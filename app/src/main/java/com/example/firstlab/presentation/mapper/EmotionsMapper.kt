@@ -3,6 +3,8 @@ package com.example.firstlab.presentation.mapper
 import com.example.firstlab.R
 import com.example.firstlab.domain.entity.EmotionEntity
 import com.example.firstlab.domain.entity.EmotionType
+import com.example.firstlab.extension.convertTime
+import com.example.firstlab.extension.convertTypeToColor
 import com.example.firstlab.presentation.models.EmotionFullModel
 import com.example.firstlab.presentation.models.JournalItem
 
@@ -49,9 +51,9 @@ class EmotionsMapper {
             type = emotion.type,
             userId = emotion.userId,
             iconRes = emotion.iconRes,
-            actions = emotion.actions,
-            company = emotion.company,
-            location = emotion.location,
+            actions = emotion.actions.toSet(),
+            company = emotion.company.toSet(),
+            location = emotion.location.toSet(),
             createTime = emotion.createTime?.convertTime()
         )
     }

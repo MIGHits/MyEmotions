@@ -34,13 +34,7 @@ class CustomGoalCircleView(
             invalidate()
         }
 
-    var emotionsColors: List<EmotionType> =
-        listOf(
-            /*EmotionType.RED,
-            EmotionType.RED,
-            EmotionType.GREEN,
-            EmotionType.BLUE,*/
-        )
+    var emotionsColors: List<EmotionType> = emptyList()
         set(value) {
             field = value
             checkAnimationState()

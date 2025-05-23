@@ -1,15 +1,23 @@
 package com.example.firstlab.presentation.screen
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.firstlab.R
 import com.example.firstlab.adapter.NotificationAdapter
 import com.example.firstlab.databinding.NotificationBottomSheetBinding
@@ -42,48 +50,92 @@ class SettingsScreen : Fragment(R.layout.settings_screen) {
         val notificationAdapter = NotificationAdapter { notification ->
             viewModel.removeNotification(notification)
         }
-
         recycler.adapter = notificationAdapter
         recycler.layoutManager = manager
+
+        val logoutButton = binding.logoutIcon
+        logoutButton.setOnClickListener {
+            viewModel.logout()
+            val intent = Intent(requireContext(), AuthActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            startActivity(intent)
+        }
+
+        val requestPermissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                toggleNotificationSwitch()
+            } else {
+                Toast.makeText(requireContext(),
+                    getString(R.string.notification_permission_toast), Toast.LENGTH_SHORT).show()
+                binding.notificationSwitcher.isChecked = false
+            }
+        }
+
+        binding.notificationSwitcher.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                if (ContextCompat.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.POST_NOTIFICATIONS
+                    ) == PackageManager.PERMISSION_GRANTED
+                ) {
+                    toggleNotificationSwitch()
+                } else {
+                    requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            } else {
+                toggleNotificationSwitch()
+            }
+        }
+
+        binding.fingerprintSwitcher.setOnClickListener {
+            val state = viewModel.settingsState.value as? SettingsState.Content ?: return@setOnClickListener
+            viewModel.toggleSwitch(
+                state.content.user.copy(
+                    isFingerprintEnabled = !state.content.user.isFingerprintEnabled
+                )
+            )
+        }
 
         lifecycleScope.launch {
             viewModel.settingsState.collect { state ->
                 when (state) {
                     is SettingsState.Content -> {
-                        notificationAdapter.notificationList =
-                            state.content.notifications.toMutableList()
                         binding.apply {
-                            notificationSwitcher.isChecked =
-                                state.content.user.isNotificationEnabled
+                            loadingOverlay.visibility = View.GONE
+                            notificationSwitcher.isChecked = state.content.user.isNotificationEnabled
                             fingerprintSwitcher.isChecked = state.content.user.isFingerprintEnabled
                             userName.text = state.content.user.username
-
+                            Glide.with(this@SettingsScreen)
+                                .load(state.content.user.avatar)
+                                .into(avatar)
                             addNotification.setOnClickListener {
                                 showBottomDialog(state.content)
                             }
-                            notificationSwitcher.setOnClickListener {
-                                viewModel.toggleSwitch(
-                                    state.content.user.copy(
-                                        isNotificationEnabled = !state.content.user.isNotificationEnabled
-                                    )
-                                )
-                            }
-
-                            fingerprintSwitcher.setOnClickListener {
-                                viewModel.toggleSwitch(
-                                    state.content.user.copy(
-                                        isFingerprintEnabled = !state.content.user.isFingerprintEnabled
-                                    )
-                                )
-                            }
+                            notificationAdapter.notificationList =
+                                state.content.notifications.toMutableList()
                         }
                     }
 
+                    SettingsState.Loading -> {
+                        binding.loadingOverlay.visibility = View.VISIBLE
+                    }
+
                     SettingsState.Initial -> {}
-                    SettingsState.Loading -> {}
                 }
             }
         }
+    }
+
+    private fun toggleNotificationSwitch() {
+        val state = viewModel.settingsState.value as? SettingsState.Content ?: return
+        viewModel.toggleSwitch(
+            state.content.user.copy(
+                isNotificationEnabled = !state.content.user.isNotificationEnabled
+            )
+        )
     }
 
     private fun showBottomDialog(profileSettings: ProfileSettings) {

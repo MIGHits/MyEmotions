@@ -1,4 +1,4 @@
-package com.example.firstlab.presentation.mapper
+package com.example.firstlab.extension
 
 import com.example.firstlab.App
 import com.example.firstlab.R

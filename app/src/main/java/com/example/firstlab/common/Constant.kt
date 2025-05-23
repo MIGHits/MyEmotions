@@ -1,19 +1,25 @@
 package com.example.firstlab.common
 
+import androidx.core.content.ContextCompat
+import com.example.firstlab.App
+import com.example.firstlab.R
+import com.example.firstlab.presentation.models.BallsItem
+
 object Constant {
     const val ARG_COMPANY_DATA = "ARG_COMPANY_LIST"
     const val ARG_PLACES_DATA = "ARG_PLACES_LIST"
     const val ARG_ACTIVITIES_DATA = "ARG_ACTIVITIES_LIST"
     const val ARG_BALLS_DATA = "ARG_BALLS_LIST"
     const val ARG_EMOTES_CATEGORY = "ARG_CATEGORY_LIST"
-    const val ARG_MAIN_STATISTIC = "ARG_MAIN_STATISTIC"
     const val ARG_MOOD_DATA = "ARG_MOOD_DATA"
     const val ARG_FREQUENT_DATA = "ARG_FREQUENT_DATA"
     const val ARG_NOTIFICATION_DATA = "ARG_NOTIFICATION_DATA"
     const val ARG_WEEKLY_EMOTES = "ARG_CATEGORY_LIST"
-    const val ARG_EMOTION_ID = "emotion_id_argument"
     const val ARG_NOTE_COUNT = "note_count_key"
+    const val USER_ID = "user_id"
     const val ARG_WEEK_INDEX = "ARG_WEEK_INDEX"
+    const val NOTIFICATION_ID = "notification_id"
+    const val NOTIFICATION_TEXT = "notification_text"
     const val VIEW_PAGER_OFFSET = 70
     const val ZERO_CONST = 0
     const val PADDING_SMALL = 8
@@ -34,4 +40,110 @@ object Constant {
     const val PADDING_LARGE = 32
     const val TOTAL_GOALS = 2
     const val RELEASE_YEAR = 2025
+    val BALLS = listOf(
+        BallsItem(
+            ContextCompat.getColor(App.app, R.color.redGradient),
+            name = "Ярость",
+            description = ""
+        ),
+        BallsItem(
+            ContextCompat.getColor(App.app, R.color.redGradient),
+            name = "Напряжение",
+            description = ""
+        ),
+        BallsItem(
+            ContextCompat.getColor(App.app, R.color.yellowGradient),
+            name = "Возбуждение",
+            description = ""
+        ),
+        BallsItem(
+            (ContextCompat.getColor(App.app, R.color.yellowGradient)),
+            name = "Восторг",
+            description = ""
+        ),
+        BallsItem(
+            ContextCompat.getColor(App.app, R.color.redGradient),
+            name = "Зависть",
+            description = ""
+        ),
+        BallsItem(
+            ContextCompat.getColor(App.app, R.color.redGradient),
+            name = "Беспокойство",
+            description = ""
+        ),
+        BallsItem(
+            (ContextCompat.getColor(App.app, R.color.yellowGradient)),
+            name = "Уверенность",
+            description = ""
+        ),
+        BallsItem(
+            (ContextCompat.getColor(App.app, R.color.yellowGradient)),
+            name = "Счастье",
+            description = ""
+        ),
+        BallsItem(
+            (ContextCompat.getColor(App.app, R.color.blueGradient)),
+            name = "Выгорание",
+            description = ""
+        ),
+        BallsItem(
+            (ContextCompat.getColor(App.app, R.color.blueGradient)),
+            name = "Усталость",
+            description = ""
+        ),
+        BallsItem(
+            (ContextCompat.getColor(App.app, R.color.greenGradient)),
+            name = "Спокойствие",
+            description = ""
+        ),
+        BallsItem(
+            (ContextCompat.getColor(App.app, R.color.greenGradient)),
+            name = "Удовлетворенность",
+            description = ""
+        ),
+        BallsItem(
+            (ContextCompat.getColor(App.app, R.color.blueGradient)),
+            name = "Депрессия",
+            description = ""
+        ),
+        BallsItem(
+            (ContextCompat.getColor(App.app, R.color.blueGradient)),
+            name = "Апатия",
+            description = ""
+        ),
+        BallsItem(
+            (ContextCompat.getColor(App.app, R.color.greenGradient)),
+            name = "Благодарность",
+            description = ""
+        ),
+        BallsItem(
+            (ContextCompat.getColor(App.app, R.color.greenGradient)),
+            name = "Защищенность",
+            description = ""
+        )
+    )
+
+    val COMPANY: MutableSet<String> = mutableSetOf(
+        "Один",
+        "Друзья",
+        "Семья",
+        "Коллеги",
+        "Партнёр",
+        "Питомцы"
+    )
+    val PLACES: MutableSet<String> = mutableSetOf(
+        "Дом",
+        "Работа",
+        "Школа",
+        "Транспорт",
+        "Улица"
+    )
+    val ACTIVITIES: MutableSet<String> = mutableSetOf(
+        "Приём пищи",
+        "Встреча с друзьями",
+        "Тренировка",
+        "Хобби",
+        "Отдых",
+        "Поездка"
+    )
 }

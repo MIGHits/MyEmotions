@@ -10,7 +10,7 @@ import com.example.firstlab.presentation.adapter.FragmentAdapterVertical
 import com.example.firstlab.common.Constant.VIEW_PAGER_OFFSET
 import com.example.firstlab.common.Constant.ZERO_CONST
 import com.example.firstlab.databinding.StatisticMainFragmentBinding
-import com.example.firstlab.presentation.mapper.dpToPx
+import com.example.firstlab.extension.dpToPx
 import com.example.firstlab.presentation.state.StatisticsState
 import com.example.firstlab.presentation.viewModel.StatisticsViewModel
 import kotlinx.coroutines.launch
@@ -49,6 +49,7 @@ class StatisticMainFragment : Fragment(R.layout.statistic_main_fragment) {
             viewModel.getStatisticsStateForWeek(weekIndex).collect { state ->
                 when (state) {
                     is StatisticsState.Content -> {
+                        binding.loadingOverlay.visibility = View.GONE
                         val fragments = listOf(
                             EmotionsCategoryFragment.setData(
                                 state.content.emotionsCategory,
@@ -62,6 +63,7 @@ class StatisticMainFragment : Fragment(R.layout.statistic_main_fragment) {
                             verticalAdapter.updateFragments(fragments)
                         }
                     }
+
                     is StatisticsState.Empty -> {
                         val fragments = listOf(
                             EmotionsCategoryFragment.setData(emptyList(), 0),
@@ -73,8 +75,9 @@ class StatisticMainFragment : Fragment(R.layout.statistic_main_fragment) {
                             verticalAdapter.updateFragments(fragments)
                         }
                     }
+
                     is StatisticsState.Loading -> {
-                      
+                        binding.loadingOverlay.visibility = View.VISIBLE
                     }
                 }
             }

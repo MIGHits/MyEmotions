@@ -190,4 +190,8 @@
         <item name="textBackground">@color/navbarBackground</item>
         <item name="backgroundTint">@color/transparent</item>
     </style>
+
+    <style name="AvatarCircle" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

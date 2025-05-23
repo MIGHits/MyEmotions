@@ -6,8 +6,8 @@ import com.example.firstlab.common.Constant.RELEASE_YEAR
 import com.example.firstlab.domain.entity.EmotionEntity
 import com.example.firstlab.domain.entity.EmotionType
 import com.example.firstlab.domain.usecase.GetStatisticsDataUseCase
-import com.example.firstlab.presentation.mapper.getTimeOfDay
-import com.example.firstlab.presentation.mapper.truncateToDay
+import com.example.firstlab.extension.getTimeOfDay
+import com.example.firstlab.extension.truncateToDay
 import com.example.firstlab.presentation.models.EmotesCategory
 import com.example.firstlab.presentation.models.Emotion
 import com.example.firstlab.presentation.models.MoodCategory

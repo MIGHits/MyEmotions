@@ -29,7 +29,7 @@ val dataModule = module {
         get<EmotionDatabase>().NotificationDao()
     }
     factory<NotificationScheduler> {
-        NotificationSchedulerImpl(context = get())
+        NotificationSchedulerImpl(context = get(), auth = get())
     }
 
     factoryOf(::EmotionMapper)

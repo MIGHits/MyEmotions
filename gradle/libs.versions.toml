@@ -5,6 +5,7 @@ converterGson = "2.11.0"
 firebaseBom = "33.13.0"
 flexbox = "3.0.0"
 fragmentTesting = "1.8.6"
+glide = "4.16.0"
 kaspresso = "1.5.2"
 kotlin = "2.1.0"
 coreKtx = "1.16.0"
@@ -44,6 +45,7 @@ androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

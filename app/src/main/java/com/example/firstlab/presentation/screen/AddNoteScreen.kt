@@ -21,12 +21,16 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.firstlab.R
+import com.example.firstlab.common.Constant.ACTIVITIES
+import com.example.firstlab.common.Constant.COMPANY
 import com.example.firstlab.common.Constant.CORNER_RADIUS
 import com.example.firstlab.common.Constant.MINIMUM_CONST
 import com.example.firstlab.common.Constant.PADDING_MEDIUM
 import com.example.firstlab.common.Constant.PADDING_SMALL
+import com.example.firstlab.common.Constant.PLACES
 import com.example.firstlab.databinding.AddNoteScreenBinding
 import com.example.firstlab.domain.entity.EmotionType
+import com.example.firstlab.extension.navigateWithClearBackStack
 import com.example.firstlab.presentation.viewModel.CreateEmotionViewModel
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -38,29 +42,9 @@ import org.koin.androidx.viewmodel.ext.android.activityViewModel
 class AddNoteScreen : Fragment(R.layout.add_note_screen) {
     private var binding: AddNoteScreenBinding? = null
     private val args by navArgs<AddNoteScreenArgs>()
-    private val company: MutableSet<String> = mutableSetOf(
-        "Один",
-        "Друзья",
-        "Семья",
-        "Коллеги",
-        "Партнёр",
-        "Питомцы"
-    )
-    private val places: MutableSet<String> = mutableSetOf(
-        "Дом",
-        "Работа",
-        "Школа",
-        "Транспорт",
-        "Улица"
-    )
-    private val activities: MutableSet<String> = mutableSetOf(
-        "Приём пищи",
-        "Встреча с друзьями",
-        "Тренировка",
-        "Хобби",
-        "Отдых",
-        "Поездка"
-    )
+    private val company: MutableSet<String> = COMPANY
+    private val places: MutableSet<String> = PLACES
+    private val activities: MutableSet<String> = ACTIVITIES
     private val viewModel: CreateEmotionViewModel by activityViewModel<CreateEmotionViewModel>()
 
 
@@ -162,7 +146,7 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
                 places = placeChipGroup?.children?.filter { it is Chip && it.isChecked }
                     ?.map { (it as Chip).text.toString() }?.toList() ?: emptyList()
             )
-            findNavController().navigate(R.id.action_addNoteScreen_to_feelingsScreen)
+            findNavController().navigateWithClearBackStack(R.id.back_to_journal)
         }
 
 
@@ -203,6 +187,12 @@ class AddNoteScreen : Fragment(R.layout.add_note_screen) {
     private fun Int.dpToPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 
     private fun addNewChip(chipGroup: ChipGroup?, name: String, addToList: (String) -> Unit) {
+        val exists = chipGroup?.children
+            ?.filterIsInstance<Chip>()
+            ?.any { it.text.toString().equals(name, ignoreCase = true) } ?: false
+
+        if (exists) return
+
         val chip = Chip(requireContext()).apply {
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,

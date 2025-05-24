@@ -7,6 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.firstlab.common.Constant.ARG_MOOD_DATA
 import com.example.firstlab.domain.entity.EmotesCategory
 import com.example.firstlab.domain.entity.EmotionType
+import com.example.firstlab.domain.entity.MoodCategory
 import com.example.firstlab.domain.entity.TimeOfDay
 import com.example.firstlab.page.`object`.DailyMoodScreen
 import com.example.firstlab.presentation.screen.MoodStatisticFragment
@@ -19,12 +20,12 @@ class MoodScreenTest : TestCase() {
     @Test
     fun testDailyMoodScreen() {
         val moodList = listOf(
-            EmotesCategory(Pair(1f, EmotionType.GREEN), TimeOfDay.EARLY_MORNING),
-            EmotesCategory(Pair(0.5f, EmotionType.YELLOW), TimeOfDay.MORNING),
-            EmotesCategory(Pair(0.5f, EmotionType.RED), TimeOfDay.MORNING),
-            EmotesCategory(Pair(1f, EmotionType.RED), TimeOfDay.DAY),
-            EmotesCategory(Pair(0.3f, EmotionType.BLUE), TimeOfDay.EVENING),
-            EmotesCategory(Pair(0.7f, EmotionType.RED), TimeOfDay.EVENING)
+            MoodCategory(Pair(1f, EmotionType.GREEN), TimeOfDay.EARLY_MORNING),
+            MoodCategory(Pair(0.5f, EmotionType.YELLOW), TimeOfDay.MORNING),
+            MoodCategory(Pair(0.5f, EmotionType.RED), TimeOfDay.MORNING),
+            MoodCategory(Pair(1f, EmotionType.RED), TimeOfDay.DAY),
+            MoodCategory(Pair(0.3f, EmotionType.BLUE), TimeOfDay.EVENING),
+            MoodCategory(Pair(0.7f, EmotionType.RED), TimeOfDay.EVENING)
         )
 
         run {

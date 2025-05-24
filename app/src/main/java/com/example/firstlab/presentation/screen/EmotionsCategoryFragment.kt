@@ -7,7 +7,7 @@ import com.example.firstlab.R
 import com.example.firstlab.common.Constant.ARG_EMOTES_CATEGORY
 import com.example.firstlab.common.Constant.ARG_NOTE_COUNT
 import com.example.firstlab.databinding.EmotionsCategoryBinding
-import com.example.firstlab.presentation.models.EmotesCategory
+import com.example.firstlab.domain.entity.EmotesCategory
 import kotlin.properties.Delegates
 
 class EmotionsCategoryFragment : Fragment(R.layout.emotions_category) {

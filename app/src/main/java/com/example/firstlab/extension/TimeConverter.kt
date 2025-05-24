@@ -2,7 +2,7 @@ package com.example.firstlab.extension
 
 import com.example.firstlab.App
 import com.example.firstlab.R
-import com.example.firstlab.presentation.models.TimeOfDay
+import com.example.firstlab.domain.entity.TimeOfDay
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.Instant
 import org.threeten.bp.LocalDate

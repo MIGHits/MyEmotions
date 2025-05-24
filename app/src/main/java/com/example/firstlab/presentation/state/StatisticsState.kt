@@ -1,6 +1,6 @@
 package com.example.firstlab.presentation.state
 
-import com.example.firstlab.presentation.models.StatisticsContent
+import com.example.firstlab.domain.entity.StatisticsContent
 
 sealed class StatisticsState {
     data object Empty : StatisticsState()

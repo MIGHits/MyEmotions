@@ -10,7 +10,7 @@ import com.example.firstlab.R
 import com.example.firstlab.common.Constant.ZERO_CONST
 import com.example.firstlab.databinding.StatisticScreenBinding
 import com.example.firstlab.presentation.adapter.FragmentAdapterHorizontal
-import com.example.firstlab.presentation.models.WeekInfo
+import com.example.firstlab.domain.entity.WeekInfo
 import com.example.firstlab.presentation.viewModel.StatisticsViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.androidx.viewmodel.ext.android.activityViewModel

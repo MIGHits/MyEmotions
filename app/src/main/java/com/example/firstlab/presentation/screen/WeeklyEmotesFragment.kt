@@ -8,7 +8,7 @@ import com.example.firstlab.R
 import com.example.firstlab.common.Constant.ARG_WEEKLY_EMOTES
 import com.example.firstlab.databinding.WeeklyEmotionsBinding
 import com.example.firstlab.presentation.adapter.WeeklyEmotesAdapter
-import com.example.firstlab.presentation.models.WeeklyEmoteItem
+import com.example.firstlab.domain.entity.WeeklyEmoteItem
 
 class WeeklyEmotesFragment : Fragment(R.layout.weekly_emotions) {
     private lateinit var binding: WeeklyEmotionsBinding

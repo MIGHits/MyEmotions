@@ -5,9 +5,9 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.firstlab.common.Constant.ARG_MOOD_DATA
-import com.example.firstlab.presentation.models.EmotesCategory
+import com.example.firstlab.domain.entity.EmotesCategory
 import com.example.firstlab.domain.entity.EmotionType
-import com.example.firstlab.presentation.models.TimeOfDay
+import com.example.firstlab.domain.entity.TimeOfDay
 import com.example.firstlab.page.`object`.DailyMoodScreen
 import com.example.firstlab.presentation.screen.MoodStatisticFragment
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase

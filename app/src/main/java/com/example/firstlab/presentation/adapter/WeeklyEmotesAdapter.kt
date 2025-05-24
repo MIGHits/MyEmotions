@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.firstlab.R
 import com.example.firstlab.databinding.WeeklyEmotionsItemBinding
 import com.example.firstlab.extension.dpToPx
-import com.example.firstlab.presentation.models.WeeklyEmoteItem
+import com.example.firstlab.domain.entity.WeeklyEmoteItem
 
 class WeeklyEmotesAdapter : RecyclerView.Adapter<WeeklyEmotesAdapter.EmotesViewHolder>() {
     inner class EmotesViewHolder(val binding: WeeklyEmotionsItemBinding) :

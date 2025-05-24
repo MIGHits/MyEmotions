@@ -5,7 +5,7 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.firstlab.common.Constant.ARG_EMOTES_CATEGORY
-import com.example.firstlab.presentation.models.EmotesCategory
+import com.example.firstlab.domain.entity.EmotesCategory
 import com.example.firstlab.domain.entity.EmotionType
 import com.example.firstlab.page.`object`.EmotionsCategoryScreen
 import com.example.firstlab.presentation.screen.EmotionsCategoryFragment

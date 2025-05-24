@@ -5,7 +5,7 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.firstlab.common.Constant.ARG_FREQUENT_DATA
-import com.example.firstlab.presentation.models.Emotion
+import com.example.firstlab.domain.entity.Emotion
 import com.example.firstlab.domain.entity.EmotionType
 import com.example.firstlab.page.`object`.MostFrequentEmotesScreen
 import com.example.firstlab.presentation.screen.MostFrequentEmotesFragment

@@ -15,7 +15,7 @@ import com.example.firstlab.common.Constant.MIN_CATEGORY_SIZE
 import com.example.firstlab.common.Constant.ZERO_CONST
 import com.example.firstlab.domain.entity.EmotionType
 import com.example.firstlab.extension.dpToPx
-import com.example.firstlab.presentation.models.EmotesCategory
+import com.example.firstlab.domain.entity.EmotesCategory
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min

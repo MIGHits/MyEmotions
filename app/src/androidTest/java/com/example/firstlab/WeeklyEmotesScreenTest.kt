@@ -6,8 +6,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.test.espresso.matcher.ViewMatchers.hasChildCount
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.firstlab.common.Constant.ARG_WEEKLY_EMOTES
-import com.example.firstlab.presentation.models.Emotion
-import com.example.firstlab.presentation.models.WeeklyEmoteItem
+import com.example.firstlab.domain.entity.Emotion
+import com.example.firstlab.domain.entity.WeeklyEmoteItem
 import com.example.firstlab.page.`object`.WeeklyEmotesScreen
 import com.example.firstlab.presentation.screen.WeeklyEmotesFragment
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase

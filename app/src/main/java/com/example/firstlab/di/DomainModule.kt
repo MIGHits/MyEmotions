@@ -12,6 +12,7 @@ import com.example.firstlab.domain.usecase.UpdateUserUseCase
 import com.example.firstlab.domain.usecase.ScheduleNotificationsUseCase
 import com.example.firstlab.domain.usecase.CancelNotificationsUseCase
 import com.example.firstlab.domain.usecase.LogoutUseCase
+import com.example.firstlab.domain.usecase.CalculateSeriesUseCase
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
@@ -28,4 +29,5 @@ val domainModule = module {
     factoryOf(::ScheduleNotificationsUseCase)
     factoryOf(::CancelNotificationsUseCase)
     factoryOf(::LogoutUseCase)
+    factoryOf(::CalculateSeriesUseCase)
 }

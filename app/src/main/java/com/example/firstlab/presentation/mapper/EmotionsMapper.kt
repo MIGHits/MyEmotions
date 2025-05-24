@@ -8,7 +8,7 @@ import com.example.firstlab.extension.convertTypeToColor
 import com.example.firstlab.presentation.models.EmotionFullModel
 import com.example.firstlab.presentation.models.JournalItem
 
-class EmotionsMapper {
+open class EmotionsMapper {
     private fun mapToJournalItem(emotion: EmotionEntity): JournalItem {
         return JournalItem(
             id = emotion.id ?: 0,
@@ -44,7 +44,7 @@ class EmotionsMapper {
         return emotions.map { mapToJournalItem(it) }
     }
 
-    fun mapToFullEmotionModel(emotion: EmotionEntity): EmotionFullModel {
+    open fun mapToFullEmotionModel(emotion: EmotionEntity): EmotionFullModel {
         return EmotionFullModel(
             id = emotion.id,
             name = emotion.name,

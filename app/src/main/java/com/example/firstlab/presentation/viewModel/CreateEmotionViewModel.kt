@@ -21,7 +21,7 @@ class CreateEmotionViewModel(
     private val getEmotionByIdUseCase: GetEmotionByIdUseCase,
     private val emotionsMapper: EmotionsMapper
 ) : ViewModel() {
-    private val _createState = MutableStateFlow(EmotionFullModel())
+    val _createState = MutableStateFlow(EmotionFullModel())
     val createState: StateFlow<EmotionFullModel> get() = _createState
 
     fun chooseEmotion(name: String, color: Int) {

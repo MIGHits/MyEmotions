@@ -49,6 +49,7 @@
     <string name="channel_id">daily_notifications</string>
     <string name="notification_content">%1$s,пора оставить новую запись</string>
     <string name="notification_permission_toast">Для включения уведомлений нужно дать разрешение</string>
+    <string name="zero_notes">0 записей</string>
     <plurals name="posts_count">
         <item quantity="one">%d запись</item>
         <item quantity="two">%d записи</item>

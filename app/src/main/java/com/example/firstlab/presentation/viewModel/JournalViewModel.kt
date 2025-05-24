@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.firstlab.common.Constant.TOTAL_GOALS
 import com.example.firstlab.domain.entity.EmotionEntity
+import com.example.firstlab.domain.usecase.CalculateSeriesUseCase
 import com.example.firstlab.presentation.models.JournalModel
 import com.example.firstlab.domain.usecase.GetJournalDataUseCase
 import com.example.firstlab.presentation.mapper.EmotionsMapper
@@ -21,7 +22,8 @@ import org.threeten.bp.temporal.ChronoUnit
 
 class JournalViewModel(
     private val getJournalDataUseCase: GetJournalDataUseCase,
-    private val emotionsMapper: EmotionsMapper
+    private val emotionsMapper: EmotionsMapper,
+    private val calculateSeriesUseCase: CalculateSeriesUseCase
 ) : ViewModel() {
     private val _journalState = MutableStateFlow<JournalState>(JournalState.Empty)
     val journalState: StateFlow<JournalState> get() = _journalState
@@ -30,7 +32,7 @@ class JournalViewModel(
         getJournalData()
     }
 
-    private fun getJournalData() {
+    fun getJournalData() {
         viewModelScope.launch {
             _journalState.update { JournalState.Loading }
             getJournalDataUseCase().collect { emotions ->
@@ -42,7 +44,7 @@ class JournalViewModel(
                             JournalModel(
                                 emotions = emotionsMapper.mapToJournalItem(emotions),
                                 amountOFEmotions = emotions.size,
-                                series = calculateSeries(emotions),
+                                series = calculateSeriesUseCase(emotions),
                                 today = emotions.filter { it.createTime?.isToday() ?: false }
                                     .mapNotNull { it.type }.take(TOTAL_GOALS)
                             )
@@ -51,34 +53,5 @@ class JournalViewModel(
                 }
             }
         }
-    }
-
-    private fun calculateSeries(emotions: List<EmotionEntity>): Int {
-        if (emotions.isEmpty()) return 0
-        val uniqueDates = emotions
-            .mapNotNull { emotion ->
-                emotion.createTime?.let { time ->
-                    LocalDateTime.ofInstant(Instant.ofEpochMilli(time), ZoneId.systemDefault())
-                        .toLocalDate()
-                }
-            }
-            .distinct()
-        if (uniqueDates.isEmpty()) return 0
-        var maxStreak = 1
-        var currentStreak = 1
-
-        for (i in 1 until uniqueDates.size) {
-            val daysBetween = ChronoUnit.DAYS.between(uniqueDates[i], uniqueDates[i - 1])
-            when (daysBetween) {
-                1L -> {
-                    currentStreak++
-                    maxStreak = maxOf(maxStreak, currentStreak)
-                }
-
-                0L -> continue
-                else -> currentStreak = 1
-            }
-        }
-        return maxStreak
     }
 }

@@ -6,6 +6,7 @@ firebaseBom = "33.13.0"
 flexbox = "3.0.0"
 fragmentTesting = "1.8.6"
 glide = "4.16.0"
+junitJupiter = "5.9.3"
 kaspresso = "1.5.2"
 kotlin = "2.1.0"
 coreKtx = "1.16.0"
@@ -13,10 +14,14 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.5.0"
 appcompat = "1.7.0"
+kotlinxCoroutinesTest = "1.7.3"
 material = "1.12.0"
 activity = "1.10.1"
 koinBom = "4.0.3"
 constraintlayout = "2.2.1"
+mockitoCore = "5.14.2"
+mockitoKotlin = "2.2.0"
+mockk = "1.13.8"
 navigationFragmentKtx = "2.9.0"
 playServicesAuth = "21.3.0"
 roomKtx = "2.6.1"
@@ -24,6 +29,7 @@ rules = "1.6.1"
 runner = "1.6.2"
 sqliteJdbc = "3.42.0.0"
 threetenabp = "1.4.6"
+threetenbp = "1.6.8"
 zoomlayout = "1.9.0"
 espressoContrib = "3.6.1"
 googleGmsGoogleServices = "4.4.2"
@@ -50,17 +56,23 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitJupiter" }
 kaspresso = { module = "com.kaspersky.android-components:kaspresso", version.ref = "kaspresso" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-compose = { module = "io.insert-koin:koin-androidx-compose" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+mockito-kotlin = { module = "com.nhaarman.mockitokotlin2:mockito-kotlin", version.ref = "mockitoKotlin" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
 relex-circleindicator = { module = "me.relex:circleindicator", version.ref = "circleindicatorVersion" }
 sqlite-jdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqliteJdbc" }
 threetenabp = { module = "com.jakewharton.threetenabp:threetenabp", version.ref = "threetenabp" }
+threetenbp = { module = "org.threeten:threetenbp", version.ref = "threetenbp" }
 zoomlayout = { module = "com.otaliastudios:zoomlayout", version.ref = "zoomlayout" }
 androidx-espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espressoContrib" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
